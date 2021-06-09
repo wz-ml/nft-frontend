@@ -4,13 +4,16 @@
   "description": "bcharity nft frontend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "BROWSER=none react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BCharity-Net/nft-frontend.git"
   },
-  "author": "",
+  "author": "Eric Li, Ethan Sengsavang, Jinhao Li, Rui Yan, Tony Shi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BCharity-Net/nft-frontend/issues"
@@ -21,5 +24,17 @@
     "react-dom": "^17.0.2",
     "reactstrap": "^8.9.0",
     "save": "^2.4.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
