@@ -1,7 +1,24 @@
 {
-  "name": "learn-react-in-x-minutes",
-  "version": "0.1.0",
-  "private": true,
+  "name": "nft-frontend",
+  "version": "1.0.0",
+  "description": "bcharity nft frontend",
+  "main": "index.js",
+  "scripts": {
+    "start": "BROWSER=none react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BCharity-Net/nft-frontend.git"
+  },
+  "author": "Eric Li, Ethan Sengsavang, Jinhao Li, Rui Yan, Tony Shi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BCharity-Net/nft-frontend/issues"
+  },
+  "homepage": "https://github.com/BCharity-Net/nft-frontend#readme",
   "dependencies": {
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
@@ -9,13 +26,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "web-vitals": "^1.1.2",
+    "reactstrap": "^8.9.0",
+    "save": "^2.4.0"
   },
   "eslintConfig": {
     "extends": [
