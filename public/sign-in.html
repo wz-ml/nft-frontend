@@ -1,0 +1,67 @@
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  </head>
+
+<style>
+
+.header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4em;
+  color: black;
+  text-align: center;
+
+}
+.wallet-img {
+  width: 10%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.different-wallet {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* trying to center the 'use a different wallet' with the options attached to it
+*/
+
+.wallet-dropdown {
+  width: 10%;
+  height: auto;
+  color: white;
+  background-color: red;
+  padding: 12px 36px 12px 36px;
+  font-weight: bold;
+}
+.wallet-options {
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+}
+
+</style>
+
+<main id="main">
+  <h2 class="header" id="header">
+    Sign in to your wallet!
+  </h2>
+
+  <div id="img-div" class="img-div">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/NFT_Icon.png" id="wallet-img" alt="Your very own NFT Wallet" class="wallet-img">
+    </div>
+
+<!-- i wanted to use javascript to make the 'sign in' button, but i dont know how to incorporate that yet
+-->
+
+  <div id="different-wallet" class="different-wallet">
+    <button class="wallet-dropdown"> → USE A DIFFERENT WALLET</button>
+      <div class="wallet-options">
+        <a href="#">Option 1</a>
+        <a href="#">Option 2</a>
+        <a href="#">Option 3</a>
+      </div>
+      <!-- don't know how to make this a dropdown menu like the opensea one
+      -->
+  </div>
+</main>
