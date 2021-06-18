@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Order from '../Order';
 import { OrderSide } from 'opensea-js/lib/types';
-import { connectWallet } from '../../constants';
+import { connectWallet } from '../../../constants';
 
 export default class Log extends React.Component {
   static propTypes = {
