@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { OPENSEA_URL } from '../../constants';
+import { OPENSEA_URL } from '../../../constants';
 const MAX_ADDR_LEN = 6
 
 export default class Account extends React.Component {
