@@ -1,6 +1,11 @@
 .navbar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    margin: auto 0;
+    height: 50vh;
+    justify-content: center;
   }
   
 .navbar-item {
