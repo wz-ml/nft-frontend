@@ -1,8 +1,11 @@
 .navbar {
     display: flex;
     flex-direction: column;
+
     position: fixed;
     left: 0;
+    top: 25%;
+
     margin: auto 0;
     height: 50vh;
     justify-content: center;
