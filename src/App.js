@@ -4,27 +4,29 @@ import { Header } from './compound/common';
 import Marketplace from "./components/Marketplace";
 import './App.css';
 
-function App() {
-  return (
-    <div className = "App">
-      <Header />
-      <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/marketplace">Marketplace</Link>
-            </li>
-          </ul>
+class App extends React.Component{
+  render(){
+    return (
+      <div className = "App">
+        <Header />
+        <Router>
+          <div>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/marketplace">Marketplace</Link>
+              </li>
+            </ul>
 
-          <Route exact path="/" component={Home} />
-          <Route path="/marketplace" component={Marketplace} />
-        </div>
-      </Router>
-    </div>
-  );
+            <Route exact path="/" component={Home} />
+            <Route path="/marketplace" component={Marketplace} />
+          </div>
+        </Router>
+      </div>
+    );
+  }
 }
 
 // next line is very temporary
