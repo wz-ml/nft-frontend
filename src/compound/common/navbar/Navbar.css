@@ -13,9 +13,8 @@
   
 .navbar-item {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-left: 30px;
+    margin-left: 1rem;
     color: inherit;
     text-decoration: inherit;
     text-transform: uppercase;
