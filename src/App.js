@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import { Header } from './compound/common';
+import {Header, Navbar} from './compound/common';
 import Marketplace from "./components/Marketplace";
 import './App.css';
 
@@ -9,6 +9,7 @@ class App extends React.Component{
     return (
       <div className = "App">
         <Header />
+        <Navbar />
         <Router>
           <div>
             <ul>
