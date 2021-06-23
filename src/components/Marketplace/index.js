@@ -22,6 +22,13 @@ export default class Marketplace extends React.Component {
     })
     this.web3 = this.seaport.web3
     this.web3.eth.getAccounts((err, res) => {
+      if(!res){
+        this.setState({
+          accountAddress: "",
+        });
+
+        return;
+      }
       this.setState({
         accountAddress: res[0]
       })
