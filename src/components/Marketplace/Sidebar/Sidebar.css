@@ -24,7 +24,7 @@
 }
 
 .sidebar-item.active{
-  height: 100%;
+  height: max-content;
 }
 
 .sidebar-listheader{
