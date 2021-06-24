@@ -8,6 +8,14 @@ const Sidebar = () => {
 
   const updateSidebar = async (evt) => {
     console.log(evt.target.innerText);
+    document.querySelector(".active").classList.remove("active");
+    document.querySelectorAll(".sidebar-item").forEach((header) => {
+      if(header.attributes.value.nodeValue !== evt.target.innerText){
+        return;
+      }
+
+      header.classList.add("active");
+    });
   }
 
   return (
