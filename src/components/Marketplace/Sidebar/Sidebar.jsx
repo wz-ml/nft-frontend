@@ -23,7 +23,7 @@ const Sidebar = () => {
       <ul className="sidebar-item active" value={"Status"}>
         <h3 className="sidebar-listheader" onClick={updateSidebar}>Status</h3>
         <div className="list-items-container">
-          <li className="list-item">itema1</li>
+          <li className="list-item">Buy Now</li>
           <li className="list-item">itema2</li>
         </div>
       </ul>
