@@ -14,15 +14,31 @@
 .sidebar-item {
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
     padding: 0;
+    padding-left: 1rem;
     text-align: left;
     color: inherit;
     text-decoration: inherit;
     outline: none;
+    height: min-content;
+}
+
+.sidebar-item.active{
+  height: 100%;
 }
 
 .sidebar-listheader{
   margin: 0;
   text-align: inherit;
+}
+
+.list-items-container{
+  margin-left: 1rem;
+  height: 100%;
+  display: none;
+}
+
+.active .list-items-container{
+  display: flex;
+  flex-direction: column;
 }
