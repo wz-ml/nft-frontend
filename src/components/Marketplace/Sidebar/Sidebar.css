@@ -16,6 +16,8 @@
     margin: auto 0;
     height: 50vh;
     justify-content: center;
+
+    background-color: var(--sidebar-inactive);
 }
   
 .sidebar-item {
@@ -23,6 +25,7 @@
     flex-direction: column;
     padding: 0;
     padding-left: 1rem;
+    padding-right: 8rem;
     text-align: left;
     color: inherit;
     text-decoration: inherit;
