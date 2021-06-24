@@ -18,6 +18,7 @@
 
     margin: 0;
     height: 50vh;
+    width: 12rem;
     justify-content: center;
 
     background-color: var(--sidebar-inactive);
@@ -35,7 +36,7 @@
     text-decoration: inherit;
     outline: none;
     height: min-content;
-    width: 12rem;
+    /* width: 12rem; */
 }
 
 .sidebar-item.active{
@@ -48,7 +49,18 @@
   margin: 0;
   width: 100%;
   text-align: inherit;
+  padding: 0.5rem 0;
   padding-left: 1rem;
+}
+
+.active .sidebar-listheader{
+  width: 13rem;
+  display: block;
+  color: white;
+  background-color: var(--blue-gradient-start);
+
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 .list-items-container{
