@@ -13,9 +13,10 @@
   
 .sidebar-item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin-left: 1rem;
     padding: 0;
+    text-align: left;
     color: inherit;
     text-decoration: inherit;
     outline: none;
@@ -23,4 +24,5 @@
 
 .sidebar-listheader{
   margin: 0;
+  text-align: inherit;
 }
