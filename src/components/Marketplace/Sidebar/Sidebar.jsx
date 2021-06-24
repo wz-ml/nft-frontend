@@ -1,18 +1,25 @@
 import React from 'react';
 
-import './Navbar.css'
+import './Sidebar.css'
 
-function Navbar () {
-  return (
-    <section className="navbar">
-      <a href="/" className="navbar-item">Home</a>
-      <a href="/about" className="navbar-item">About</a>
-      <a href="/resources" className="navbar-item">Resources</a>
-      <a href="/market" className="navbar-item">Market</a>
-      <a href="/create" className="navbar-item">Create</a>
-      <a href="/contact" className="navbar-item">Contact</a>
-  </section>
-  )
+export default class Sidebar extends React.Component{
+
+  state = {}
+  
+  selectListHeader = function(){
+    console.log("clicked:");
+  }
+
+  render(){
+    return (
+      <section className="sidebar">
+        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Status</p>
+        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Price</p>
+        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Categories</p>
+        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Charities</p>
+        <div className="sidebar-item social-media-container"></div>
+    </section>
+    )
+  }
 }
 
-export default Navbar;

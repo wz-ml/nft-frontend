@@ -1,4 +1,4 @@
-.navbar {
+.sidebar {
     display: flex;
     flex-direction: column;
 
@@ -11,7 +11,7 @@
     justify-content: center;
   }
   
-.navbar-item {
+.sidebar-item {
     display: flex;
     align-items: center;
     margin-left: 1rem;
