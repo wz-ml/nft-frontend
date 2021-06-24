@@ -56,7 +56,7 @@
 }
 
 .active .sidebar-listheader{
-  width: 13rem;
+  width: 12rem;
   display: block;
   color: white;
   background-color: var(--blue-gradient-start);
