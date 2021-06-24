@@ -1,3 +1,10 @@
+:root{
+  --pink-gradient-start: #fb61ba;
+  --pink-gradient-end: #ff839d;
+  --blue-gradient-start: #459bdb;
+  --blue-gradient-end: #6f12e0;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -9,7 +16,7 @@
     margin: auto 0;
     height: 50vh;
     justify-content: center;
-  }
+}
   
 .sidebar-item {
     display: flex;
