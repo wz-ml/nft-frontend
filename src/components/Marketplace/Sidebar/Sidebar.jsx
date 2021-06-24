@@ -12,10 +12,18 @@ const Sidebar = () => {
 
   return (
     <section className="sidebar">
-      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Status</p>
-      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Price</p>
-      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Categories</p>
-      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Charities</p>
+      <ul className="sidebar-item">
+        <h3 className="sidebar-listheader" onClick={updateSidebar}>Status</h3>
+      </ul>
+      <ul className="sidebar-item">
+        <h3 className="sidebar-listheader" onClick={updateSidebar}>Price</h3>
+      </ul>
+      <ul className="sidebar-item">
+        <h3 className="sidebar-listheader" onClick={updateSidebar}>Categories</h3>
+      </ul>
+      <ul className="sidebar-item">
+        <h3 className="sidebar-listheader" onClick={updateSidebar}>Charities</h3>
+      </ul>
       <div className="sidebar-item social-media-container"></div>
     </section>
   )
