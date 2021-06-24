@@ -36,7 +36,9 @@
     text-decoration: inherit;
     outline: none;
     height: min-content;
-    /* width: 12rem; */
+
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }
 
 .sidebar-item.active{
