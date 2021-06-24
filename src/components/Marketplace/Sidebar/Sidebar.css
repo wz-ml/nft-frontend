@@ -3,6 +3,9 @@
   --pink-gradient-end: #ff839d;
   --blue-gradient-start: #459bdb;
   --blue-gradient-end: #6f12e0;
+
+  --sidebar-inactive: #f6e9ef;
+  --sidebar-active: #fff5f7;
 }
 
 .sidebar {
@@ -13,7 +16,7 @@
     left: 0;
     top: 25%;
 
-    margin: auto 0;
+    margin: 0;
     height: 50vh;
     justify-content: center;
 
@@ -23,23 +26,27 @@
 .sidebar-item {
     display: flex;
     flex-direction: column;
-    padding: 0;
-    padding-left: 1rem;
-    padding-right: 8rem;
+    padding: 0.5rem 0;
+    margin: 0;
     text-align: left;
     color: inherit;
     text-decoration: inherit;
     outline: none;
     height: min-content;
+    width: 12rem;
 }
 
 .sidebar-item.active{
-  height: max-content;
+  height: 100%;
+  width: 100%;
+  background-color: var(--sidebar-active);
 }
 
 .sidebar-listheader{
   margin: 0;
+  width: 100%;
   text-align: inherit;
+  padding-left: 1rem;
 }
 
 .list-items-container{
