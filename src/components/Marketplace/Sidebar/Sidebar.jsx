@@ -1,25 +1,24 @@
 import React from 'react';
+// import {useState} from "react";
 
 import './Sidebar.css'
 
-export default class Sidebar extends React.Component{
+const Sidebar = () => {
 
-  state = {}
-  
-  selectListHeader = function(){
-    console.log("clicked:");
+
+  const updateSidebar = async (evt) => {
+    console.log(evt.target.innerText);
   }
 
-  render(){
-    return (
-      <section className="sidebar">
-        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Status</p>
-        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Price</p>
-        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Categories</p>
-        <p className="sidebar-item sidebar-listheader" onClick={this.selectListHeader("Status")}>Charities</p>
-        <div className="sidebar-item social-media-container"></div>
+  return (
+    <section className="sidebar">
+      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Status</p>
+      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Price</p>
+      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Categories</p>
+      <p className="sidebar-item sidebar-listheader" onClick={updateSidebar}>Charities</p>
+      <div className="sidebar-item social-media-container"></div>
     </section>
-    )
-  }
+  )
 }
 
+export default Sidebar
