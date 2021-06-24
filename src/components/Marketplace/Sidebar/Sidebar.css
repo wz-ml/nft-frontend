@@ -15,8 +15,12 @@
     display: flex;
     align-items: center;
     margin-left: 1rem;
+    padding: 0;
     color: inherit;
     text-decoration: inherit;
-    text-transform: uppercase;
     outline: none;
+}
+
+.sidebar-listheader{
+  margin: 0;
 }
