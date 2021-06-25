@@ -1,29 +1,28 @@
 
 .header {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-  }
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
 
-  .header-top__logo {
-  }
+.header-top__logo {
+}
 
 
-  .header-top__logo img {
-    width: 20%;
-    height: 10%;
-  }
+.header-top__logo img {
+  width: 20%;
+  height: 10%;
+}
 
-  .header-top__BCHARITY{
-    font-size: 2em;
-    margin-left: 0px;
-    margin-right: 50px;
-  }
-  
-  .header-top__navbar {
-    justify-content: center;
-    color: var(--blue-gradient-start);
-    background-color: white;
-    margin-left: 100px;
-  }
-  
+.header-top__BCHARITY{
+  font-size: 2em;
+  margin-left: 0px;
+  margin-right: 50px;
+}
+
+.header-top__navbar {
+  justify-content: center;
+  color: var(--blue-gradient-start);
+  background-color: white;
+  margin-left: 100px;
+}
