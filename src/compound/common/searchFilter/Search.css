@@ -1,0 +1,13 @@
+
+.Search{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+.Search input{
+    width: 80%;
+    height: 30px;
+    font-size: 20px;
+}
