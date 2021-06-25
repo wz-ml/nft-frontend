@@ -7,7 +7,7 @@ import { connectWallet } from '../../../constants';
 export default class Log extends React.Component {
   static propTypes = {
     seaport: PropTypes.object.isRequired,
-    accountAddress: PropTypes.string
+    accountAddress: PropTypes.string,
   };
 
   state = {
