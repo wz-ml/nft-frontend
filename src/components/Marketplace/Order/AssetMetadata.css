@@ -19,3 +19,17 @@
     height: 100%;
     width: auto;
 }
+
+.card-body{
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-text{
+    transform: rotate(90deg);
+    height: min-content;
+}
+
+.card-text h5{
+    width: max-content;
+}
