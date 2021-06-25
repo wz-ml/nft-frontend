@@ -21,12 +21,12 @@ class App extends React.Component{
                 <Link to="/marketplace">Marketplace</Link>
               </li>
               <li>
-                <Link to='/SignIn'>SignIn</Link>
+                <Link to='/signin'>Sign In</Link>
               </li>
             </ul>
             <Route exact path="/" component={Home} />
             <Route path="/marketplace" component={Marketplace} />
-            <Route path="/SignIn" component={SignIn}/>
+            <Route path="/signin" component={SignIn}/>
           </div>
         </Router>
       </div>
