@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   return (
     <section className="sidebar">
-      <div className="sidebar-item-contrainer">
+      <div className="sidebar-item-container">
         <ul className="sidebar-item active" value={"Status"}>
           <h3 className="sidebar-listheader" onClick={updateSidebar}>Status</h3>
           <div className="list-items-container">
