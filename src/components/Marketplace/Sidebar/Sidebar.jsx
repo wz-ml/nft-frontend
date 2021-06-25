@@ -60,7 +60,9 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="sidebar-item social-media-container" value={"socials"}>
-        <Reddit />
+        <a href={"https://www.reddit.com/r/BCharity/"} className="social-media-link">
+          <Reddit />
+        </a>
       </div>
     </section>
   )
