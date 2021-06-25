@@ -21,7 +21,7 @@
     width: 12rem;
     justify-content: center;
 
-    background-color: var(--sidebar-inactive);
+    background-color: var(--pink-gradient-start);
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
 
@@ -33,6 +33,9 @@
     flex-direction: column;
 
     height: 100%;
+    background-color: var(--sidebar-inactive);
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }
  
 .sidebar-item {
@@ -94,3 +97,14 @@
     margin: 0.25rem;
 }
 
+.social-media-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+  place-items: center;
+}
+
+.social-media-link{
+  color: white;
+  font-size: 2rem;
+}

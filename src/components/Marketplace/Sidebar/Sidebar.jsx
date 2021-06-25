@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   return (
     <section className="sidebar">
-      <div className="sidebar-item-contrainer">
+      <div className="sidebar-item-container">
         <ul className="sidebar-item active" value={"Status"}>
           <h3 className="sidebar-listheader" onClick={updateSidebar}>Status</h3>
           <div className="list-items-container">
@@ -60,7 +60,9 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="sidebar-item social-media-container" value={"socials"}>
-        <Reddit />
+        <a href={"https://www.reddit.com/r/BCharity/"} className="social-media-link">
+          <Reddit />
+        </a>
       </div>
     </section>
   )
