@@ -5,7 +5,15 @@ import './Sidebar.css'
 
 const Sidebar = () => {
 
-
+  /**
+   * Updates the sidebar with the most recently selected list header.
+   * This function is called on the click event for any sidebar-listheader element.
+   *
+   * This will deactivate the current "active"/opened list and activate the
+   * sidebar item of the same value.
+   *
+   * @param evt The onClick event argument.
+   */
   const updateSidebar = async (evt) => {
     console.log(evt.target.innerText);
     document.querySelector(".active").classList.remove("active");
