@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Log from './Log'
 import { OpenSeaPort, Network } from 'opensea-js';
+import Sidebar from "./Sidebar";
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../constants';
 
 export default class Marketplace extends React.Component {
@@ -22,6 +23,13 @@ export default class Marketplace extends React.Component {
     })
     this.web3 = this.seaport.web3
     this.web3.eth.getAccounts((err, res) => {
+      if(!res){
+        this.setState({
+          accountAddress: "",
+        });
+
+        return;
+      }
       this.setState({
         accountAddress: res[0]
       })
@@ -44,6 +52,7 @@ export default class Marketplace extends React.Component {
             </a> example dapp
           </h6>
         </Header>
+        <Sidebar />
         <main>
           <Log
             seaport={this.seaport}

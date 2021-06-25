@@ -2,7 +2,6 @@
     margin-top: 20px;
     display: flex;
     flex: 1;
-    flex-direction: column;
   }
   
   .header-top {
@@ -22,29 +21,7 @@
     color: inherit;
     text-decoration: inherit;
     font-family: RobotoThin;
-    font-size: 100px;
-  }
-  
-  .header-top__navbar {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-  }
-  
-  .header-top__seperator {
-    width: 100%;
-    border: none;
-    height: 2px;
-    margin-top: 2px;
-    background-color: black;
-  }
-  
-  .header-top__navigation {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-right: 55px;
+    font-size: 30px;
   }
   
   .header-bottom {
