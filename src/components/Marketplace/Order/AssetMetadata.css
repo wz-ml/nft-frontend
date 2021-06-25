@@ -1,11 +1,14 @@
-.card-container{
-    background-color: red;
+:root{
+    --card-bg-color: pink;
+}
 
+.card-container{
+    background-color: var(--card-bg-color);
     display: grid;
     grid-template-columns: 4fr 1fr;
     width: 25rem;;
     height: 20rem;
-    margin-left: auto;
+    /* margin-left: auto; */
     border-radius: 1rem;
 }
 

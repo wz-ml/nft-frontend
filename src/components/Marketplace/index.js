@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Log from './Log'
+import "./index.css";
 import { OpenSeaPort, Network } from 'opensea-js';
 import Sidebar from "./Sidebar";
 import { web3Provider, onNetworkUpdate, OPENSEA_JS_URL, GITHUB_URL } from '../../constants';
+
 
 export default class Marketplace extends React.Component {
 
@@ -43,9 +45,12 @@ export default class Marketplace extends React.Component {
           <ImgRibbon src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
         </a>
         <Header>
-          <h1>
+          <h1 className="title">
             The Ship's Log
           </h1>
+          <h4 className="subtitle">
+          Lorem ipsum sit amet, consectetur adipiscing elit.
+          </h4>
           <h6>
             <a target="_blank" rel="noopener noreferrer" href={OPENSEA_JS_URL}>
               <img alt="OpenSea logo" className="mr-2" src="/opensea-logo.png" />OpenSea.js
