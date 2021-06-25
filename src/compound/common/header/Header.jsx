@@ -11,12 +11,6 @@ function Header(){
                 <section className = "header-top__logo">
                     <a href = "/" className = "header-logo">LOGO</a>
                 </section>
-                <section className = "header-top__navbar">
-                    <section className = "header-top__navigation">
-                        <Navbar />
-                    </section>
-                    <hr className = "header-top__separator" />
-                </section>
             </section>
             <section className = "header-bottom">
                 <section className = "header-bottom__phone">
