@@ -9,7 +9,7 @@
 }
 
 .sidebar {
-    display: flex;
+    display: block;
     flex-direction: column;
 
     position: fixed;
@@ -17,7 +17,7 @@
     top: 25%;
 
     margin: 0;
-    height: 50vh;
+    height: max-content;
     width: 12rem;
     justify-content: center;
 
@@ -27,7 +27,14 @@
 
     box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
 }
-  
+
+.sidebar-item-container{
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+}
+ 
 .sidebar-item {
     display: flex;
     flex-direction: column;
@@ -86,3 +93,4 @@
 .list-item{
     margin: 0.25rem;
 }
+
