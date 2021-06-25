@@ -24,6 +24,8 @@
     background-color: var(--sidebar-inactive);
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
+
+    box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
 }
   
 .sidebar-item {
