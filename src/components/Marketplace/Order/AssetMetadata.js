@@ -8,12 +8,14 @@ export default class AssetMetadata extends React.Component {
     return (
       <React.Fragment>
         <div className="card-container">
-          <a target="_blank" rel="noopener noreferrer" className="text-center d-inline-block m-100" href={asset.openseaLink}>
-            <img
-              className="card-image"
-              alt="Asset artwork"
-              src={asset.imageUrl} />
-          </a>
+          <div className="img-container">
+            <a target="_blank" rel="noopener noreferrer" className="text-center d-inline-block m-100" href={asset.openseaLink}>
+              <img
+                className="card-image"
+                alt="Asset artwork"
+                src={asset.imageUrl} />
+            </a>
+          </div>
             
           <div className="card-body h-25">
             <h5 className="card-title">{asset.name}</h5>

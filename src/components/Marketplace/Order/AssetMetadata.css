@@ -7,3 +7,15 @@
     height: 400px;
     margin-left: auto;
 }
+
+.img-container{
+    height: 100%;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.card-image{
+    height: 100%;
+    width: auto;
+}
