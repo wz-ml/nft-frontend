@@ -6,6 +6,7 @@
     width: 25rem;;
     height: 20rem;
     margin-left: auto;
+    border-radius: 1rem;
 }
 
 .img-container{
@@ -13,6 +14,7 @@
     width: 100%;
 
     overflow: hidden;
+    border-radius: 1rem;
 }
 
 .card-image{
