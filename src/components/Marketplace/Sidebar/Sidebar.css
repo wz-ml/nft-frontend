@@ -21,7 +21,7 @@
     width: 12rem;
     justify-content: center;
 
-    background-color: var(--sidebar-inactive);
+    background-color: var(--pink-gradient-start);
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
 
@@ -33,6 +33,7 @@
     flex-direction: column;
 
     height: 100%;
+    background-color: var(--sidebar-inactive);
 }
  
 .sidebar-item {
