@@ -1,4 +1,5 @@
 import React from 'react';
+import {Reddit} from "react-bootstrap-icons";
 // import {useState} from "react";
 
 import './Sidebar.css'
@@ -56,7 +57,9 @@ const Sidebar = () => {
           <li className="list-item">itemd2</li>
         </div>
       </ul>
-      <div className="sidebar-item social-media-container" value={"socials"}></div>
+      <div className="sidebar-item social-media-container" value={"socials"}>
+        <Reddit />
+      </div>
     </section>
   )
 }
