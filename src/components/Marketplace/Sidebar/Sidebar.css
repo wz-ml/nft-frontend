@@ -1,0 +1,110 @@
+:root{
+  --pink-gradient-start: #fb61ba;
+  --pink-gradient-end: #ff839d;
+  --blue-gradient-start: #459bdb;
+  --blue-gradient-end: #6f12e0;
+
+  --sidebar-inactive: #f6e9ef;
+  --sidebar-active: #fff5f7;
+}
+
+.sidebar {
+    display: block;
+    flex-direction: column;
+
+    position: fixed;
+    left: 0;
+    top: 25%;
+
+    margin: 0;
+    height: max-content;
+    width: 12rem;
+    justify-content: center;
+
+    background-color: var(--pink-gradient-start);
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+
+    box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
+}
+
+.sidebar-item-container{
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    background-color: var(--sidebar-inactive);
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+ 
+.sidebar-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+    margin: 0;
+    text-align: left;
+    color: inherit;
+    text-decoration: inherit;
+    outline: none;
+    height: min-content;
+
+    box-shadow: 0rem 1rem 1rem -0.6rem #88888822;
+}
+
+.sidebar-item.active{
+    height: 100%;
+    width: 100%;
+    background-color: var(--sidebar-active);
+
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.sidebar-listheader{
+    margin: 0;
+    width: 100%;
+    text-align: inherit;
+    padding: 0.5rem 0;
+    padding-left: 1rem;
+}
+
+.active .sidebar-listheader{
+    width: 12rem;
+    display: block;
+    color: white;
+    background-color: var(--blue-gradient-start);
+
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.list-items-container{
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    display: none;
+    overflow: hidden;
+}
+
+.active .list-items-container{
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item{
+    margin: 0.25rem;
+}
+
+.social-media-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+  place-items: center;
+}
+
+.social-media-link{
+  color: white;
+  font-size: 2rem;
+}
