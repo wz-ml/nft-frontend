@@ -11,6 +11,8 @@ import fetch from "node-fetch";
 const Asset = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
+  const [tokenName, setTokenName] = useState("");
+  const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
 
   useEffect(() => {
@@ -28,6 +30,8 @@ const Asset = () => {
   }
 
   async function updateDetails(tokenData){
+    setTokenName(tokenData.name)
+    setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
     console.log(tokenData);
   }
@@ -35,6 +39,8 @@ const Asset = () => {
   return(
     <div className="AssetContainer">
       <h2>Asset page</h2>
+      <h1>{tokenName}</h1>
+      <p><i>{tokenCollection}</i></p>
       <img src={imgUrl} alt={"Asset Image"} />
     </div>
   );
