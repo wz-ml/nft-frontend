@@ -139,6 +139,13 @@ const SignIn = () => { // Change the name after
   
   {/*} i wanted to use javascript to make the 'sign in' button, but i dont know how to incorporate that yet
   */}
+    <button id="walletButton" onClick={connectWalletPressed}>
+		{walletAddress.length > 0 ? (
+				"Connected: " + String(walletAddress).substring(0, 6) + "..." +
+				String(walletAddress).substring(38)) : (
+				<span>Connect Wallet</span>
+			)}
+		</button>
   
           <div id="different-wallet" class="different-wallet">
       <button class="wallet-dropdown"> → USE A DIFFERENT WALLET</button>
