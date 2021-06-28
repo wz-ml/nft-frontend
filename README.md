@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# nft-frontend
+The frontend of the BCharity NFT website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Desired Content / Functions
+- Create a system to upload items that will be turned into NFTs
+```
+ -> Indicate their interest to create an NFT 
+ -> Choose a file to turn into an NFT 
+ -> Select a Category 
+ -> (Adding Tags?) 
+ -> Sent to server for nft processessing
+```
 
-## Available Scripts
+- Marketplace
+    - Categories
+    > Music
+    > Visual Arts
 
-In the project directory, you can run:
+    ## Goal: Create a NFT marketplace similar to [opensea.io](http://opensea.io)
 
-### `npm start`
+Languages and skills required
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- ReactJS
+    - NodeJS
+    - HTML5
+    - CSS3
+- git
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Initialization
 
-### `npm test`
+Pull the git repository with
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/BCharity-Net/nft-frontend.git
+```
 
-### `npm run build`
+Install all required NPM packages with
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Hosting the Environment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Run the environment with
 
-### `npm run eject`
+```bash
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once compiled, the following will be displayed
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+Compiled successfully!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You can now view nft-frontend in the browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  Local:            http://localhost:3000
+  On Your Network:  http://<ip>:3000
 
-## Learn More
+Note that the development build is not optimized.
+To create a production build, use yarn run build.
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Connect to the hosted website via `[http://localhost:3000](http://localhost:3000)` if the server was deployed on the same machine you will connect with. Otherwise, connect with `http://<ip>:3000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Resolving Issues
 
-### Code Splitting
+Typically, if the development environment fails to start, try (one at a time)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+nvm use 12.18.4
+```
 
-### Analyzing the Bundle Size
+```bash
+rm -r node_modules
+yarn install
+yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+rm yarn.lock
+yarn start
+```
 
-### Making a Progressive Web App
+```bash
+yarn add react-scripts
+yarn start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+WINDOWS ONLY: in `package.json`
 
-### Advanced Configuration
+Replace:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```json
 
-### Deployment
+{
+...
+  "scripts": {
+    "start": "BROWSER=none react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+...
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+With:
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{
+...
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+...
+}
+```
