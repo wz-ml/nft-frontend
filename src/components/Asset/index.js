@@ -8,6 +8,8 @@ import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
 
+var isOwner = true; // this is here for testing
+
 const Asset = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
@@ -55,12 +57,40 @@ const Asset = () => {
     console.log(tokenData);
   }
 
+  function renderBuyButton(){
+    return(
+      <button>Buy</button>
+    );
+  }
+
+  function renderSellButton(){
+    return(
+      <button>Sell</button>
+    );
+  }
+
+  function renderDonateButton(){
+    return(
+      <button>Donate</button>
+    );
+  }
+
   return(
     <div className="AssetContainer">
       <h2>Asset page</h2>
       <h1>{tokenName}</h1>
       <p><i>{tokenCollection}</i></p>
       <img src={imgUrl} alt={"Asset Image"} />
+      <div className="AssetButtonContainer">
+        {
+          isOwner ?
+          [
+            renderDonateButton(),
+            renderSellButton()
+          ]:
+            renderBuyButton()
+        }
+      </div>
     </div>
   );
 }
