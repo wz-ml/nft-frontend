@@ -33,14 +33,12 @@ function App(){
 }
 
 // next line is very temporary
-class Home extends React.Component{
-  render(){
-    return(
-      <div>
-        <h2>home</h2>
-      </div>
-    );
-  }
+function Home(){
+  return(
+    <div>
+      <h2>home</h2>
+    </div>
+  );
 }
 
 export default App;
