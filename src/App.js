@@ -5,33 +5,31 @@ import Marketplace from "./components/Marketplace";
 import SignIn from './components/SignIn';
 import './App.css';
 
-class App extends React.Component{
-  render(){
-    return (
-      <div className = "App">
-        <Header />
-        <Navbar />
-        <Router>
-          <div>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/marketplace">Marketplace</Link>
-              </li>
-              <li>
-                <Link to='/signin'>Sign In</Link>
-              </li>
-            </ul>
-            <Route exact path="/" component={Home} />
-            <Route path="/marketplace" component={Marketplace} />
-            <Route path="/signin" component={SignIn}/>
-          </div>
-        </Router>
-      </div>
-    );
-  }
+function App(){
+  return (
+    <div className = "App">
+      <Header />
+      <Navbar />
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/marketplace">Marketplace</Link>
+            </li>
+            <li>
+              <Link to='/signin'>Sign In</Link>
+            </li>
+          </ul>
+          <Route exact path="/" component={Home} />
+          <Route path="/marketplace" component={Marketplace} />
+          <Route path="/signin" component={SignIn}/>
+        </div>
+      </Router>
+    </div>
+  );
 }
 
 // next line is very temporary
