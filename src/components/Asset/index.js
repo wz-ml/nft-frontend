@@ -28,7 +28,10 @@ const Asset = () => {
   }
 
   return(
-    <h2 onClick={getDetails}>Asset page</h2>
+    <div className="AssetContainer">
+      <h2 onClick={getDetails}>Asset page</h2>
+      <img src={imgUrl} alt={"Asset Image"} />
+    </div>
   );
 }
 
