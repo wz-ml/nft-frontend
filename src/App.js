@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import {Header, Navbar} from './compound/common';
 import Marketplace from "./components/Marketplace";
 import SignIn from './components/SignIn';
+import Asset from "./components/Asset";
 import './App.css';
 
 function App(){
@@ -22,10 +23,14 @@ function App(){
             <li>
               <Link to='/signin'>Sign In</Link>
             </li>
+            <li>
+              <Link to="/asset">Asset</Link>
+            </li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/signin" component={SignIn}/>
+          <Route path="/asset" component={Asset} />
         </div>
       </Router>
     </div>
