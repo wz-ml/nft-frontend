@@ -5,12 +5,17 @@
  * @since 2021.06.28
  */
 import React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import fetch from "node-fetch";
 
 const Asset = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
+
   const [imgUrl, setImgUrl] = useState("");
+
+  useEffect(() => {
+    window.addEventListener("load", getDetails);
+  });
 
   async function getDetails(){
     let urlParts = window.location.pathname.split('/');
@@ -29,7 +34,7 @@ const Asset = () => {
 
   return(
     <div className="AssetContainer">
-      <h2 onClick={getDetails}>Asset page</h2>
+      <h2>Asset page</h2>
       <img src={imgUrl} alt={"Asset Image"} />
     </div>
   );
