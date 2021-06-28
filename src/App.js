@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import {Header, Navbar} from './compound/common';
 import Marketplace from "./components/Marketplace";
 import SignIn from './components/SignIn';
+import Create from './components/Create';
 import './App.css';
 
 class App extends React.Component{
@@ -23,10 +24,14 @@ class App extends React.Component{
               <li>
                 <Link to='/SignIn'>SignIn</Link>
               </li>
+              <li>
+                <Link to='/Create'>Create New Item</Link>
+              </li>
             </ul>
             <Route exact path="/" component={Home} />
             <Route path="/marketplace" component={Marketplace} />
             <Route path="/SignIn" component={SignIn}/>
+            <Route path="/Create" component={Create}/>
           </div>
         </Router>
       </div>
