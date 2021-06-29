@@ -62,19 +62,21 @@ const Asset = () => {
     console.log(tokenData);
   }
 
-  function renderBuyButton(){
+  function renderBuyToggle(){
     return(
       <button>Buy</button>
     );
   }
 
-  function renderSellButton(){
+  function renderSellToggle(){
     return(
-      <button>Sell</button>
+      <div>
+        <button>Sell</button>
+      </div>
     );
   }
 
-  function renderDonateButton(){
+  function renderDonateToggle(){
     return(
       <button>Donate</button>
     );
