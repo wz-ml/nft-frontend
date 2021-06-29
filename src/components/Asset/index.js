@@ -10,7 +10,6 @@ import fetch from "node-fetch";
 
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { connectWallet } from "../SignIn/interact.js";
 
 var isOwner = true; // this is here for testing
 var charityAddrs = {
@@ -155,7 +154,8 @@ const Asset = () => {
     const transcationHash = await seaport.transfer({
       asset: {
         tokenId,
-        tokenAddress
+        tokenAddress,
+        // schemaName: "ERC1155" !!!! //see integrating the functions.md for context 
       },
       fromAddress, //your address (you must own the asset)
       toAddress: charityAddrs[chosenCharity]
