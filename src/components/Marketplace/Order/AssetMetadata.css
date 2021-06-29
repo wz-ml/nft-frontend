@@ -30,13 +30,13 @@
 }
 
 .card-text{
-    padding: 0px 0px 0px 10px;
+    /*padding: 0px 0px 0px 10px;*/
     transform: rotate(90deg);
     /* height: 50px; */
  
 }
 
 .card-text h5{
-    width: max-content;
+    width: 16rem;
     /* transform: rotate(180deg); */
 }

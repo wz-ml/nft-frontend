@@ -18,11 +18,11 @@ export default class AssetMetadata extends React.Component {
           </div>
             
           <div className="card-body h-25">
-            <p className="card-text text-truncate">
+            <div className="card-text text-truncate">
               <a target="_blank" rel="noopener noreferrer" href={asset.openseaLink} className="card-link">
                 <h5>{asset.name} {asset.assetContract.name}</h5>
               </a>
-            </p>
+            </div>
           </div>
         </div>
       </React.Fragment>
