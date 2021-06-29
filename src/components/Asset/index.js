@@ -82,22 +82,30 @@ const Asset = () => {
     );
   }
 
+  function renderButtons(){
+    if(isOwner){
+      return (
+        <div className="AssetButtonContainer">
+          {renderDonateToggle()}
+          {renderSellToggle()}
+        </div>
+      );
+    }
+
+    return (
+      <div className="AssetButtonContainer">
+        {renderBuyToggle()}
+      </div>
+    );
+  }
+
   return(
     <div className="AssetContainer">
       <h2>Asset page</h2>
       <h1>{tokenName}</h1>
       <p><i>{tokenCollection}</i></p>
       <img src={imgUrl} alt={"Asset Image"} />
-      <div className="AssetButtonContainer">
-        {
-          isOwner ?
-          [
-            renderDonateButton(),
-            renderSellButton()
-          ]:
-            renderBuyButton()
-        }
-      </div>
+      {renderButtons()}
     </div>
   );
 }
