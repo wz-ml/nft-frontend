@@ -9,6 +9,11 @@ import {useEffect, useState} from "react";
 import fetch from "node-fetch";
 
 var isOwner = true; // this is here for testing
+var charityAddrs = {
+  "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
+  "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
+  "Charity 3 (Ethan Address)": "0x1437B4031f2b6c3a6d1D5F68502407283c3fAE31",
+}
 
 const Asset = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
