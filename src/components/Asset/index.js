@@ -105,7 +105,7 @@ const Asset = () => {
 
     return(
       <div className="donateContainer">
-        <button>Donate</button>
+        <button onClick={() => makeTransfer()}>Donate</button>
         <form className="charitySelection">
           {charities}
         </form>
@@ -119,16 +119,14 @@ const Asset = () => {
     const seaport = new OpenSeaPort(provider, {
       networkName: Network.Rinkeby
     });
-
-    
+ 
     let urlParts = window.location.pathname.split('/');
-    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID
+    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
 
     const addressArray = await window.ethereum.request({
       method: "eth_accounts",
     });
-    const accountAddress = addressArray[0];
-    
+    const accountAddress = addressArray[0]; //fetch accountAddress with window.ethereum
 
     const listing = await seaport.createSellOrder({
     asset: {
@@ -138,6 +136,33 @@ const Asset = () => {
     accountAddress,
     startAmount: 0.5})
   }
+
+  async function makeTransfer(){
+
+    const provider = await detectEthereumProvider();
+    const seaport = new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
+
+    const addressArray = await window.ethereum.request({
+      method: "eth_accounts",
+    });
+    const fromAddress = addressArray[0]; //fetch fromAddress with window.ethereum
+
+    let urlParts = window.location.pathname.split('/');
+    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const transcationHash = await seaport.transfer({
+      asset: {
+        tokenId,
+        tokenAddress
+      },
+      fromAddress, //your address (you must own the asset)
+      toAddress: charityAddrs[chosenCharity]
+    })
+
+  }
+
 
   function renderToggles(){
     if(isOwner){
