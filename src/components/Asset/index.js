@@ -13,6 +13,11 @@ import { OpenSeaPort, Network } from 'opensea-js';
 import { getCurrentWalletConnected } from "../SignIn/interact";
 
 var isOwner = true; // this is here for testing
+var charityAddrs = {
+  "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
+  "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
+  "Charity 3 (Ethan Address)": "0x1437B4031f2b6c3a6d1D5F68502407283c3fAE31",
+}
 
 const Asset = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
@@ -61,19 +66,19 @@ const Asset = () => {
     console.log(tokenData);
   }
 
-  function renderBuyButton(){
+  function renderBuyToggle(){
     return(
       <button>Buy</button>
     );
   }
 
-  function renderSellButton(){
+  function renderSellToggle(){
     return(
       <button onClick={() => makeSellOrder()}> Sell</button>
     );
   }
 
-  function renderDonateButton(){
+  function renderDonateToggle(){
     return(
       <button>Donate</button>
     );
@@ -102,6 +107,22 @@ const Asset = () => {
     startAmount: 0.5})
   }
 
+  function renderToggles(){
+    if(isOwner){
+      return (
+        <div className="AssetButtonContainer">
+          {renderDonateToggle()}
+          {renderSellToggle()}
+        </div>
+      );
+    }
+
+    return (
+      <div className="AssetButtonContainer">
+        {renderBuyToggle()}
+      </div>
+    );
+  }
 
   return(
     <div className="AssetContainer">
@@ -109,20 +130,9 @@ const Asset = () => {
       <h1>{tokenName}</h1>
       <p><i>{tokenCollection}</i></p>
       <img src={imgUrl} alt={"Asset Image"} />
-      <div className="AssetButtonContainer">
-        {
-          isOwner ?
-          [
-            renderDonateButton(),
-            renderSellButton()
-          ]:
-            renderBuyButton()
-        }
-      </div>
+      {renderToggles()}
     </div>
   );
 }
-
-
 
 export default Asset;
