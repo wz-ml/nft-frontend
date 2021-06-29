@@ -80,6 +80,21 @@ const Asset = () => {
     );
   }
 
+  function updateChosenCharity(evt){
+    setChosenCharity(evt.target.value);
+    // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
+  }
+
+  function createCharityRadio(charityName){
+    return(
+      <div className="charitySelect" key={charityName}>
+        <input type="radio" value={charityName} id={charityName}
+          name="chosenCharity" onChange={updateChosenCharity}/>
+        <label for={charityName}>{charityName}</label>
+      </div>
+    );
+  }
+
   function renderDonateToggle(){
     let charities = [];
     let counter = 0;
