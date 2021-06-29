@@ -5,10 +5,17 @@
  * @since 06.29.2021
  */
 import React from "react";
+import "./index.css";
 
 const User = () => {
   return(
-    <h2>User</h2>
+    <div className="UserContainer">
+      <h2>User</h2>
+      <div className="UserStyleContainer">
+        <div className="ProfilePicContainer">
+        </div>
+      </div>
+    </div>
   );
 }
 
