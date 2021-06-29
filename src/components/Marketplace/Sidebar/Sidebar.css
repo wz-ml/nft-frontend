@@ -12,6 +12,7 @@
     justify-content: center;
 
     background-color: var(--pink-gradient-start);
+    background-image: var(--pink-gradient);
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
 
@@ -64,6 +65,7 @@
     display: block;
     color: white;
     background-color: var(--blue-gradient-start);
+    background-image: var(--blue-gradient);
 
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
