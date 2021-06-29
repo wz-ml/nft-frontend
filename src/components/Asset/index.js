@@ -10,7 +10,7 @@ import fetch from "node-fetch";
 
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { getCurrentWalletConnected } from "../SignIn/interact";
+import { connectWallet } from "../SignIn/interact.js";
 
 var isOwner = true; // this is here for testing
 var charityAddrs = {
@@ -74,7 +74,7 @@ const Asset = () => {
 
   function renderSellToggle(){
     return(
-      <button onClick={() => makeSellOrder()}> Sell</button>
+      <button type="button" onClick={() => makeSellOrder()}> Sell</button>
     );
   }
 
@@ -89,13 +89,11 @@ const Asset = () => {
     const provider = await detectEthereumProvider();
     const seaport = new OpenSeaPort(provider, {networkName: Network.Rinkeby});
 
-    console.log("TEST");
-
     let urlParts = window.location.pathname.split('/');
     const [tokenAddress, tokenID] = urlParts.splice(-2); //fetch token address + token ID
 
-    const obj = await getCurrentWalletConnected();
-    const accountAddress = obj.address; //fetch account address using getCurrentWalletConnected() from SignIn index.js
+    const { accountAddress, status } = await connectWallet();
+    //fetch account address using getCurrentWalletConnected() from SignIn/interact.js
 
     const listing = await seaport.createSellOrder({
     
