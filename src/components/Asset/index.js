@@ -26,6 +26,8 @@ const Asset = () => {
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
 
+  const [chosenCharity, setChosenCharity] = useState("");
+
   /**
    * Uses React effects perform one-time actions.
    *
@@ -79,8 +81,20 @@ const Asset = () => {
   }
 
   function renderDonateToggle(){
+    let charities = [];
+    let counter = 0;
+
+    for(let charity in charityAddrs){
+      charities.push(createCharityRadio(charity));
+    }
+
     return(
-      <button>Donate</button>
+      <div className="donateContainer">
+        <button>Donate</button>
+        <form className="charitySelection">
+          {charities}
+        </form>
+      </div>
     );
   }
 
