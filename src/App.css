@@ -1,3 +1,16 @@
+:root{
+  --pink-gradient-start: #fb61ba;
+  --pink-gradient-end: #ff839d;
+  --blue-gradient-start: #459bdb;
+  --blue-gradient-end: #6f12e0;
+
+  --pink-gradient: linear-gradient(290deg, var(--pink-gradient-start) 15%, var(--pink-gradient-end));
+  --blue-gradient: linear-gradient(70deg, var(--blue-gradient-start) 15%, var(--blue-gradient-end));
+
+  --sidebar-inactive: #f6e9ef;
+  --sidebar-active: #fff5f7;
+}
+
 .App {
   text-align: center;
 }
