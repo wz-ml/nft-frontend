@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import {Header, Navbar} from './compound/common';
+import Home from './components/Home';
 import Marketplace from "./components/Marketplace";
 import SignIn from './components/SignIn';
 import Asset from "./components/Asset";
@@ -43,6 +44,7 @@ function App(){
 }
 
 // next line is very temporary
+/*
 class Home extends React.Component{
   render(){
     return(
@@ -52,5 +54,6 @@ class Home extends React.Component{
     );
   }
 }
+*/
 
 export default App;

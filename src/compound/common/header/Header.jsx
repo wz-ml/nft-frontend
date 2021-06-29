@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { Navbar } from '../../common';
 
 import './Header.css';
@@ -25,3 +25,4 @@ function Header(){
 }
 
 export default Header;
+*/
