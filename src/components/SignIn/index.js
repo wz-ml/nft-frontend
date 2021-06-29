@@ -129,7 +129,7 @@ const SignIn = () => { // Change the name after
 				"Connected: " + String(walletAddress).substring(0, 6) + "..." +
 				String(walletAddress).substring(38)) : (
 				<span>Connect Wallet</span>
-			)}
+			)
 		</button>
         {/* Took this out because we're just using metamask as the wallet right now
         <div id="different-wallet" className="different-wallet">
