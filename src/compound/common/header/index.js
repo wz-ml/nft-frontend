@@ -5,12 +5,12 @@ import './Header.css';
 function Header(){
     const updateNavbar = async (event) => {
         console.log(event.target.innerText);
-        document.querySelector(".active").classList.remove("active");
+        document.querySelector(".navbar-active").classList.remove("navbar-active");
         document.querySelectorAll(".navbar-item").forEach((item) => {
             if(item.attributes.value.nodeValue !== event.target.innerText){
                 return;
             }
-            item.classList.add("active");
+            item.classList.add("navbar-active");
         })
     }
 
