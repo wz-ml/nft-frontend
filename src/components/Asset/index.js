@@ -124,6 +124,24 @@ const Asset = () => {
     );
   }
 
+  function renderBuyButton(){
+    return(
+      <button>Buy</button>
+    );
+  }
+
+  function renderSellButton(){
+    return(
+      <button>Sell</button>
+    );
+  }
+
+  function renderDonateButton(){
+    return(
+      <button>Donate</button>
+    );
+  }
+
   return(
     <div className="AssetContainer">
       <h2>Asset page</h2>
