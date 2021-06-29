@@ -116,19 +116,24 @@ const Asset = () => {
   async function makeSellOrder(){
 
     const provider = await detectEthereumProvider();
-    const seaport = new OpenSeaPort(provider, {networkName: Network.Rinkeby});
+    const seaport = new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
 
+    
     let urlParts = window.location.pathname.split('/');
-    const [tokenAddress, tokenID] = urlParts.splice(-2); //fetch token address + token ID
+    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID
 
-    const { accountAddress, status } = await connectWallet();
-    //fetch account address using getCurrentWalletConnected() from SignIn/interact.js
+    const addressArray = await window.ethereum.request({
+      method: "eth_accounts",
+    });
+    const accountAddress = addressArray[0];
+    
 
     const listing = await seaport.createSellOrder({
-    
     asset: {
-      tokenID,
-      tokenAddress,
+      tokenId,
+      tokenAddress
     },
     accountAddress,
     startAmount: 0.5})
