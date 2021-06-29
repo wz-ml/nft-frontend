@@ -39,6 +39,11 @@
  
 }
 
+.card-text a{
+  color: white;
+  text-decoration: none;
+}
+
 .card-text h5{
     width: 16rem;
     /* transform: rotate(180deg); */
