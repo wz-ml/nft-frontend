@@ -33,13 +33,14 @@ function App(){
             </li>
             <li>
               <Link to="/user">User</Link>
+            </li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/signin" component={SignIn}/>
           <Route path="/asset" component={Asset} />
           <Route path="/Create" component={Create}/>
-          <Route path="user" component={User} />
+          <Route path="/user" component={User} />
         </div>
       </Router>
     </div>

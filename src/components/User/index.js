@@ -4,6 +4,7 @@
  * @version 06.29.2021
  * @since 06.29.2021
  */
+import React from "react";
 
 const User = () => {
   return(
