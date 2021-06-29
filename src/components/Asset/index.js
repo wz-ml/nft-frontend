@@ -82,7 +82,7 @@ const Asset = () => {
     );
   }
 
-  function renderButtons(){
+  function renderToggles(){
     if(isOwner){
       return (
         <div className="AssetButtonContainer">
@@ -105,7 +105,7 @@ const Asset = () => {
       <h1>{tokenName}</h1>
       <p><i>{tokenCollection}</i></p>
       <img src={imgUrl} alt={"Asset Image"} />
-      {renderButtons()}
+      {renderToggles()}
     </div>
   );
 }
