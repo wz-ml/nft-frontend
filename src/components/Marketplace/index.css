@@ -20,7 +20,7 @@ Header {
 
 .card-deck {
     /* background-color: Gray; */
-    width: auto;
+    max-width: calc(100vw - 12rem);
     min-height: 10em;
     max-height: 100%;
     display: grid;
@@ -29,6 +29,7 @@ Header {
     grid-auto-rows: minmax(1em, auto);
     gap: 1em;
     margin-left: 13rem;
+    place-items: center;
   }
 
 #Log {
