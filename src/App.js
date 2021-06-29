@@ -4,6 +4,7 @@ import {Header, Navbar} from './compound/common';
 import Marketplace from "./components/Marketplace";
 import SignIn from './components/SignIn';
 import Asset from "./components/Asset";
+import Create from './components/Create';
 import './App.css';
 
 function App(){
@@ -26,11 +27,15 @@ function App(){
             <li>
               <Link to="/asset">Asset</Link>
             </li>
+            <li>
+              <Link to='/Create'>Create New Item</Link>
+            </li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/signin" component={SignIn}/>
           <Route path="/asset" component={Asset} />
+          <Route path="/Create" component={Create}/>
         </div>
       </Router>
     </div>
@@ -38,12 +43,14 @@ function App(){
 }
 
 // next line is very temporary
-function Home(){
-  return(
-    <div>
-      <h2>home</h2>
-    </div>
-  );
+class Home extends React.Component{
+  render(){
+    return(
+      <div>
+        <h2>home</h2>
+      </div>
+    );
+  }
 }
 
 export default App;
