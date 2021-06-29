@@ -16,6 +16,7 @@
     "url": "git+https://github.com/BCharity-Net/nft-frontend.git"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
     "bignumber.js": "^8.0.1",
     "bootstrap": "^4.1.3",
     "cross-env": "^7.0.3",
