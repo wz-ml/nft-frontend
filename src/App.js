@@ -12,7 +12,6 @@ function App(){
   return (
     <div className = "App">
       <Header />
-      <Navbar />
       <Router>
         <div>
           <ul>
