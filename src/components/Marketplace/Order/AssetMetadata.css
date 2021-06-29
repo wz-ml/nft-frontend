@@ -1,13 +1,13 @@
 :root{
-    --card-bg-color: pink;
+    --card-bg-color: #fb61ba;
 }
 
 .card-container{
     background-color: var(--card-bg-color);
     display: grid;
-    grid-template-columns: 4fr 1fr;
-    width: 25rem;;
-    height: 20rem;
+    width: 20.25rem;;
+    height: 18rem;
+    grid-template-columns: 4fr 0.5fr;
     /* margin-left: auto; */
     border-radius: 1rem;
 }
@@ -15,14 +15,13 @@
 .img-container{
     min-height: 100%;
     min-width: 100%;
-
     overflow: hidden;
     border-radius: 1rem;
 }
 
 .card-image{
     height: 100%;
-    width: auto;
+    width: 100%;
 }
 
 .card-body{
@@ -31,10 +30,13 @@
 }
 
 .card-text{
+    padding: 0px 0px 0px 10px;
     transform: rotate(90deg);
-    height: min-content;
+    /* height: 50px; */
+ 
 }
 
 .card-text h5{
     width: max-content;
+    /* transform: rotate(180deg); */
 }

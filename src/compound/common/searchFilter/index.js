@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import './Search.css';
 
@@ -11,3 +12,4 @@ function SearchFilter(){
 
 
 export default SearchFilter;
+*/
