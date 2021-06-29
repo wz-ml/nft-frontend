@@ -24,8 +24,8 @@ function Header(){
             </div>
             <div className = "navbar-item-container">
                 <a href="/status" className="navbar-item active" onClick={updateNavbar}>Status</a>
-                <a href="/resources" className="navbar-item active" onClick={updateNavbar}>Marketplace</a>
-                <a href="/market" className="navbar-item active" onClick={updateNavbar}>Resources</a>
+                <a href="/marketplace" className="navbar-item active" onClick={updateNavbar}>Marketplace</a>
+                <a href="/resources" className="navbar-item active" onClick={updateNavbar}>Resources</a>
             </div>
             <div className = "navbar_search">
                 <input type="text" placeholder="Search..." />
