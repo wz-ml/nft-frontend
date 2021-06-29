@@ -26,6 +26,8 @@ const Asset = () => {
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
 
+  const [chosenCharity, setChosenCharity] = useState("");
+
   /**
    * Uses React effects perform one-time actions.
    *
@@ -78,9 +80,36 @@ const Asset = () => {
     );
   }
 
-  function renderDonateToggle(){
+  function updateChosenCharity(evt){
+    setChosenCharity(evt.target.value);
+    // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
+  }
+
+  function createCharityRadio(charityName){
     return(
-      <button>Donate</button>
+      <div className="charitySelect" key={charityName}>
+        <input type="radio" value={charityName} id={charityName}
+          name="chosenCharity" onChange={updateChosenCharity}/>
+        <label for={charityName}>{charityName}</label>
+      </div>
+    );
+  }
+
+  function renderDonateToggle(){
+    let charities = [];
+    let counter = 0;
+
+    for(let charity in charityAddrs){
+      charities.push(createCharityRadio(charity));
+    }
+
+    return(
+      <div className="donateContainer">
+        <button>Donate</button>
+        <form className="charitySelection">
+          {charities}
+        </form>
+      </div>
     );
   }
 
@@ -119,6 +148,24 @@ const Asset = () => {
       <div className="AssetButtonContainer">
         {renderBuyToggle()}
       </div>
+    );
+  }
+
+  function renderBuyButton(){
+    return(
+      <button>Buy</button>
+    );
+  }
+
+  function renderSellButton(){
+    return(
+      <button>Sell</button>
+    );
+  }
+
+  function renderDonateButton(){
+    return(
+      <button>Donate</button>
     );
   }
 
