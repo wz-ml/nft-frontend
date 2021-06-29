@@ -1,0 +1,78 @@
+.sign-in-message {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 2rem;
+
+}
+
+.metamask-img {
+    width: 50%;
+    height: auto;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    justify-self: end;
+    margin-right: 0px;
+    padding-right: 0px;
+} 
+
+.img-div {
+    justify-items: end;
+    justify-self: end;
+}
+
+.why-metamask {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center; 
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#walletButton {
+    grid-column: 2 / 3;
+    justify-self: start;
+    align-self: center;
+    background-color: rgb(135, 206, 250);
+    color: black;
+    width: 50%;
+    height: 50%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: 2px solid rgb(0, 162, 255);
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#walletButton:hover {
+    background-color: white;
+}
+
+.wallet-page {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 3fr 1fr;
+    grid-gap: 2rem;
+}
+
+
+.wallet-options {
+
+    width: 15%;
+}
+
+.wallet-dropdown {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 15%;
+}
+
+.different-wallet {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
