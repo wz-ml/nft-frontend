@@ -6,6 +6,7 @@ import Marketplace from "./components/Marketplace";
 import SignIn from './components/SignIn';
 import Asset from "./components/Asset";
 import Create from './components/Create';
+import User from "./components/User";
 import './App.css';
 
 function App(){
@@ -30,12 +31,15 @@ function App(){
             <li>
               <Link to='/Create'>Create New Item</Link>
             </li>
+            <li>
+              <Link to="/user">User</Link>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/signin" component={SignIn}/>
           <Route path="/asset" component={Asset} />
           <Route path="/Create" component={Create}/>
+          <Route path="user" component={User} />
         </div>
       </Router>
     </div>
