@@ -52,7 +52,7 @@
     box-shadow: 0rem 1rem 1rem -0.6rem #88888822;
 }
 
-.sidebar-item.active{
+.sidebar-item.sidebar-active{
     height: 100%;
     width: 100%;
     background-color: var(--sidebar-active);
@@ -69,7 +69,7 @@
     padding-left: 1rem;
 }
 
-.active .sidebar-listheader{
+.sidebar-active .sidebar-listheader{
     width: 12rem;
     display: block;
     color: white;
@@ -86,7 +86,7 @@
     overflow: hidden;
 }
 
-.active .list-items-container{
+.sidebar-active .list-items-container{
     height: 100%;
 
     display: flex;
