@@ -21,30 +21,23 @@ export default class Marketplace extends React.Component {
 
   onChangeAddress = () => {
     this.seaport = new OpenSeaPort(web3Provider, {
-      networkName: Network.Main
+      networkName: Network.Rinkeby
     })
     this.web3 = this.seaport.web3
     this.web3.eth.getAccounts((err, res) => {
       if(!res){
-        this.setState({
-          accountAddress: "",
-        });
+        this.state = {accountAddress: ""};
 
         return;
       }
-      this.setState({
-        accountAddress: res[0]
-      })
+      this.state = {accountAddress: res[0]};
     })
   }
 
   render() {
     return (
       <div>
-        <a href={GITHUB_URL}>
-          <ImgRibbon src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
-        </a>
-        <Header>
+        <header>
           <h1 className="title">
             The Ship's Log
           </h1>
@@ -56,7 +49,7 @@ export default class Marketplace extends React.Component {
               <img alt="OpenSea logo" className="mr-2" src="/opensea-logo.png" />OpenSea.js
             </a> example dapp
           </h6>
-        </Header>
+        </header>
         <Sidebar />
         <main>
           <Log
@@ -68,25 +61,3 @@ export default class Marketplace extends React.Component {
   }
 }
 
-const Header = styled.header`
-  border-bottom: 1px solid lightgrey;
-  padding: 10px;
-  text-align: center;
-  background-color: #f4f9fd;
-
-  h6 img {
-    width: 24px;
-  }
-`
-
-const ImgRibbon = styled.img`
-  width: 150px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 0;
-
-  @media(max-width: 600px) {
-    width: 80px;
-  }
-`
