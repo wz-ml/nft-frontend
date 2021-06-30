@@ -65,7 +65,7 @@ const Asset = () => {
     setTokenName(tokenData.name)
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
-    setTokenOwnerId(tokenData.owner.address);
+    setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
     console.log(tokenData);
   }
 
@@ -171,7 +171,6 @@ const Asset = () => {
       fromAddress, //your address (you must own the asset)
       toAddress: charityAddrs[chosenCharity]
     })
-
   }
 
   function renderToggles(){
