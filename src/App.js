@@ -1,4 +1,5 @@
 import React from 'react';
+import {useEffect} from "react";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import {Header, Navbar} from './compound/common';
 import Home from './components/Home';
@@ -64,6 +65,11 @@ function App(){
       }
     }
   }
+
+  useEffect(() => {
+    getCurrentWalletConnected();
+    addWalletListener();
+  });
 
   return (
     <div className = "App">
