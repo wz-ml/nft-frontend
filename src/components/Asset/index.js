@@ -223,10 +223,10 @@ const Asset = () => {
     <div className="AssetContainer">
       <h2>Asset page</h2>
         <div className="AssetContent">
-          <h1>{tokenName}</h1>
-          <p><i>{tokenCollection}</i></p>
-          <p>Owned by: <a href="#">Tester</a></p>
-          <img src={imgUrl} alt={"Asset Image"} />
+          <h1 className="tokenName">{tokenName}</h1>
+          <p className="tokenCollection"><i>{tokenCollection}</i></p>
+          <p className="tokenOwner">Owned by: <a href="#">Tester</a></p>
+          <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
           <div className="priceField">
             <p>Ξ 1.950</p>
             <p><i>$434.88 USD</i></p>
