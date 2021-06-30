@@ -17,6 +17,7 @@ export const connectWallet = async () => {
             const addressArray = await window.ethereum.request({
                 method: "eth_requestAccounts",
             });
+
             const obj = {
                 status: "Write a message in the text-field above",
                 address: addressArray[0],
@@ -54,9 +55,9 @@ function saveUserInfo(userInfo){
     let userString = JSON.stringify(userInfo);
     // cookie expires in 24hr
     let expiryDate = new Date();
-    expireDate.setDate(new Date().getDate() + 1);
+    expiryDate.setDate(new Date().getDate() + 1);
 
-    document.cookie = `uid=${userString}; expires=${expireDate}; SameSite=Lax;`;
+    document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
 }
 
 /* 
