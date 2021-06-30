@@ -9,11 +9,11 @@ import {useEffect, useState} from "react";
 import fetch from "node-fetch";
 import {toUnitAmount} from "../../constants.js";
 
+import { OrderSide } from 'opensea-js/lib/types';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { getCurrentWalletConnected } from "../SignIn/interact";
+import { getCookie } from '../../constants';
 
-var isOwner = true; // this is here for testing
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
   "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
@@ -27,6 +27,7 @@ const Asset = () => {
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [schemaName, setSchemaName] = useState("");
+  const [tokenOwnerId, setTokenOwnerId] = useState("");
 
   const [chosenCharity, setChosenCharity] = useState("");
 
@@ -68,6 +69,7 @@ const Asset = () => {
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
+    setTokenOwnerId(tokenData.owner.address);
     console.log(tokenData);
     console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
@@ -75,13 +77,13 @@ const Asset = () => {
 
   function renderBuyToggle(){
     return(
-      <button>Buy</button>
+      <button type="button" onClick={() => makeBuyOrder()}>Buy</button>
     );
   }
 
   function renderSellToggle(){
     return(
-      <button onClick={() => makeSellOrder()}> Sell</button>
+      <button type="button" onClick={() => makeSellOrder()}> Sell</button>
     );
   }
 
@@ -95,7 +97,7 @@ const Asset = () => {
       <div className="charitySelect" key={charityName}>
         <input type="radio" value={charityName} id={charityName}
           name="chosenCharity" onChange={updateChosenCharity}/>
-        <label htmlFor={charityName}>{charityName}</label>
+        <label for={charityName}>{charityName}</label>
       </div>
     );
   }
@@ -110,7 +112,7 @@ const Asset = () => {
 
     return(
       <div className="donateContainer">
-        <button>Donate</button>
+        <button onClick={() => makeTransfer()}>Donate</button>
         <form className="charitySelection">
           {charities}
         </form>
@@ -120,28 +122,74 @@ const Asset = () => {
 
   async function makeSellOrder(){
 
-    const provider = await detectEthereumProvider();
-    const seaport = new OpenSeaPort(provider, {networkName: Network.Rinkeby});
-
-    console.log("TEST");
-
+    const seaport = await getOpenSeaPort()
+ 
     let urlParts = window.location.pathname.split('/');
-    const [tokenAddress, tokenID] = urlParts.splice(-2); //fetch token address + token ID
+    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
 
-    const obj = await getCurrentWalletConnected();
-    const accountAddress = obj.address; //fetch account address using getCurrentWalletConnected() from SignIn index.js
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
 
     const listing = await seaport.createSellOrder({
-    
     asset: {
-      tokenID,
-      tokenAddress,
+      tokenId,
+      tokenAddress
     },
     accountAddress,
     startAmount: 0.5})
   }
 
+  async function makeBuyOrder(){
+
+    const seaport = await getOpenSeaPort()
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
+
+    let urlParts = window.location.pathname.split('/');
+    const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const order = await seaport.api.getOrder({
+      side: OrderSide.Sell,
+      asset_contract_address,
+      token_id,
+        });
+    
+    const transactionHash = await seaport.fulfillOrder({order, accountAddress});
+  }
+
+  async function makeTransfer(){
+
+    const seaport = await getOpenSeaPort();
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const fromAddress = userInfo["walletAddress"];
+
+    let urlParts = window.location.pathname.split('/');
+    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const transactionHash = await seaport.transfer({
+      asset: {
+        tokenId,
+        tokenAddress,
+        // schemaName: "ERC1155" !!!! //see integrating the functions.md for context 
+      },
+      fromAddress, //your address (you must own the asset)
+      toAddress: charityAddrs[chosenCharity]
+    })
+
+  }
+
   function renderToggles(){
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const userAddress = userInfo["walletAddress"];
+    var isOwner = false;
+
+    if (userAddress === tokenOwnerId){
+      isOwner = true;
+    }
+
     if(isOwner){
       return (
         <div className="AssetButtonContainer">
@@ -158,22 +206,11 @@ const Asset = () => {
     );
   }
 
-  function renderBuyButton(){
-    return(
-      <button>Buy</button>
-    );
-  }
-
-  function renderSellButton(){
-    return(
-      <button>Sell</button>
-    );
-  }
-
-  function renderDonateButton(){
-    return(
-      <button>Donate</button>
-    );
+  async function getOpenSeaPort(){
+    const provider = await detectEthereumProvider();
+    return new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
   }
 
   return(
