@@ -64,21 +64,6 @@ const SignIn = () => { // Change the name after
       */
     }
 
-    /**
-     * Saves the user's information in a cookie that persists througout the entire website.
-     *
-     * @param userInfo The user's information in a javascript object. This will be 
-     * stringified and be saved in a cookie.
-     */
-    function saveUserInfo(userInfo){
-        let userString = JSON.stringify(userInfo);
-        // cookie expires in 24hr
-        let expiryDate = new Date();
-        expiryDate.setDate(new Date().getDate() + 1);
-
-        document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
-    }
-
     /*
     This function sets up a listener that detects changes in the user's Metamask
     wallet state, such as when the user disconnects their wallet or switch addresses

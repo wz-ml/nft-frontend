@@ -10,6 +10,22 @@ import User from "./components/User";
 import './App.css';
 
 function App(){
+  
+  /**
+   * Saves the user's information in a cookie that persists througout the entire website.
+   *
+   * @param userInfo The user's information in a javascript object. This will be 
+   * stringified and be saved in a cookie.
+   */
+  function saveUserInfo(userInfo){
+      let userString = JSON.stringify(userInfo);
+      // cookie expires in 24hr
+      let expiryDate = new Date();
+      expiryDate.setDate(new Date().getDate() + 1);
+
+      document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
+  }
+
   return (
     <div className = "App">
       <Header />
