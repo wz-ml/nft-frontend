@@ -1,0 +1,90 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h2 {
+    font-size:  3rem;
+}
+
+.AssetContainer {
+    width: 100%;
+}
+
+.AssetContent {
+    width: 80%;
+    height: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, 2fr);
+    grid-auto-rows: auto;
+    background-color: gray;
+    column-gap: 2rem;
+    justify-self: center
+}
+
+.AssetImage {
+    grid-column: 1 / 2;
+    justify-self: center;    
+    width: 50%;
+    height: auto;
+
+}
+
+.AssetButtonContainer {
+    justify-self: start;
+}
+
+.button {
+    background-image: var(--pink-gradient);
+    background-color: var(--pink-gradient-start);
+    width: 4rem;
+    height: auto;
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+}
+
+.button:hover {
+    background-image: var(--pink-gradient-start);
+    background-color: lightpink;
+}
+
+.renderToggles {
+    grid-column: 2 / 3;
+    align-self: center; 
+}
+
+.tokenName {
+    grid-column: 1 / 2;
+}
+
+.tokenCollection {
+    grid-column: 1 / 2;
+}
+
+/* experimental radio styles that won't be needed for the asset page, maybe the donate page 
+
+.charityRadio {
+    font-size: 1.5rem;
+    color: var(--pink-gradient-end);
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.5rem;
+    justify-content: center;
+} 
+
+.charityInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.charityInputControl {
+    display: block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 0.1em solid var(--pink-gradient-start);
+    transform: translateY(-0.05em);
+} */

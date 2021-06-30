@@ -19,7 +19,7 @@ Header {
   }
 
 .card-deck {
-    background-color: Gray;
+    background-color: lightgray;
     width: 100%;
     min-height: 10em;
     max-height: 100%;

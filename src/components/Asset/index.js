@@ -7,7 +7,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
-
+import "./index.css"
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { getCurrentWalletConnected } from "../SignIn/interact";
@@ -70,13 +70,13 @@ const Asset = () => {
 
   function renderBuyToggle(){
     return(
-      <button>Buy</button>
+      <button className="button">Buy</button>
     );
   }
 
   function renderSellToggle(){
     return(
-      <button onClick={() => makeSellOrder()}> Sell</button>
+      <button onClick={() => makeSellOrder()} className="button"> Sell</button>
     );
   }
 
@@ -87,11 +87,16 @@ const Asset = () => {
 
   function createCharityRadio(charityName){
     return(
-      <div className="charitySelect" key={charityName}>
-        <input type="radio" value={charityName} id={charityName}
-          name="chosenCharity" onChange={updateChosenCharity}/>
-        <label for={charityName}>{charityName}</label>
+      <span className="charityRadio">
+      <div key={charityName}>
+        <span className="charityInput">
+          <input className="charityNameInput" type="radio" value={charityName} id={charityName}
+            name="chosenCharity" onChange={updateChosenCharity}/>
+          <span className="charityInputControl"></span>
+        </span> 
+        <label for={charityName} class="charityName" className="charityName">{charityName}</label>
       </div>
+      </span>
     );
   }
 
@@ -105,7 +110,7 @@ const Asset = () => {
 
     return(
       <div className="donateContainer">
-        <button>Donate</button>
+        <button className="button">Donate</button>
         <form className="charitySelection">
           {charities}
         </form>
@@ -174,10 +179,12 @@ const Asset = () => {
   return(
     <div className="AssetContainer">
       <h2>Asset page</h2>
-      <h1>{tokenName}</h1>
-      <p><i>{tokenCollection}</i></p>
-      <img src={imgUrl} alt={"Asset Image"} />
-      {renderToggles()}
+        <div className="AssetContent">
+          <h1 className="tokenName">{tokenName}</h1>
+          <p className="tokenCollection"><i>{tokenCollection}</i></p>
+          <img src={imgUrl} alt={"Asset Image"} className="AssetImage" />
+          <span className="renderToggles">{renderToggles()}</span>
+        </div>
     </div>
   );
 }
