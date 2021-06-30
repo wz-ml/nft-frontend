@@ -44,7 +44,7 @@ function App(){
           return;
         }
 
-        saveUserInfo({account: ""});
+        saveUserInfo({walletAddress: ""});
       });
     }
   }
@@ -63,9 +63,9 @@ function App(){
           return;
         }
 
-        saveUserInfo({address: ""});
+        saveUserInfo({walletAddress: ""});
       }catch(err){
-        saveUserInfo({address: ""});
+        saveUserInfo({walletAddress: ""});
         console.error("something went wrong fetching current wallet", err.message);
       }
     }
