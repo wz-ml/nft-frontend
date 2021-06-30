@@ -7,6 +7,7 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
+import {toUnitAmount} from "../../constants.js";
 
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
@@ -25,6 +26,7 @@ const Asset = () => {
   const [tokenName, setTokenName] = useState("");
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [schemaName, setSchemaName] = useState("");
 
   const [chosenCharity, setChosenCharity] = useState("");
 
@@ -65,8 +67,11 @@ const Asset = () => {
     setTokenName(tokenData.name)
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
+    setSchemaName(tokenData.asset_contract.schema_name);
     console.log(tokenData);
+    console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
+
 
   function renderBuyToggle(){
     return(
