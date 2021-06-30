@@ -1,0 +1,47 @@
+.head {
+    margin: 0% 51% 0% 0%;
+}
+
+.file_descrip {
+    margin: 0% 50% 0% 0%;
+}
+
+.file_types {
+    margin: 0% 17.6% 0% 0%;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+.name_text {
+    margin: 0% 64% 0% 0%;
+}
+
+.name_textbox {
+    margin: 0% 10.5% 0% 0%;
+    width: 785px;
+}
+
+.description_title {
+    font-weight: bold;
+    margin: 0% 62% 0% 0%;
+}
+
+.description_text {
+    font-weight: normal;
+    margin: 0% 11% 0% 0%;
+    white-space: nowrap;
+}
+
+.description_textbox{
+    margin: 0% 10.5% 0% 0%;
+    height: 100px;
+    width: 785px;
+    padding-top: 0;
+    padding-left: 0;
+    line-height: 1em; 
+    /* padding-left: 35%; */
+}
+
+/* .description_textbox::placeholder {
+    text-align: top;
+} */
