@@ -12,7 +12,7 @@ import {OrderSide} from 'opensea-js/lib/types';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 
-var isOwner =  false; //true; // this is here for testing
+var isOwner = true; // this is here for testing
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
   "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
@@ -90,7 +90,7 @@ const Asset = () => {
       <div className="charitySelect" key={charityName}>
         <input type="radio" value={charityName} id={charityName}
           name="chosenCharity" onChange={updateChosenCharity}/>
-        <label htmlFor={charityName}>{charityName}</label>
+        <label for={charityName}>{charityName}</label>
       </div>
     );
   }
@@ -115,10 +115,7 @@ const Asset = () => {
 
   async function makeSellOrder(){
 
-    const provider = await detectEthereumProvider();
-    const seaport = new OpenSeaPort(provider, {
-      networkName: Network.Rinkeby
-    });
+    const seaport = getOpenSeaPort()
  
     let urlParts = window.location.pathname.split('/');
     const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
@@ -139,10 +136,7 @@ const Asset = () => {
 
   async function makeBuyOrder(){
 
-    const provider = await detectEthereumProvider();
-    const seaport = new OpenSeaPort(provider, {
-      networkName: Network.Rinkeby
-    });
+    const seaport = getOpenSeaPort()
 
     const addressArray = await window.ethereum.request({
       method: "eth_accounts",
@@ -163,10 +157,7 @@ const Asset = () => {
 
   async function makeTransfer(){
 
-    const provider = await detectEthereumProvider();
-    const seaport = new OpenSeaPort(provider, {
-      networkName: Network.Rinkeby
-    });
+    const seaport = await getOpenSeaPort()
 
     const addressArray = await window.ethereum.request({
       method: "eth_accounts",
@@ -176,7 +167,7 @@ const Asset = () => {
     let urlParts = window.location.pathname.split('/');
     const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
 
-    const transcationHash = await seaport.transfer({
+    const transactionHash = await seaport.transfer({
       asset: {
         tokenId,
         tokenAddress,
@@ -187,7 +178,6 @@ const Asset = () => {
     })
 
   }
-
 
   function renderToggles(){
     if(isOwner){
@@ -206,22 +196,11 @@ const Asset = () => {
     );
   }
 
-  function renderBuyButton(){
-    return(
-      <button>Buy</button>
-    );
-  }
-
-  function renderSellButton(){
-    return(
-      <button>Sell</button>
-    );
-  }
-
-  function renderDonateButton(){
-    return(
-      <button>Donate</button>
-    );
+  async function getOpenSeaPort(){
+    const provider = await detectEthereumProvider();
+    return new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
   }
 
   return(
