@@ -97,7 +97,7 @@ const Asset = () => {
       <div className="charitySelect" key={charityName}>
         <input type="radio" value={charityName} id={charityName}
           name="chosenCharity" onChange={updateChosenCharity}/>
-        <label for={charityName}>{charityName}</label>
+        <label htmlFor={charityName}>{charityName}</label>
       </div>
     );
   }
