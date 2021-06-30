@@ -7,9 +7,11 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
+<<<<<<< HEAD
 import {toUnitAmount} from "../../constants.js";
 
 import { OrderSide } from 'opensea-js/lib/types';
+import "./index.css"
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { getCookie } from '../../constants';
@@ -77,13 +79,13 @@ const Asset = () => {
 
   function renderBuyToggle(){
     return(
-      <button type="button" onClick={() => makeBuyOrder()}>Buy</button>
+      <button className="button" type="button" onClick={() => makeBuyOrder()}>Buy</button>
     );
   }
 
   function renderSellToggle(){
     return(
-      <button type="button" onClick={() => makeSellOrder()}> Sell</button>
+      <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
     );
   }
 
@@ -94,11 +96,16 @@ const Asset = () => {
 
   function createCharityRadio(charityName){
     return(
-      <div className="charitySelect" key={charityName}>
-        <input type="radio" value={charityName} id={charityName}
-          name="chosenCharity" onChange={updateChosenCharity}/>
-        <label htmlFor={charityName}>{charityName}</label>
+      <span className="charityRadio">
+      <div key={charityName}>
+        <span className="charityInput">
+          <input className="charityNameInput" type="radio" value={charityName} id={charityName}
+            name="chosenCharity" onChange={updateChosenCharity}/>
+          <span className="charityInputControl"></span>
+        </span> 
+        <label for={charityName} class="charityName" className="charityName">{charityName}</label>
       </div>
+      </span>
     );
   }
 
@@ -112,7 +119,7 @@ const Asset = () => {
 
     return(
       <div className="donateContainer">
-        <button onClick={() => makeTransfer()}>Donate</button>
+        <button className="button" onClick={() => makeTransfer()}>Donate</button>
         <form className="charitySelection">
           {charities}
         </form>
@@ -216,15 +223,17 @@ const Asset = () => {
   return(
     <div className="AssetContainer">
       <h2>Asset page</h2>
-      <h1>{tokenName}</h1>
-      <p><i>{tokenCollection}</i></p>
-      <p>Owned by: <a href="#">Tester</a></p>
-      <img src={imgUrl} alt={"Asset Image"} />
-      <div className="priceField">
-        <p>Ξ 1.950</p>
-        <p><i>$434.88 USD</i></p>
-      </div>
-      {renderToggles()}
+        <div className="AssetContent">
+          <h1>{tokenName}</h1>
+          <p><i>{tokenCollection}</i></p>
+          <p>Owned by: <a href="#">Tester</a></p>
+          <img src={imgUrl} alt={"Asset Image"} />
+          <div className="priceField">
+            <p>Ξ 1.950</p>
+            <p><i>$434.88 USD</i></p>
+          </div>
+          <span className="renderToggles">{renderToggles()}</span>
+        </div>
     </div>
   );
 }

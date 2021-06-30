@@ -129,8 +129,6 @@ const SignIn = () => { // Change the name after
           </img>
         </div>
 
-        {/*} i wanted to use javascript to make the 'sign in' button, but i dont know how to incorporate that yet
-        */}
       <button id="walletButton" onClick={connectWalletPressed}>
       {walletAddress.length > 0 ? (
 				"Connected: " + String(walletAddress).substring(0, 6) + "..." +
@@ -138,6 +136,7 @@ const SignIn = () => { // Change the name after
 				<span>Connect Wallet</span>
 			)}
 		</button>
+    
         {/* Took this out because we're just using metamask as the wallet right now
         <div id="different-wallet" className="different-wallet">
           <button className="wallet-dropdown"> → USE A DIFFERENT WALLET</button>
