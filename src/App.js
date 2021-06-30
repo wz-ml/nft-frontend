@@ -31,6 +31,16 @@ function App(){
    * changes, this includes switching wallets or disconnecting wallets
    */
   function addWalletListener(){
+    if(window.ethereum){
+      window.ethereum.on("accountsChanged", (accounts) => {
+        if(accounts.length < 1){
+          saveUserInfo({account: ""});
+          return;
+        }
+
+        saveUserInfo({account: accounts[0]});
+      });
+    }
   }
 
   return (
