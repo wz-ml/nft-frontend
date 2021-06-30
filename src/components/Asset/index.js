@@ -31,6 +31,7 @@ const Asset = () => {
   const [tokenOwnerId, setTokenOwnerId] = useState("");
 
   const [chosenCharity, setChosenCharity] = useState("");
+  const [schemaName, setSchemaName] = useState("");
 
   /**
    * Uses React effects perform one-time actions.
@@ -71,6 +72,7 @@ const Asset = () => {
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
     setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
+    setSchemaName(tokenData.asset_contract.schema_name);
     console.log(tokenData);
     console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
@@ -144,11 +146,11 @@ const Asset = () => {
     let userInfo = JSON.parse(getCookie("uid"));
     const accountAddress = userInfo["walletAddress"];
 
+    let asset = {tokenId, tokenAddress};
+    if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
+
     const listing = await seaport.createSellOrder({
-    asset: {
-      tokenId,
-      tokenAddress
-    },
+    asset,
     accountAddress,
     startAmount: 0.5})
   }
@@ -182,15 +184,21 @@ const Asset = () => {
     let urlParts = window.location.pathname.split('/');
     const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
 
+    let asset = {tokenId, tokenAddress};
+    if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
+
     const transactionHash = await seaport.transfer({
-      asset: {
-        tokenId,
-        tokenAddress,
-        // schemaName: "ERC1155" !!!! //see integrating the functions.md for context 
-      },
+      asset,
       fromAddress, //your address (you must own the asset)
       toAddress: charityAddrs[chosenCharity]
     })
+  }
+
+  async function getOpenSeaPort(){
+    const provider = await detectEthereumProvider();
+    return new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
   }
 
   function renderToggles(){
@@ -217,13 +225,6 @@ const Asset = () => {
         {renderBuyToggle()}
       </div>
     );
-  }
-
-  async function getOpenSeaPort(){
-    const provider = await detectEthereumProvider();
-    return new OpenSeaPort(provider, {
-      networkName: Network.Rinkeby
-    });
   }
 
   return(
