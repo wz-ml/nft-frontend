@@ -176,7 +176,12 @@ const Asset = () => {
       <h2>Asset page</h2>
       <h1>{tokenName}</h1>
       <p><i>{tokenCollection}</i></p>
+      <p>Owned by: <a href="#">Tester</a></p>
       <img src={imgUrl} alt={"Asset Image"} />
+      <div className="priceField">
+        <p>Ξ 1.950</p>
+        <p><i>$434.88 USD</i></p>
+      </div>
       {renderToggles()}
     </div>
   );
