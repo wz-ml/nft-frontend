@@ -86,7 +86,7 @@ const Asset = () => {
     return(
       <span>
         <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
-        <input type="text" id="salePrice" value={"0"} placeholder="sale price" />
+        <input type="text" id="salePrice" defaultValue={"0"} placeholder="sale price" />
       </span>
     );
   }
