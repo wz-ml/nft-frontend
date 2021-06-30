@@ -33,13 +33,35 @@ function App(){
   function addWalletListener(){
     if(window.ethereum){
       window.ethereum.on("accountsChanged", (accounts) => {
-        if(accounts.length < 1){
-          saveUserInfo({account: ""});
+        if(accounts.length > 0){
+          saveUserInfo({account: accounts[0]});
           return;
         }
 
-        saveUserInfo({account: accounts[0]});
+        saveUserInfo({account: ""});
       });
+    }
+  }
+
+  /**
+   * Gets the current wallet that is connected to the site, if there is one.
+   */
+  async function getCurrentWalletConnected(){
+    if(window.ethereum){
+      try{
+        const addressArray = await window.ethereum.request({
+          method: "eth_accounts"
+        });
+        if(addressArray.length > 0){
+          saveUserInfo({address: addressArray[0]});
+          return;
+        }
+
+        saveUserInfo({address: ""});
+      }catch(err){
+        saveUserInfo({address: ""});
+        console.error("something went wrong fetching current wallet", err.message);
+      }
     }
   }
 
