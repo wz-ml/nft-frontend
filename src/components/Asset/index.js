@@ -8,10 +8,11 @@ import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
 
+import {OrderSide} from 'opensea-js/lib/types';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 
-var isOwner = true; // this is here for testing
+var isOwner =  false; //true; // this is here for testing
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
   "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
@@ -69,7 +70,7 @@ const Asset = () => {
 
   function renderBuyToggle(){
     return(
-      <button>Buy</button>
+      <button type="button" onClick={() => makeBuyOrder()}>Buy</button>
     );
   }
 
@@ -134,6 +135,30 @@ const Asset = () => {
     },
     accountAddress,
     startAmount: 0.5})
+  }
+
+  async function makeBuyOrder(){
+
+    const provider = await detectEthereumProvider();
+    const seaport = new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
+
+    const addressArray = await window.ethereum.request({
+      method: "eth_accounts",
+    });
+    const accountAddress = addressArray[0]; //fetch accountAddress with window.ethereum
+
+    let urlParts = window.location.pathname.split('/');
+    const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const order = await seaport.api.getOrder({
+      side: OrderSide.Sell,
+      asset_contract_address,
+      token_id,
+        });
+    
+    const transactionHash = await seaport.fulfillOrder({order, accountAddress});
   }
 
   async function makeTransfer(){
