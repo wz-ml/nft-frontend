@@ -10,6 +10,8 @@ import Create from './components/Create';
 import User from "./components/User";
 import './App.css';
 
+import {getCookie} from "./constants.js";
+
 function App(){
   
   /**
@@ -22,6 +24,11 @@ function App(){
    * {
    *   walletAddress, // must be non-empty, otherwise the cookie is deleted.
    * }
+   *
+   * Information should now be assessible via the getCookie function in
+   * ./constants via getCookie("uid");
+   *
+   * note: the value of the cookie should be parsed as a JSON object
    */
   function saveUserInfo(userInfo){
       let userString = JSON.stringify(userInfo);
@@ -30,6 +37,8 @@ function App(){
       expiryDate.setDate(new Date().getDate() + 1);
 
       document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
+
+      // console.log(JSON.parse(getCookie("uid"))); // DEBUG
   }
 
   /**
