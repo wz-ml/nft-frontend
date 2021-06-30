@@ -31,6 +31,11 @@ function App(){
    * note: the value of the cookie should be parsed as a JSON object
    */
   function saveUserInfo(userInfo){
+      if(userInfo.walletAddress.length == 0){
+          document.cookie = "uid=\"\"; max-age=-1";
+          return;
+      }
+
       let userString = JSON.stringify(userInfo);
       // cookie expires in 24hr
       let expiryDate = new Date();
