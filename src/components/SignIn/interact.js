@@ -44,6 +44,21 @@ export const connectWallet = async () => {
     }
 };
 
+/**
+ * Saves the user's information in a cookie that persists througout the entire website.
+ *
+ * @param userInfo The user's information in a javascript object. This will be 
+ * stringified and be saved in a cookie.
+ */
+function saveUserInfo(userInfo){
+    let userString = JSON.stringify(userInfo);
+    // cookie expires in 24hr
+    let expiryDate = new Date();
+    expireDate.setDate(new Date().getDate() + 1);
+
+    document.cookie = `uid=${userString}; expires=${expireDate}; SameSite=Lax;`;
+}
+
 /* 
 This function will check if an Ethereum account is already connected to the dApp on page,
 Then load and update the UI accordingly
