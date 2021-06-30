@@ -17,6 +17,11 @@ function App(){
    *
    * @param userInfo The user's information in a javascript object. This will be 
    * stringified and be saved in a cookie.
+   *
+   * The userInfo object should be formatted as so:
+   * {
+   *   walletAddress, // must be non-empty, otherwise the cookie is deleted.
+   * }
    */
   function saveUserInfo(userInfo){
       let userString = JSON.stringify(userInfo);
@@ -35,7 +40,7 @@ function App(){
     if(window.ethereum){
       window.ethereum.on("accountsChanged", (accounts) => {
         if(accounts.length > 0){
-          saveUserInfo({account: accounts[0]});
+          saveUserInfo({walletAddress: accounts[0]});
           return;
         }
 
@@ -54,7 +59,7 @@ function App(){
           method: "eth_accounts"
         });
         if(addressArray.length > 0){
-          saveUserInfo({address: addressArray[0]});
+          saveUserInfo({walletAddress: addressArray[0]});
           return;
         }
 
