@@ -70,7 +70,7 @@ const Asset = () => {
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
-    setTokenOwnerId(tokenData.owner.address);
+    setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
     console.log(tokenData);
     console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
@@ -191,7 +191,6 @@ const Asset = () => {
       fromAddress, //your address (you must own the asset)
       toAddress: charityAddrs[chosenCharity]
     })
-
   }
 
   function renderToggles(){
