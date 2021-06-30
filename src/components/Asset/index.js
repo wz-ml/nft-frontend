@@ -13,7 +13,6 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { getCookie } from '../../constants';
 
-var isOwner = true; // this is here for testing
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
   "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
@@ -26,7 +25,7 @@ const Asset = () => {
   const [tokenName, setTokenName] = useState("");
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-
+  const [tokenOwnerId, setTokenOwnerId] = useState("");
   const [chosenCharity, setChosenCharity] = useState("");
 
   /**
@@ -66,6 +65,7 @@ const Asset = () => {
     setTokenName(tokenData.name)
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
+    setTokenOwnerId(tokenData.owner.address);
     console.log(tokenData);
   }
 
@@ -175,6 +175,15 @@ const Asset = () => {
   }
 
   function renderToggles(){
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const userAddress = userInfo["walletAddress"];
+    var isOwner = false;
+
+    if (userAddress === tokenOwnerId){
+      isOwner = true;
+    }
+
     if(isOwner){
       return (
         <div className="AssetButtonContainer">
