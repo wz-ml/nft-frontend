@@ -84,8 +84,16 @@ const Asset = () => {
 
   function renderSellToggle(){
     return(
-      <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
+      <span>
+        <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
+        <input type="text" id="salePrice" value={"0"} placeholder="sale price" />
+      </span>
     );
+  }
+
+  // TEMP
+  function getSalePrice(){
+    return Number(document.getElementById("salePrice").value);
   }
 
   function updateChosenCharity(evt){
