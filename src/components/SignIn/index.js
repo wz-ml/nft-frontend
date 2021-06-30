@@ -33,14 +33,20 @@ const SignIn = () => { // Change the name after
     Because it has an empty array [] prop passed into it, it will only
     be called on the component's first render.
     */
-    useEffect(async () => {
+    useEffect(() => {
+      /*
       const message = await loadCurrentMessage();
       setMessage(message);
       addSmartContractListener();
+      //*/
 
-      const { address, status } = await getCurrentWalletConnected();
-      setWallet(address)
-      setStatus(status);
+      async function temp(){
+        const { address, status } = await getCurrentWalletConnected();
+        setWallet(address)
+        setStatus(status);
+      }
+
+      temp();
 
       addWalletListener();
     }, []);
