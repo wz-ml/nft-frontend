@@ -8,9 +8,10 @@ import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
 
-import {OrderSide} from 'opensea-js/lib/types';
+import { OrderSide } from 'opensea-js/lib/types';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
+import { getCookie } from '../../constants';
 
 var isOwner = true; // this is here for testing
 var charityAddrs = {
@@ -115,15 +116,13 @@ const Asset = () => {
 
   async function makeSellOrder(){
 
-    const seaport = getOpenSeaPort()
+    const seaport = await getOpenSeaPort()
  
     let urlParts = window.location.pathname.split('/');
     const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
 
-    const addressArray = await window.ethereum.request({
-      method: "eth_accounts",
-    });
-    const accountAddress = addressArray[0]; //fetch accountAddress with window.ethereum
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
 
     const listing = await seaport.createSellOrder({
     asset: {
@@ -136,12 +135,10 @@ const Asset = () => {
 
   async function makeBuyOrder(){
 
-    const seaport = getOpenSeaPort()
+    const seaport = await getOpenSeaPort()
 
-    const addressArray = await window.ethereum.request({
-      method: "eth_accounts",
-    });
-    const accountAddress = addressArray[0]; //fetch accountAddress with window.ethereum
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
 
     let urlParts = window.location.pathname.split('/');
     const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
@@ -157,12 +154,10 @@ const Asset = () => {
 
   async function makeTransfer(){
 
-    const seaport = await getOpenSeaPort()
+    const seaport = await getOpenSeaPort();
 
-    const addressArray = await window.ethereum.request({
-      method: "eth_accounts",
-    });
-    const fromAddress = addressArray[0]; //fetch fromAddress with window.ethereum
+    let userInfo = JSON.parse(getCookie("uid"));
+    const fromAddress = userInfo["walletAddress"];
 
     let urlParts = window.location.pathname.split('/');
     const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
