@@ -26,6 +26,13 @@ function App(){
       document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
   }
 
+  /**
+   * Adds a wallet listener to check whenever the wallet address in the page 
+   * changes, this includes switching wallets or disconnecting wallets
+   */
+  function addWalletListener(){
+  }
+
   return (
     <div className = "App">
       <Header />
