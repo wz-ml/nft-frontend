@@ -27,18 +27,21 @@ const User = () => {
     setLoginStatus(true);
     let userData = JSON.parse(userCookie);
     setWalletAddress(userData.walletAddress);
+
+    if(walletAddress.length === 0) return;
+    fetchAssets();
   });
 
   /**
    * Fetches Assets the user has associated to their wallet if they have any.
    * These assets will be stored in a state variable.
    */
-  function fetchAssets(){
+  async function fetchAssets(){
     let limit = 20;
     let offset = userAssets.length;
 
     fetch(`${API_URL}/assets?order_by=token_id&limit=${limit}&offset=${offset}&owner=${walletAddress}`)
-    .then((resp) => JSON.parse(resp))
+    .then((resp) => resp.json())
     .then((json) => console.log(json))
     .catch((err) => console.error(err.message));
   }
