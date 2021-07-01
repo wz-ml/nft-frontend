@@ -25,9 +25,11 @@ const User = () => {
 
   function displayUserInfo(){
     return(
-      <div className="UserStyleContainer">
-        <div className="ProfilePicContainer">
-          <img src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
+      <div className="UserInfoContainer">
+        <div className="UserStyleContainer">
+          <div className="ProfilePicContainer">
+            <img src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
+          </div>
         </div>
       </div>
     );
