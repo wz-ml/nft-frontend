@@ -23,6 +23,9 @@ const User = () => {
     setLoginStatus(true);
   });
 
+  /**
+   * Displays everything about the user, if they are signed in at the moment
+   */
   function displayUserInfo(){
     return(
       <div className="UserInfoContainer">
@@ -35,6 +38,9 @@ const User = () => {
     );
   }
 
+  /**
+   * Displays a page to go to the sign-in page if the user is not logged in
+   */
   function displayLoginError(){
     return(
       <div className="LoginError">
