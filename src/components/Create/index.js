@@ -41,6 +41,7 @@ const Create = () => {
         {/* <div className = "name_textbox"> */}
         <input className="name_textbox_size" type="text" placeholder="Item Name"></input>
         {/* </div> */}
+        
         </div>
 
         <br></br>
