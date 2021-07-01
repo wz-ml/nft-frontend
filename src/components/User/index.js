@@ -13,7 +13,7 @@ import fetch from "node-fetch"
 const User = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
-  const [walletAddr, setWalletAddr] = useState("");
+  const [walletAddress, setWalletAddress] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
   const [userAssets, setUserAssets] = useState([]);
 
@@ -25,6 +25,8 @@ const User = () => {
     }
 
     setLoginStatus(true);
+    let userData = JSON.parse(userCookie);
+    setWalletAddress(userData.walletAddress);
   });
 
   /**
