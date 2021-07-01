@@ -27,9 +27,7 @@ const Asset = () => {
   const [tokenName, setTokenName] = useState("");
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [schemaName, setSchemaName] = useState("");
   const [tokenOwnerId, setTokenOwnerId] = useState("");
-
   const [chosenCharity, setChosenCharity] = useState("");
   const [schemaName, setSchemaName] = useState("");
 
@@ -152,7 +150,7 @@ const Asset = () => {
     const listing = await seaport.createSellOrder({
     asset,
     accountAddress,
-    startAmount: 0.5})
+    startAmount: getSalePrice()})
   }
 
   async function makeBuyOrder(){
