@@ -33,11 +33,21 @@ const User = () => {
     );
   }
 
+  function displayLoginError(){
+    return(
+      <div className="LoginError">
+        <h1>You are not signed in at the moment</h1>
+        <h3>Please Sign-In <a href="/signin">here</a></h3>
+      </div>
+    );
+  }
+
   return(
     <div className="UserContainer">
       <h2>User</h2>
       {
-        loginStatus? displayUserInfo() : displayLoginError();
+        loginStatus? displayUserInfo() : displayLoginError()
+      }
     </div>
   );
 }
