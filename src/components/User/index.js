@@ -5,13 +5,26 @@
  * @since 06.29.2021
  */
 import React from "react";
+import {useEffect, useState} from "react";
 import "./index.css";
 import {getCookie} from "../../constants";
 
 const User = () => {
-  return(
-    <div className="UserContainer">
-      <h2>User</h2>
+  const [walletAddr, setWalletAddr] = useState("");
+  const [loginStatus, setLoginStatus] = useState(false);
+
+  useEffect(() => {
+    let userCookie = getCookie("uid");
+    if(userCookie === undefined){
+      setLoginStatus(false);
+      return;
+    }
+
+    setLoginStatus(true);
+  });
+
+  function displayUserInfo(){
+    return(
       <div className="UserStyleContainer">
         <div className="ProfilePicContainer">
           <img src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
