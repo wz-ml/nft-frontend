@@ -12,6 +12,7 @@ import {getCookie} from "../../constants";
 const User = () => {
   const [walletAddr, setWalletAddr] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
+  const [userAssets, setUserAssets] = useState([]);
 
   useEffect(() => {
     let userCookie = getCookie("uid");
