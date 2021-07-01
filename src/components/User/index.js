@@ -24,6 +24,12 @@ const User = () => {
   });
 
   /**
+   * Fetches Assets the user has associated to their wallet if they have any.
+   * These assets will be stored in a state variable.
+   */
+  function fetchAssets(){}
+
+  /**
    * Displays everything about the user, if they are signed in at the moment
    */
   function displayUserInfo(){
