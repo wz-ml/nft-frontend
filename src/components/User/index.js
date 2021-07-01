@@ -17,6 +17,14 @@ const User = () => {
           <img src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
         </div>
       </div>
+    );
+  }
+
+  return(
+    <div className="UserContainer">
+      <h2>User</h2>
+      {
+        loginStatus? displayUserInfo() : displayLoginError();
     </div>
   );
 }
