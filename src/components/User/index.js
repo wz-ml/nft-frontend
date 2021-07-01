@@ -37,7 +37,7 @@ const User = () => {
     let limit = 20;
     let offset = userAssets.length;
 
-    fetch(`${API_URL}/assets?order_by=token_id&limit=${limit}&offset=${offset}&owner=${walletAddr}`)
+    fetch(`${API_URL}/assets?order_by=token_id&limit=${limit}&offset=${offset}&owner=${walletAddress}`)
     .then((resp) => JSON.parse(resp))
     .then((json) => console.log(json))
     .catch((err) => console.error(err.message));
