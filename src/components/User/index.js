@@ -8,8 +8,11 @@ import React from "react";
 import {useEffect, useState} from "react";
 import "./index.css";
 import {getCookie} from "../../constants";
+import fetch from "node-fetch"
 
 const User = () => {
+  const API_URL = "https://rinkeby-api.opensea.io/api/v1";
+
   const [walletAddr, setWalletAddr] = useState("");
   const [loginStatus, setLoginStatus] = useState(false);
   const [userAssets, setUserAssets] = useState([]);
@@ -28,7 +31,15 @@ const User = () => {
    * Fetches Assets the user has associated to their wallet if they have any.
    * These assets will be stored in a state variable.
    */
-  function fetchAssets(){}
+  function fetchAssets(){
+    let limit = 20;
+    let offset = userAssets.length;
+
+    fetch(`${API_URL}/assets?order_by=token_id&limit=${limit}&offset=${offset}&owner=${walletAddr}`)
+    .then((resp) => JSON.parse(resp))
+    .then((json) => console.log(json))
+    .catch((err) => console.error(err.message));
+  }
 
   /**
    * Displays everything about the user, if they are signed in at the moment
