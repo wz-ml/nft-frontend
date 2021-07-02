@@ -114,7 +114,7 @@ const Asset = () => {
             name="chosenCharity" onChange={updateChosenCharity}/>
           <span className="charityInputControl"></span>
         </span> 
-        <label for={charityName} class="charityName" className="charityName">{charityName}</label>
+        <label htmlFor={charityName} className="charityName">{charityName}</label>
       </div>
       </span>
     );
