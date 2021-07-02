@@ -54,7 +54,7 @@ const User = () => {
    */
   async function renderAssetCard(asset){
     return(
-      <div className="AssetCard">
+      <div className="AssetCard" key={asset.id}>
         {
           asset
           ? <AssetMetadata asset={asset} />
