@@ -32,7 +32,7 @@ const Create = () => {
         {/* <h4> */}
         <strong className = "file_descrip">Image, Video, Audio, or 3D Model</strong>
         <br></br>
-        File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 40 MB
+        File types supported: JPG, PNG, JPEG
         {/* </h4> */}
         </div>
       <div className="App2">
