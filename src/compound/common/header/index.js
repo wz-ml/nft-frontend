@@ -7,11 +7,11 @@ function Header(){
         console.log(event.target.innerText);
         document.querySelector(".navbar-active").classList.remove("navbar-active");
         document.querySelectorAll(".navbar-item").forEach((item) => {
-            if(item.attributes.value.nodeValue !== event.target.innerText){
+            if(item.innerText !== evt.target.innerText){
                 return;
             }
             item.classList.add("navbar-active");
-        })
+        });
     }
 
     return (
@@ -23,9 +23,9 @@ function Header(){
                 BCHARITY
             </div>
             <div className = "navbar-item-container">
-                <a href="/status" className="navbar-item active" onClick={updateNavbar}>Status</a>
-                <a href="/marketplace" className="navbar-item active" onClick={updateNavbar}>Marketplace</a>
-                <a href="/resources" className="navbar-item active" onClick={updateNavbar}>Resources</a>
+                <div className="navbar-item navbar-active" onClick={updateNavbar}>Home</div>
+                <div className="navbar-item" onClick={updateNavbar}>Marketplace</div>
+                <div className="navbar-item" onClick={updateNavbar}>Resources</div>
             </div>
             <div className = "navbar_search">
                 <input type="text" placeholder="Search..." />
