@@ -21,13 +21,15 @@ const User = () => {
 
   useEffect(() => {
     let userCookie = getCookie("uid");
-    if(userCookie === undefined){
+
+    let userData = JSON.parse(userCookie);
+
+    if(userData.walletAddress === ""){
       setLoginStatus(false);
       return;
     }
 
     setLoginStatus(true);
-    let userData = JSON.parse(userCookie);
     setWalletAddress(userData.walletAddress);
 
     if(walletAddress.length === 0) return;
