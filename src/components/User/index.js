@@ -88,6 +88,7 @@ const User = () => {
             <img alt="" src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
           </div>
         </div>
+        <h3><i>Your Assets</i></h3>
         <div className="UserAssets">
           {userAssets}
         </div>
