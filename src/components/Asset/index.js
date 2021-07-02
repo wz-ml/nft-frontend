@@ -70,7 +70,6 @@ const Asset = () => {
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
     setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
-    setSchemaName(tokenData.asset_contract.schema_name);
     console.log(tokenData);
     console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
@@ -229,10 +228,10 @@ const Asset = () => {
     <div className="AssetContainer">
       <h2>Asset page</h2>
         <div className="AssetContent">
-          <h1>{tokenName}</h1>
-          <p><i>{tokenCollection}</i></p>
-          <p>Owned by: <a href="#">Tester</a></p>
-          <img src={imgUrl} alt={"Asset Image"} />
+          <h1 className="tokenName">{tokenName}</h1>
+          <p className="tokenCollection"><i>{tokenCollection}</i></p>
+          <p className="tokenOwner">Owned by: <a href="#">Tester</a></p>
+          <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
           <div className="priceField">
             <p>Ξ 1.950</p>
             <p><i>$434.88 USD</i></p>
