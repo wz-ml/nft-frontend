@@ -2,8 +2,8 @@ import React from 'react'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import Account from '../../common/Account'
-import AssetMetadata from './AssetMetadata'
-import BundleMetadata from './BundleMetadata'
+import AssetMetadata from '../../common/assetInfo/AssetMetadata'
+import BundleMetadata from '../../common/assetInfo/BundleMetadata'
 import styled from 'styled-components';
 import { connectWallet } from '../../../constants';
 import { OrderSide } from 'opensea-js/lib/types';
