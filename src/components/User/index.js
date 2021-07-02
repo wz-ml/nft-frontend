@@ -65,6 +65,11 @@ const User = () => {
   }
 
   async function updateAssets(assetList){
+    for(let asset in assetList){
+      let assetHTML = renderAssetCard(asset);
+      userAssets.push(assetHTML);
+      setUserAssets(userAssets);
+    }
   }
 
   /**
