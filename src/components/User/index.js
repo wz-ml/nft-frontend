@@ -5,6 +5,7 @@
  * @since 06.29.2021
  */
 import React from "react";
+import ReactDOM from "react-dom";
 import {useEffect, useState} from "react";
 import "./index.css";
 import {getCookie} from "../../constants";
@@ -72,6 +73,8 @@ const User = () => {
       userAssets.push(assetHTML);
       setUserAssets(userAssets);
     }
+    console.log(userAssets);
+    ReactDOM.render(userAssets, document.querySelector(".UserAssets"));
   }
 
   /**
@@ -85,7 +88,7 @@ const User = () => {
             <img alt="" src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
           </div>
         </div>
-        <div className="userAssets">
+        <div className="UserAssets">
           {userAssets}
         </div>
       </div>
