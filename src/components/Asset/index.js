@@ -230,7 +230,7 @@ const Asset = () => {
         <div className="AssetContent">
           <h1 className="tokenName">{tokenName}</h1>
           <p className="tokenCollection"><i>{tokenCollection}</i></p>
-          <p className="tokenOwner">Owned by: <a href="#">Tester</a></p>
+          <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
           <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
           <div className="priceField">
             <p>Ξ 1.950</p>
