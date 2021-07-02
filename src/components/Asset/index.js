@@ -238,8 +238,10 @@ const Asset = () => {
           <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
           <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
           <div className="priceField">
-            <p>Ξ 1.950</p>
-            <p><i>$434.88 USD</i></p>
+            {tokenPrice === -1
+              ? <p><i>This is not currently listed for sale</i></p>
+              : <p>Ξ {tokenPrice}</p>
+            }
           </div>
           <span className="renderToggles">{renderToggles()}</span>
         </div>
