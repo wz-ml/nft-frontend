@@ -3,8 +3,8 @@ import './bcharity_logo.png';
 import './Header.css';
 
 function Header(){
-    const updateNavbar = async (event) => {
-        console.log(event.target.innerText);
+    const updateNavbar = async (evt) => {
+        console.log(evt.target.innerText);
         document.querySelector(".navbar-active").classList.remove("navbar-active");
         document.querySelectorAll(".navbar-item").forEach((item) => {
             if(item.innerText !== evt.target.innerText){
