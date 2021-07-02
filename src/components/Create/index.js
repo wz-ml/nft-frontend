@@ -35,6 +35,10 @@ const Create = () => {
         File types supported: JPG, PNG, JPEG
         {/* </h4> */}
         </div>
+
+
+
+
       <div className="App2">
         <div className="container">
           {error && <p className="errorMsg">File not supported</p>}
@@ -56,6 +60,10 @@ const Create = () => {
           )}
         </div>
       </div>
+
+
+
+
           <form>
         <br></br><br></br>
         <div className = "name">
