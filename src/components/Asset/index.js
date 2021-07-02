@@ -27,10 +27,9 @@ const Asset = () => {
   const [tokenName, setTokenName] = useState("");
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [schemaName, setSchemaName] = useState("");
   const [tokenOwnerId, setTokenOwnerId] = useState("");
-
   const [chosenCharity, setChosenCharity] = useState("");
+  const [schemaName, setSchemaName] = useState("");
 
   /**
    * Uses React effects perform one-time actions.
@@ -70,7 +69,7 @@ const Asset = () => {
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
-    setTokenOwnerId(tokenData.owner.address);
+    setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
     console.log(tokenData);
     console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
@@ -84,8 +83,16 @@ const Asset = () => {
 
   function renderSellToggle(){
     return(
-      <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
+      <span>
+        <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
+        <input type="text" id="salePrice" defaultValue={"0"} placeholder="sale price" />
+      </span>
     );
+  }
+
+  // TEMP
+  function getSalePrice(){
+    return Number(document.getElementById("salePrice").value);
   }
 
   function updateChosenCharity(evt){
@@ -136,13 +143,13 @@ const Asset = () => {
     let userInfo = JSON.parse(getCookie("uid"));
     const accountAddress = userInfo["walletAddress"];
 
+    let asset = {tokenId, tokenAddress};
+    if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
+
     const listing = await seaport.createSellOrder({
-    asset: {
-      tokenId,
-      tokenAddress
-    },
+    asset,
     accountAddress,
-    startAmount: 0.5})
+    startAmount: getSalePrice()})
   }
 
   async function makeBuyOrder(){
@@ -174,16 +181,21 @@ const Asset = () => {
     let urlParts = window.location.pathname.split('/');
     const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
 
+    let asset = {tokenId, tokenAddress};
+    if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
+
     const transactionHash = await seaport.transfer({
-      asset: {
-        tokenId,
-        tokenAddress,
-        // schemaName: "ERC1155" !!!! //see integrating the functions.md for context 
-      },
+      asset,
       fromAddress, //your address (you must own the asset)
       toAddress: charityAddrs[chosenCharity]
     })
+  }
 
+  async function getOpenSeaPort(){
+    const provider = await detectEthereumProvider();
+    return new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
   }
 
   function renderToggles(){
@@ -210,13 +222,6 @@ const Asset = () => {
         {renderBuyToggle()}
       </div>
     );
-  }
-
-  async function getOpenSeaPort(){
-    const provider = await detectEthereumProvider();
-    return new OpenSeaPort(provider, {
-      networkName: Network.Rinkeby
-    });
   }
 
   return(
