@@ -10,6 +10,7 @@
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     justify-self: end;
+    margin-left: 12rem;
     margin-right: 0px;
     padding-right: 0px;
 } 
@@ -17,6 +18,8 @@
 .img-div {
     justify-items: end;
     justify-self: end;
+    padding-right: 0px;
+    margin-right: 0px;
 }
 
 .why-metamask {
@@ -24,14 +27,16 @@
     text-align: center; 
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+    margin-left: 8rem;
 }
 
 #walletButton {
     grid-column: 2 / 3;
     justify-self: start;
     align-self: center;
-    background-color: rgb(135, 206, 250);
-    color: black;
+    background-color: var(--blue-gradient-start);
+    background-image: var(--blue-gradient);
+    color: white;
     width: 50%;
     height: 50%;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -40,10 +45,13 @@
     border: 2px solid rgb(0, 162, 255);
     transition-duration: 0.3s;
     cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 #walletButton:hover {
-    background-color: white;
+    background-color: rgb(98, 205, 255);
+    background-image: none;
+
 }
 
 .wallet-page {
@@ -52,7 +60,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 3fr 1fr;
-    grid-gap: 2rem;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
 }
 
 

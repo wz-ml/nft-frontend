@@ -9,6 +9,8 @@
 
   --sidebar-inactive: #f6e9ef;
   --sidebar-active: #fff5f7;
+
+  --shadow-color: #88888822;
 }
 
 .App {

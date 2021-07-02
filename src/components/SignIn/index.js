@@ -33,14 +33,20 @@ const SignIn = () => { // Change the name after
     Because it has an empty array [] prop passed into it, it will only
     be called on the component's first render.
     */
-    useEffect(async () => {
+    useEffect(() => {
+      /*
       const message = await loadCurrentMessage();
       setMessage(message);
       addSmartContractListener();
+      //*/
 
-      const { address, status } = await getCurrentWalletConnected();
-      setWallet(address)
-      setStatus(status);
+      async function temp(){
+        const { address, status } = await getCurrentWalletConnected();
+        setWallet(address)
+        setStatus(status);
+      }
+
+      temp();
 
       addWalletListener();
     }, []);
@@ -123,14 +129,14 @@ const SignIn = () => { // Change the name after
           </img>
         </div>
 
-        {/*} i wanted to use javascript to make the 'sign in' button, but i dont know how to incorporate that yet
-        */}
-        <button id="walletButton" onClick={connectWalletPressed}>
+      <button id="walletButton" onClick={connectWalletPressed}>
+      {walletAddress.length > 0 ? (
 				"Connected: " + String(walletAddress).substring(0, 6) + "..." +
 				String(walletAddress).substring(38)) : (
 				<span>Connect Wallet</span>
-			)
+			)}
 		</button>
+    
         {/* Took this out because we're just using metamask as the wallet right now
         <div id="different-wallet" className="different-wallet">
           <button className="wallet-dropdown"> → USE A DIFFERENT WALLET</button>

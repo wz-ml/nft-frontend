@@ -1,0 +1,26 @@
+.UserContainer{
+  min-height: 100%;
+  width: 100%;
+}
+
+.UserStyleContainer{
+  height: 20vh;
+  width: 100%;
+  background-color: red;
+}
+
+.ProfilePicContainer{
+  height: 6rem;
+  width: 6rem;
+  background-color: blue;
+  overflow: hidden;
+  display: flex;
+
+  border-radius: 50%;
+  box-shadow: 1rem 1rem 1rem -0.5rem var(--shadow-color);
+}
+
+.ProfilePicContainer{
+  max-width: 100%;
+  max-height: 100%;
+}

@@ -42,39 +42,52 @@
   font-size: 2em; 
 }
 
-.navbar_logo {
-  background-color: green;
-}
-
 .navbar-item-container{
+  display:flex;
   margin-left: 200px;
   margin-right: 100px;
   color: var(--blue-gradient-start);
-  /*background-color: var(--blue-gradient-end);*/
+  background-color: white;
   box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
+  height: 40px;
+  border-radius: 0.5rem;
 }
 
 .navbar-item { 
   justify-content: center;
   align-items: center;
-  margin-left: 15px;
+  margin-left: 25px;
   margin-right: 25px;
   font-size: 1.5em;
   text-decoration: inherit;
+  color: black;
+  padding-top: 3px;
 }
 
-.navbar-item.active{
-  height: 100%;
-  width: 100%;
-  transform: translateY(100px);
+.navbar-item.navbar-active{
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+  margin-right: 25px;
+  color: white;
+  font-size: 1.5em;
+  text-decoration: inherit;
+  background: linear-gradient(70deg, var(--blue-gradient-start) 15%, var(--blue-gradient-end));
+  padding-top: 3px;
+  padding-bottom: 6pm;
+  padding-right: 30px;
+  padding-left: 30px;
+
+  transform: translateY(-15px);
+  border-radius: 0.5rem;
 }
 
 .navbar_search input{
-    width: 80%;
     font-size: 20px;
 }
 
 .navbar_search {
   box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
+  border-radius: 0.5rem;
 }
 
