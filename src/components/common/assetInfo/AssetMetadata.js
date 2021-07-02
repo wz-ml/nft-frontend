@@ -31,7 +31,7 @@ export default class AssetMetadata extends React.Component {
               <img
                 className="card-image"
                 alt="Asset artwork"
-                src={asset.imageUrl} />
+                src={assetImage} />
             </a>
           </div>
             
