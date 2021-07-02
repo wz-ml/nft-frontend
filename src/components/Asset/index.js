@@ -7,7 +7,6 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
-import {toUnitAmount} from "../../constants.js";
 
 import { OrderSide } from 'opensea-js/lib/types';
 import "./index.css"
@@ -30,6 +29,7 @@ const Asset = () => {
   const [tokenOwnerId, setTokenOwnerId] = useState("");
   const [chosenCharity, setChosenCharity] = useState("");
   const [schemaName, setSchemaName] = useState("");
+  const [tokenPrice, setTokenPrice] = useState(-1);
 
   /**
    * Uses React effects perform one-time actions.
@@ -70,8 +70,12 @@ const Asset = () => {
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
     setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
+
+    if(tokenData.orders.length > 0){
+      setTokenPrice(tokenData.orders[0].base_price * Math.pow(10, -18));
+    }
+
     console.log(tokenData);
-    console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
 
 
@@ -109,7 +113,7 @@ const Asset = () => {
             name="chosenCharity" onChange={updateChosenCharity}/>
           <span className="charityInputControl"></span>
         </span> 
-        <label for={charityName} class="charityName" className="charityName">{charityName}</label>
+        <label htmlFor={charityName} className="charityName">{charityName}</label>
       </div>
       </span>
     );
@@ -230,11 +234,13 @@ const Asset = () => {
         <div className="AssetContent">
           <h1 className="tokenName">{tokenName}</h1>
           <p className="tokenCollection"><i>{tokenCollection}</i></p>
-          <p className="tokenOwner">Owned by: <a href="#">Tester</a></p>
+          <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
           <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
           <div className="priceField">
-            <p>Ξ 1.950</p>
-            <p><i>$434.88 USD</i></p>
+            {tokenPrice === -1
+              ? <p><i>This is not currently listed for sale</i></p>
+              : <p>Ξ {tokenPrice}</p>
+            }
           </div>
           <span className="renderToggles">{renderToggles()}</span>
         </div>

@@ -32,14 +32,16 @@ function App(){
    */
   function saveUserInfo(userInfo){
 
-      let userString = JSON.stringify(userInfo);
-      // cookie expires in 24hr
-      let expiryDate = new Date();
-      expiryDate.setDate(new Date().getDate() + 1);
+    let userString = JSON.stringify(userInfo);
+    // cookie expires in 24hr
+    let expiryDate = new Date();
+    expiryDate.setDate(new Date().getDate() + 1);
 
-      document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
+    // delete existing cookie if it exists
+    document.cookie = "uid=\"\"; max-age=-1"
+    document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
 
-      // console.log(JSON.parse(getCookie("uid"))); // DEBUG
+    // console.log(JSON.parse(getCookie("uid"))); // DEBUG
   }
 
   /**
