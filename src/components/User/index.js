@@ -84,6 +84,7 @@ const User = () => {
     return(
       <div className="UserInfoContainer">
         <div className="UserStyleContainer">
+          <img className="ProfileBanner" src={"https://cdn.pixabay.com/photo/2015/04/05/16/12/lego-708088_960_720.jpg"} />
           <div className="ProfilePicContainer">
             <img alt="" src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
           </div>
