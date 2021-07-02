@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import "./index.css";
 
-const Create = () => {  const [imgPreview, setImgPreview] = useState(null);
+const Create = () => {  
+    const [imgPreview, setImgPreview] = useState(null);
     const [error, setError] = useState(false);
   
     const handleImageChange = (e) => {
