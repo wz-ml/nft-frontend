@@ -8,6 +8,7 @@ export default class AssetMetadata extends React.Component {
     var assetAddr; // = asset.tokenAddress; //asset.asset_contract.address;
     var assetId; // = asset.tokenId; //asset.token_id;
     var assetContractName;
+    var assetImage;
 
     asset.tokenAddress !== undefined
       ? assetAddr = asset.tokenAddress 
@@ -18,6 +19,9 @@ export default class AssetMetadata extends React.Component {
     asset.assetContract !== undefined
       ? assetContractName = asset.assetContract.name
       : assetContractName = asset.asset_contract.name;
+    asset.imageUrl !== undefined
+      ? assetImage = asset.imageUrl
+      : assetImage = asset.image_url
 
     return (
       <React.Fragment>
