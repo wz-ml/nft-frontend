@@ -9,16 +9,6 @@
   background-color: red;
 }
 
-.ProfileBannerContainer{
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-.ProfileBannerContainer img{
-  width: 100%;
-}
-
 .ProfilePicContainer{
   height: 6rem;
   width: 6rem;
