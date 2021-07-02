@@ -30,7 +30,7 @@ const Create = () => {
         </div>
         <div className="file_types">
         {/* <h4> */}
-        <strong className = "file_descrip">Image, Video, Audio, or 3D Model</strong>
+        <strong className = "file_descrip">Use an image as your NFT!</strong>
         <br></br>
         File types supported: JPG, PNG, JPEG
         {/* </h4> */}
