@@ -1,7 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import "./index.css";
 
-const Create = () => {
+const Create = () => {  const [imgPreview, setImgPreview] = useState(null);
+    const [error, setError] = useState(false);
+  
+    const handleImageChange = (e) => {
+      const selected = e.target.files[0];
+      const ALLOWED_TYPES = ["image/png" , "image/jpeg" , "image/jpg"];
+      if(selected && ALLOWED_TYPES.includes(selected.type)){
+        let reader = new FileReader();
+        reader.onloadend = () => {
+          setImgPreview(reader.result);
+        }
+        reader.readAsDataURL(selected);
+      } else {
+        setError(true);
+      }
+    };
+  
+
     return (
         <div className = "createThing">
  
@@ -10,8 +27,6 @@ const Create = () => {
             Create new item
             </h1>
         </div>
-        
-
         <div className="file_types">
         {/* <h4> */}
         <strong className = "file_descrip">Image, Video, Audio, or 3D Model</strong>
@@ -19,19 +34,28 @@ const Create = () => {
         File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 40 MB
         {/* </h4> */}
         </div>
-
-
-        {/* <h4 className = "file">
-        <strong className = "file_descrip">Image, Video, Audio, or 3D Model</strong> 
-        </h4>
-        
-        <p className="file_types">
-        File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 40 MB
-        </p> */}
-
-
-
-        <form>
+      <div className="App2">
+        <div className="container">
+          {error && <p className="errorMsg">File not supported</p>}
+          <div 
+          className="imgPreview"
+          style= {{background: imgPreview ? `url("${imgPreview}")no-repeat center/cover` : "#131313"}}
+          >
+            {!imgPreview && (
+              <>
+              <p>Add an image</p>
+              <label htmlFor="fileUpload" className="customFileUpload">Choose file</label>
+              <input type="file" id="fileUpload" onChange={handleImageChange}/>
+              <span>(jpg, jpeg or png)</span>
+              </>
+            )}
+          </div>
+          {imgPreview && (
+            <button onClick={() => setImgPreview(null)}>Remove image</button>
+          )}
+        </div>
+      </div>
+          <form>
         <br></br><br></br>
         <div className = "name">
         {/* <div className = "name_text"> */}
@@ -60,18 +84,14 @@ const Create = () => {
         </div>
         {/* </h4> */}
 
-    
-
-   
-
-
         </form>
 
         </div>
 
-
-    )
-};
+    );
+  
+    };
 
 
 export default Create;
+// IMPORTANT TIMESTAMP: 10:14
