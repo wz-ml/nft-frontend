@@ -3,7 +3,8 @@
 }
 
 .card-container{
-    background-color: var(--card-bg-color);
+    background-color: var(--pink-gradient-start);
+    background-image: var(--pink-gradient);
     display: grid;
     width: 20.25rem;;
     height: 18rem;
@@ -17,6 +18,8 @@
     min-width: 100%;
     overflow: hidden;
     border-radius: 1rem;
+    background-color: var(--blue-gradient-start);
+    background-image: var(--blue-gradient);
 }
 
 .card-image{
@@ -30,13 +33,18 @@
 }
 
 .card-text{
-    padding: 0px 0px 0px 10px;
+    /*padding: 0px 0px 0px 10px;*/
     transform: rotate(90deg);
     /* height: 50px; */
  
 }
 
+.card-text a{
+  color: white;
+  text-decoration: none;
+}
+
 .card-text h5{
-    width: max-content;
+    width: 16rem;
     /* transform: rotate(180deg); */
 }

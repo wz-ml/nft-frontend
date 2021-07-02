@@ -7,12 +7,14 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
+import {toUnitAmount} from "../../constants.js";
 
+import { OrderSide } from 'opensea-js/lib/types';
+import "./index.css"
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { getCurrentWalletConnected } from "../SignIn/interact";
+import { getCookie } from '../../constants';
 
-var isOwner = true; // this is here for testing
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
   "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
@@ -25,6 +27,10 @@ const Asset = () => {
   const [tokenName, setTokenName] = useState("");
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [schemaName, setSchemaName] = useState("");
+  const [tokenOwnerId, setTokenOwnerId] = useState("");
+
+  const [chosenCharity, setChosenCharity] = useState("");
 
   /**
    * Uses React effects perform one-time actions.
@@ -63,51 +69,133 @@ const Asset = () => {
     setTokenName(tokenData.name)
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
+    setSchemaName(tokenData.asset_contract.schema_name);
+    setTokenOwnerId(tokenData.owner.address);
     console.log(tokenData);
+    console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
+
 
   function renderBuyToggle(){
     return(
-      <button>Buy</button>
+      <button className="button" type="button" onClick={() => makeBuyOrder()}>Buy</button>
     );
   }
 
   function renderSellToggle(){
     return(
-      <button onClick={() => makeSellOrder()}> Sell</button>
+      <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
+    );
+  }
+
+  function updateChosenCharity(evt){
+    setChosenCharity(evt.target.value);
+    // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
+  }
+
+  function createCharityRadio(charityName){
+    return(
+      <span className="charityRadio">
+      <div key={charityName}>
+        <span className="charityInput">
+          <input className="charityNameInput" type="radio" value={charityName} id={charityName}
+            name="chosenCharity" onChange={updateChosenCharity}/>
+          <span className="charityInputControl"></span>
+        </span> 
+        <label for={charityName} class="charityName" className="charityName">{charityName}</label>
+      </div>
+      </span>
     );
   }
 
   function renderDonateToggle(){
+    let charities = [];
+    let counter = 0;
+
+    for(let charity in charityAddrs){
+      charities.push(createCharityRadio(charity));
+    }
+
     return(
-      <button>Donate</button>
+      <div className="donateContainer">
+        <button className="button" onClick={() => makeTransfer()}>Donate</button>
+        <form className="charitySelection">
+          {charities}
+        </form>
+      </div>
     );
   }
 
   async function makeSellOrder(){
 
-    const provider = await detectEthereumProvider();
-    const seaport = new OpenSeaPort(provider, {networkName: Network.Rinkeby});
-
-    console.log("TEST");
-
+    const seaport = await getOpenSeaPort()
+ 
     let urlParts = window.location.pathname.split('/');
-    const [tokenAddress, tokenID] = urlParts.splice(-2); //fetch token address + token ID
+    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
 
-    const obj = await getCurrentWalletConnected();
-    const accountAddress = obj.address; //fetch account address using getCurrentWalletConnected() from SignIn index.js
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
 
     const listing = await seaport.createSellOrder({
-    
     asset: {
-      tokenID,
-      tokenAddress,
+      tokenId,
+      tokenAddress
     },
     accountAddress,
     startAmount: 0.5})
   }
 
+  async function makeBuyOrder(){
+
+    const seaport = await getOpenSeaPort()
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
+
+    let urlParts = window.location.pathname.split('/');
+    const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const order = await seaport.api.getOrder({
+      side: OrderSide.Sell,
+      asset_contract_address,
+      token_id,
+        });
+    
+    const transactionHash = await seaport.fulfillOrder({order, accountAddress});
+  }
+
+  async function makeTransfer(){
+
+    const seaport = await getOpenSeaPort();
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const fromAddress = userInfo["walletAddress"];
+
+    let urlParts = window.location.pathname.split('/');
+    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const transactionHash = await seaport.transfer({
+      asset: {
+        tokenId,
+        tokenAddress,
+        // schemaName: "ERC1155" !!!! //see integrating the functions.md for context 
+      },
+      fromAddress, //your address (you must own the asset)
+      toAddress: charityAddrs[chosenCharity]
+    })
+
+  }
+
   function renderToggles(){
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const userAddress = userInfo["walletAddress"];
+    var isOwner = false;
+
+    if (userAddress === tokenOwnerId){
+      isOwner = true;
+    }
+
     if(isOwner){
       return (
         <div className="AssetButtonContainer">
@@ -124,31 +212,27 @@ const Asset = () => {
     );
   }
 
-  function renderBuyButton(){
-    return(
-      <button>Buy</button>
-    );
-  }
-
-  function renderSellButton(){
-    return(
-      <button>Sell</button>
-    );
-  }
-
-  function renderDonateButton(){
-    return(
-      <button>Donate</button>
-    );
+  async function getOpenSeaPort(){
+    const provider = await detectEthereumProvider();
+    return new OpenSeaPort(provider, {
+      networkName: Network.Rinkeby
+    });
   }
 
   return(
     <div className="AssetContainer">
       <h2>Asset page</h2>
-      <h1>{tokenName}</h1>
-      <p><i>{tokenCollection}</i></p>
-      <img src={imgUrl} alt={"Asset Image"} />
-      {renderToggles()}
+        <div className="AssetContent">
+          <h1 className="tokenName">{tokenName}</h1>
+          <p className="tokenCollection"><i>{tokenCollection}</i></p>
+          <p className="tokenOwner">Owned by: <a href="#">Tester</a></p>
+          <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
+          <div className="priceField">
+            <p>Ξ 1.950</p>
+            <p><i>$434.88 USD</i></p>
+          </div>
+          <span className="renderToggles">{renderToggles()}</span>
+        </div>
     </div>
   );
 }
