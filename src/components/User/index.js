@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import "./index.css";
 import {getCookie} from "../../constants";
 import fetch from "node-fetch"
+import AssetMetadata from "../common/assetInfo/AssetMetadata.js";
 
 const User = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
@@ -44,6 +45,26 @@ const User = () => {
     .then((resp) => resp.json())
     .then((json) => console.log(json))
     .catch((err) => console.error(err.message));
+  }
+
+  /**
+   * Renders a given asset within a card, as specified by the AssetMetadata styles
+   *
+   * @param asset A NFT token represented by a JavaScript object.
+   */
+  async function renderAssetCard(asset){
+    return(
+      <div className="AssetCard">
+        {
+          asset
+          ? <AssetMetadata asset={asset} />
+          : <p>Nothing to see here :)</p>
+        }
+      </div>
+    );
+  }
+
+  async function updateAssets(assetList){
   }
 
   /**
