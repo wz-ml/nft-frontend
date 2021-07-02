@@ -90,6 +90,14 @@ const Asset = () => {
     );
   }
 
+  function renderCancelToggle(){
+    return(
+      <span>
+        <button type="button" onClick={() => cancelOrder()} className="button"> Cancel Sell Listing</button>
+      </span>
+    );
+  }
+
   // TEMP
   function getSalePrice(){
     return Number(document.getElementById("salePrice").value);
@@ -171,6 +179,26 @@ const Asset = () => {
     const transactionHash = await seaport.fulfillOrder({order, accountAddress});
   }
 
+  async function cancelOrder(){
+
+    const seaport = await getOpenSeaPort()
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
+
+    let urlParts = window.location.pathname.split('/');
+    const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const order = await seaport.api.getOrder({
+      side: OrderSide.Sell,
+      asset_contract_address,
+      token_id,
+        });
+
+    const transactionHash = await seaport.cancelOrder({order, accountAddress});
+
+  }
+
   async function makeTransfer(){
 
     const seaport = await getOpenSeaPort();
@@ -198,23 +226,51 @@ const Asset = () => {
     });
   }
 
+  async function currentlyOnSale(){ //checks if there is the displayed NFT is on sale
+
+    let urlParts = window.location.pathname.split('/');
+    const [asset_contract_address, token_id] = urlParts.splice(-2);
+    const seaport = await getOpenSeaPort();
+
+    try {
+      const order = await seaport.api.getOrder({
+        side: OrderSide.Sell,
+        asset_contract_address,
+        token_id,
+          });
+
+        return true;
+        }
+      catch {
+        return false;
+      }
+  }
+
   function renderToggles(){
 
     let userInfo = JSON.parse(getCookie("uid"));
     const userAddress = userInfo["walletAddress"];
     var isOwner = false;
 
-    if (userAddress === tokenOwnerId){
+    if (userAddress === tokenOwnerId){ //check if the user owns the NFT displayed
       isOwner = true;
     }
 
-    if(isOwner){
-      return (
-        <div className="AssetButtonContainer">
-          {renderDonateToggle()}
-          {renderSellToggle()}
-        </div>
-      );
+    if(isOwner){ 
+       if(currentlyOnSale()){
+        return (
+            <div className="AssetButtonContainer">
+              {renderCancelToggle()}
+            </div>
+          );
+        } else {
+          return (
+            <div className="AssetButtonContainer">
+              {renderDonateToggle()}
+              {renderSellToggle()}
+            </div>
+          );    
+       }
     }
 
     return (
