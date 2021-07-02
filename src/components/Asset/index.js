@@ -7,7 +7,6 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";
-import {toUnitAmount} from "../../constants.js";
 
 import { OrderSide } from 'opensea-js/lib/types';
 import "./index.css"
