@@ -90,8 +90,10 @@ const User = () => {
             backgroundImage: `url(${"https://cdn.pixabay.com/photo/2015/04/05/16/12/lego-708088_960_720.jpg"}`,
           }}
         >
-          <div className="ProfilePicContainer">
-            <img alt="" src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
+          <div className="ProfileInfo">
+            <div className="ProfilePicContainer">
+              <img alt="" src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
+            </div>
           </div>
         </div>
         <h3><i>Your Assets</i></h3>

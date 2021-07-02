@@ -11,6 +11,16 @@
   background-size: cover;
 }
 
+.ProfileInfo{
+  position: relative;
+  left: 5rem;
+  top: 20%;
+  min-width: 18rem;
+  width: max-content;
+  background-image: var(--blue-gradient);
+  border-radius: 500px;
+}
+
 .ProfilePicContainer{
   min-height: 6rem;
   min-width: 6rem;
@@ -23,10 +33,6 @@
 
   border-radius: 50%;
   box-shadow: 1rem 1rem 1rem -0.5rem var(--shadow-color);
-
-  position: relative;
-  left: 5rem;
-  top: 20%;
 }
 
 .UserAssets{
