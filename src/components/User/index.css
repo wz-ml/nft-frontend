@@ -11,14 +11,21 @@
 }
 
 .ProfilePicContainer{
-  height: 6rem;
-  width: 6rem;
+  min-height: 6rem;
+  min-width: 6rem;
+  height: 20vmin;
+  width: 20vmin;
+
   background-color: blue;
   overflow: hidden;
   display: flex;
 
   border-radius: 50%;
   box-shadow: 1rem 1rem 1rem -0.5rem var(--shadow-color);
+
+  position: relative;
+  left: 5rem;
+  top: 20%;
 }
 
 .UserAssets{
