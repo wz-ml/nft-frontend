@@ -17,20 +17,20 @@ const Sidebar = () => {
    */
   const updateSidebar = async (evt) => {
     console.log(evt.target.innerText);
-    document.querySelector(".active").classList.remove("active");
+    document.querySelector(".sidebar-active").classList.remove("sidebar-active");
     document.querySelectorAll(".sidebar-item").forEach((header) => {
       if(header.attributes.value.nodeValue !== evt.target.innerText){
         return;
       }
 
-      header.classList.add("active");
+      header.classList.add("sidebar-active");
     });
   }
 
   return (
     <section className="sidebar">
       <div className="sidebar-item-container">
-        <ul className="sidebar-item active" value={"Status"}>
+        <ul className="sidebar-item sidebar-active" value={"Status"}>
           <h3 className="sidebar-listheader" onClick={updateSidebar}>Status</h3>
           <div className="list-items-container">
             <li className="list-item">Buy Now</li>

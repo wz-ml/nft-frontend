@@ -147,7 +147,7 @@ export default class Order extends React.Component {
           ? <AssetMetadata asset={asset} />
           : <BundleMetadata bundle={assetBundle} />
         }
-        
+      {/*
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             Offered by <Account account={makerAccount} />
@@ -171,6 +171,7 @@ export default class Order extends React.Component {
         <div className="card-footer">
           <small className="text-muted">Posted {timeLabel}</small>
         </div>
+      */}
       </Card>
     )
   }
