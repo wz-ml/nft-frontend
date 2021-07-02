@@ -30,6 +30,7 @@ const Asset = () => {
   const [tokenOwnerId, setTokenOwnerId] = useState("");
   const [chosenCharity, setChosenCharity] = useState("");
   const [schemaName, setSchemaName] = useState("");
+  const [tokenPrice, setTokenPrice] = useState(-1);
 
   /**
    * Uses React effects perform one-time actions.
@@ -70,8 +71,12 @@ const Asset = () => {
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
     setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
+
+    if(tokenData.orders.length > 0){
+      setTokenPrice(tokenData.orders[0].base_price * Math.pow(10, -18));
+    }
+
     console.log(tokenData);
-    console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
 
 
