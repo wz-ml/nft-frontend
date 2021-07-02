@@ -43,7 +43,8 @@ const User = () => {
 
     fetch(`${API_URL}/assets?order_by=token_id&limit=${limit}&offset=${offset}&owner=${walletAddress}`)
     .then((resp) => resp.json())
-    .then((json) => console.log(json))
+    // .then((json) => console.log(json))
+    .then((json) => updateAssets(json.assets))
     .catch((err) => console.error(err.message));
   }
 
@@ -65,7 +66,9 @@ const User = () => {
   }
 
   async function updateAssets(assetList){
-    for(let asset in assetList){
+    for(let index in assetList){
+      let asset = assetList[index];
+      console.log(asset);
       let assetHTML = renderAssetCard(asset);
       userAssets.push(assetHTML);
       setUserAssets(userAssets);
