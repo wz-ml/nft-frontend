@@ -94,6 +94,7 @@ const User = () => {
             <div className="ProfilePicContainer">
               <img alt="" src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
             </div>
+            <p>&nbsp;{walletAddress}</p>
           </div>
         </div>
         <h3><i>Your Assets</i></h3>

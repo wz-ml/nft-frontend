@@ -19,6 +19,12 @@
   width: max-content;
   background-image: var(--blue-gradient);
   border-radius: 500px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+
+  padding-right: 1rem;
 }
 
 .ProfilePicContainer{
