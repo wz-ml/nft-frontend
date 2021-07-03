@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import Asset from "./components/Asset";
 import Create from './components/Create';
 import User from "./components/User";
+import Donate from "./components/Donate";
 import './App.css';
 
 import {getCookie} from "./constants.js";
@@ -112,6 +113,10 @@ function App(){
             <li>
               <Link to="/user">User</Link>
             </li>
+            <li>
+              <Link to="Donate">Donate</Link>
+            </li>
+
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
@@ -119,6 +124,7 @@ function App(){
           <Route path="/asset" component={Asset} />
           <Route path="/Create" component={Create}/>
           <Route path="/user" component={User} />
+          <Route path="/donate" component={Donate} />
         </div>
       </Router>
     </div>
