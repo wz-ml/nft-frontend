@@ -36,7 +36,7 @@
 }
 
 .tiny-img{
-    image-rendering: crisp-edges;
+    image-rendering: crisp-edges !important;
 }
 
 .card-body{
