@@ -22,6 +22,10 @@ const User = () => {
   useEffect(() => {
     let userCookie = getCookie("uid");
 
+    if(userCookie === undefined){
+      window.location.reload(false);
+    }
+
     let userData = JSON.parse(userCookie);
 
     if(userData.walletAddress === ""){
