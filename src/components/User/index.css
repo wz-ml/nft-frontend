@@ -14,17 +14,22 @@
 .ProfileInfo{
   position: relative;
   left: 5rem;
-  top: 20%;
+  top: calc(100% - 5rem);
   min-width: 18rem;
+  max-height: 6rem;
   width: max-content;
   background-image: var(--blue-gradient);
-  border-radius: 500px;
+  border-radius: 1000px;
   color: white;
 
   display: flex;
-  align-items: center;
+  align-items: end;
 
   padding-right: 1rem;
+}
+
+.ProfileInfo p{
+  margin: auto;
 }
 
 .ProfilePicContainer{
