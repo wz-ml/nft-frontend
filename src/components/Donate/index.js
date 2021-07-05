@@ -102,7 +102,7 @@ const Donate = () => {
       charities.push(createCharityRadio(charityListObject[counter]));
     } */
     
-     for (let charity in charityAddrs) {
+     for (let charity in charityListObject) {
       charities.push(createCharityRadio(charity));
     } 
 
