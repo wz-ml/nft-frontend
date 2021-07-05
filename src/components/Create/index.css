@@ -8,55 +8,63 @@
     font-weight: normal;
     text-align: left;
     padding-left: 80px;
+    padding-top: 20px;
 }
 
 
 .name {
     text-align: left;
     padding-left: 80px;
+    font-size: 14.5pt;
 }
 
 
 
 .name_textbox_size {
     width: 300px;
-    font-size: 13pt;
+    font-size: 14pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .name_textbox_size::placeholder {
-    font-size: 13pt;
+    font-size: 14pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }   
 
 .description {
+    margin-top: 10px;
     font-weight: bold;
     text-align: left;
     padding-left: 80px;
+    font-size: 14.5pt;
 }
 
 .description_text {
     font-weight: normal;
-    margin: 0% 11% 0% 0%;
+    /* margin: 0% 11% 0% 0%; */
     white-space: nowrap;
+    font-size: 12.5pt;
+    /* display: inline-block; */
+    
 }
 
 .description_textbox{
-    margin: 0% 10.5% 0% 0%;
+    /* margin: 0% 10.5% 0% 0%; */
     height: 100px;
-    width: 785px;
+    width: 815px;
     padding-top: 0;
     padding-left: 0;
     line-height: 1em; 
-    font-size: 13pt;
+    font-size: 14pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 50px;
+    
 }
 
 .description_textbox::placeholder {
-    font-size: 13pt;
+    font-size: 14pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 } 
-
 
 
 * {
@@ -67,16 +75,23 @@
   }
   
   .App2 {
-    min-height: 100vh;
+    max-height: 460px;
     /* background: #35297a; */
     display: flex;
-  
+    /* border: solid;
+    border-color: darkgreen; */
   }
   
+
   .container {
-    margin: auto;
+    overflow: hidden;
+    margin: 10px 0px 0px 80px;
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
+    /* max-height: 900px; */
+    height: auto;
+    /* border: solid;
+    border-color: red; */
   }
   
   .errorMsg {
@@ -87,23 +102,31 @@
   
   .imgPreview {
     width: 100%;
-    height: 460px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    color: #c6c6c6;
+    border: dashed;
   }
   
   .imgPreview input[type="file"]{
     display: none;
   }
   
-  .imgPreview .customFileUpload {
-    color: #55d6d6;
-    font-size: 22px;
+  .customFileUpload {
+    color: #c6c6c6;
+    font-size: 13pt;
     font-weight: 500;
     padding: 6px 12px;
     cursor: pointer;
+    /* border: dotted  ;
+    border-color: blue; */
+  }
+
+  .fileTypeDescription {
+    color: #36a4da;
+    /* font-size: 13pt; */
   }
