@@ -30,8 +30,8 @@
 .ProfilePicContainer{
   min-height: 6rem;
   min-width: 6rem;
-  height: 20vmin;
-  width: 20vmin;
+  height: 15vmin;
+  width: 15vmin;
 
   background-color: blue;
   overflow: hidden;
