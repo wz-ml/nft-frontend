@@ -78,6 +78,16 @@ const Asset = () => {
     console.log(tokenData);
   }
 
+  function scalePhoto(event){
+    let height = event.target.height;
+    let width = event.target.width;
+
+    if(height < 100 && width < 100){
+      event.target.classList.add("TinyImg");
+    }
+
+    event.target.classList.add("AssetImage");
+  }
 
   function renderBuyToggle(){
     return(
@@ -235,7 +245,7 @@ const Asset = () => {
           <h1 className="tokenName">{tokenName}</h1>
           <p className="tokenCollection"><i>{tokenCollection}</i></p>
           <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
-          <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
+          <img src={imgUrl} alt={"Asset Image"} onLoad={scalePhoto}/>
           <div className="priceField">
             {tokenPrice === -1
               ? <p><i>This is not currently listed for sale</i></p>
