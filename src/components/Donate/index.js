@@ -25,6 +25,24 @@ const Donate = () => {
   const [schemaName, setSchemaName] = useState("");
   const [tokenPrice, setTokenPrice] = useState(-1);
 
+  /**
+   * Uses React effects perform one-time actions.
+   *
+   * - Adds a load event listener to fetch the details of the connected NFT
+   */
+  useEffect(() => {
+    window.addEventListener("load", getDetails);
+  });
+
+
+  /**
+   * Gets the details of the connected NFT, found within the url.
+   * A valid NFT collection address and tokenID are expected within
+   * the url in the format:
+   * <code>https://(URL)/asset/(Collection Address)/(tokenID)</code>
+   *
+   * Will fetch the data needed from the opensea API and update the page.
+   */
 
   async function getDetails(){
     let urlParts = window.location.pathname.split('/');
@@ -36,6 +54,12 @@ const Donate = () => {
       .catch((err) => console.error(err));
   }
 
+  /**
+ * Updates the page with the new token details
+ *
+ * @param tokenData {Object} the parsed JSON object retrieved after fetching
+ * details from the opensea API.
+ */
   async function updateDetails(tokenData){
     setTokenName(tokenData.name)
     setTokenCollection(tokenData.collection.name);
@@ -71,38 +95,24 @@ const Donate = () => {
       );
   }
 
-  function renderDonateToggle(){
-    const charities = Object.entries(charityAddrs);
-    
-    for (let charity in charities) {
+  function renderDonateToggle(charityListObject){
+    let charities = [];
 
-        charities.push(createCharityRadio(charity));
-
-    }
-
-/*    const charities = Object.keys(charityAddrs);
-    console.log(charities);
-
-    charities.forEach((key, index) => {
-        console.log(`${key}: ${charityAddrs[key]}`);
-    });
-
-    const charities = [];
-    for (let charity in charityAddrs) {
-        charities.push(createCharityRadio(charity));
-        charities.push({charity: value.charity});
-        charities.push(", ");
+    /* for (let counter = 0; counter < charityListObject.length; counter++) {
+      charities.push(createCharityRadio(charityListObject[counter]));
     } */
-
-
+    
+     for (let charity in charityAddrs) {
+      charities.push(createCharityRadio(charity));
+    } 
 
     return (
-        <div className="donateContainer">
-            <button className="button" onClick={() => makeTransfer()}>Donate</button>
-            <form className="charitySelection">
-              {charities}
-            </form>
-        </div>
+      <div className="donateContainer">
+        <button className="button" onClick={() => makeTransfer()}>Donate</button>
+        <form className="charitySelection">
+          {charities}
+        </form>
+      </div>
     );
 
     }
@@ -136,7 +146,12 @@ const Donate = () => {
 
   return(
     <div>
-        {renderDonateToggle()}
+      <h2>Donate Page</h2>
+      <h1 className="tokenName">{tokenName}</h1>
+      <p className="tokenCollection"><i>{tokenCollection}</i></p>
+      <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
+      {renderDonateToggle(charityAddrs)}
+      
     </div>
   )
 }
