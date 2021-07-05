@@ -90,6 +90,10 @@ const Create = () => {
         {/* </h4> */}
 
       </form>
+      <button className="CreateButton">
+        <Plus className="CreatePlus" />
+        <p>Mint a new Token </p>
+      </button>
 
     </div>
 
