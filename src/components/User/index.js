@@ -5,10 +5,12 @@
  * @since 06.29.2021
  */
 import React from "react";
+import ReactDOM from "react-dom";
 import {useEffect, useState} from "react";
 import "./index.css";
 import {getCookie} from "../../constants";
 import fetch from "node-fetch"
+import AssetMetadata from "../common/assetInfo/AssetMetadata.js";
 
 const User = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
@@ -19,13 +21,15 @@ const User = () => {
 
   useEffect(() => {
     let userCookie = getCookie("uid");
-    if(userCookie === undefined){
+
+    let userData = JSON.parse(userCookie);
+
+    if(userData.walletAddress === ""){
       setLoginStatus(false);
       return;
     }
 
     setLoginStatus(true);
-    let userData = JSON.parse(userCookie);
     setWalletAddress(userData.walletAddress);
 
     if(walletAddress.length === 0) return;
@@ -42,8 +46,37 @@ const User = () => {
 
     fetch(`${API_URL}/assets?order_by=token_id&limit=${limit}&offset=${offset}&owner=${walletAddress}`)
     .then((resp) => resp.json())
-    .then((json) => console.log(json))
+    // .then((json) => console.log(json))
+    .then((json) => updateAssets(json.assets))
     .catch((err) => console.error(err.message));
+  }
+
+  /**
+   * Renders a given asset within a card, as specified by the AssetMetadata styles
+   *
+   * @param asset A NFT token represented by a JavaScript object.
+   */
+  async function renderAssetCard(asset){
+    return(
+      <div className="AssetCard" key={asset.id}>
+        {
+          asset
+          ? <AssetMetadata asset={asset} />
+          : <p>Nothing to see here :)</p>
+        }
+      </div>
+    );
+  }
+
+  async function updateAssets(assetList){
+    for(let index in assetList){
+      let asset = assetList[index];
+      let assetHTML = await renderAssetCard(asset);
+      userAssets.push(assetHTML);
+      setUserAssets(userAssets);
+    }
+    console.log(userAssets);
+    ReactDOM.render(userAssets, document.querySelector(".UserAssets"));
   }
 
   /**
@@ -52,10 +85,21 @@ const User = () => {
   function displayUserInfo(){
     return(
       <div className="UserInfoContainer">
-        <div className="UserStyleContainer">
-          <div className="ProfilePicContainer">
-            <img src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
+        <div className="UserStyleContainer" 
+          style={{
+            backgroundImage: `url(${"https://cdn.pixabay.com/photo/2015/04/05/16/12/lego-708088_960_720.jpg"}`,
+          }}
+        >
+          <div className="ProfileInfo">
+            <div className="ProfilePicContainer">
+              <img alt="" src={"https://randomuser.me/api/portraits/lego/1.jpg"} />
+            </div>
+            <p>&nbsp;{walletAddress}</p>
           </div>
+        </div>
+        <h3><i>Your Assets</i></h3>
+        <div className="UserAssets">
+          {userAssets}
         </div>
       </div>
     );

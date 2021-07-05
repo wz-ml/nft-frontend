@@ -8,6 +8,7 @@ import SignIn from './components/SignIn';
 import Asset from "./components/Asset";
 import Create from './components/Create';
 import User from "./components/User";
+import Donate from './components/Donate';
 import './App.css';
 
 import {getCookie} from "./constants.js";
@@ -32,14 +33,16 @@ function App(){
    */
   function saveUserInfo(userInfo){
 
-      let userString = JSON.stringify(userInfo);
-      // cookie expires in 24hr
-      let expiryDate = new Date();
-      expiryDate.setDate(new Date().getDate() + 1);
+    let userString = JSON.stringify(userInfo);
+    // cookie expires in 24hr
+    let expiryDate = new Date();
+    expiryDate.setDate(new Date().getDate() + 1);
 
-      document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
+    // delete existing cookie if it exists
+    document.cookie = "uid=\"\"; max-age=-1"
+    document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
 
-      // console.log(JSON.parse(getCookie("uid"))); // DEBUG
+    // console.log(JSON.parse(getCookie("uid"))); // DEBUG
   }
 
   /**
@@ -110,6 +113,9 @@ function App(){
             <li>
               <Link to="/user">User</Link>
             </li>
+            <li>
+              <Link to='/Donate'>Donate Here!</Link>
+            </li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
@@ -117,6 +123,7 @@ function App(){
           <Route path="/asset" component={Asset} />
           <Route path="/Create" component={Create}/>
           <Route path="/user" component={User} />
+          <Route path="/Donate" component={Donate}/>
         </div>
       </Router>
     </div>
