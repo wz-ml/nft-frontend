@@ -34,7 +34,6 @@ const Donate = () => {
     window.addEventListener("load", getDetails);
   });
 
-
   /**
    * Gets the details of the connected NFT, found within the url.
    * A valid NFT collection address and tokenID are expected within

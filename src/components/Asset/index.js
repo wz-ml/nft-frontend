@@ -129,13 +129,17 @@ const Asset = () => {
 
     return(
       <div className="donateContainer">
-        <button className="button" onClick={() => makeTransfer()}>Donate</button>
+        <a href="/Donate">
+          <button className="button">Donate</button>
+        </a>
         <form className="charitySelection">
           {charities}
         </form>
       </div>
     );
   }
+
+// onClick={() => makeTransfer()}
 
   async function makeSellOrder(){
 
