@@ -2,6 +2,20 @@ import React from 'react'
 import "./AssetMetadata.css";
 
 export default class AssetMetadata extends React.Component {
+  
+  scalePhoto(event){
+    let height = event.target.height;
+    let width = event.target.width;
+
+    console.log(`${height} x ${width}`);
+
+    if(height < 100 && width < 100){
+      event.target.classList.add("tiny-img");
+    }
+
+    event.target.classList.add("card-image");
+  }
+
   render() {
     const { asset } = this.props
 
@@ -29,8 +43,8 @@ export default class AssetMetadata extends React.Component {
           <div className="img-container">
             <a target="_blank" rel="noopener noreferrer" className="image-link text-center d-inline-block m-100" href={`/asset/${assetAddr}/${assetId}`}>
               <img
-                className="card-image"
                 alt="Asset artwork"
+                onLoad={this.scalePhoto}
                 src={assetImage} />
             </a>
           </div>
