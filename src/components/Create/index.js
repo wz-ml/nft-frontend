@@ -35,9 +35,6 @@ const Create = () => {
         {/* </h4> */}
         </div>
 
-
-
-
       <div className="App2">
         <div className="container">
           {error && <p className="errorMsg">File not supported</p>}
@@ -62,10 +59,7 @@ const Create = () => {
         </div>
       </div>
 
-
-
-
-          <form>
+      <form>
         <br></br><br></br>
         <div className = "name">
         {/* <div className = "name_text"> */}
@@ -95,13 +89,12 @@ const Create = () => {
         </div>
         {/* </h4> */}
 
-        </form>
+      </form>
 
-        </div>
+    </div>
 
-    );
+  );
   
-    };
-
+};
 
 export default Create;
