@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Plus} from "react-bootstrap-icons";
 import "./index.css";
 
 const Create = () => {  
@@ -92,7 +93,7 @@ const Create = () => {
       </form>
       <button className="CreateButton">
         <Plus className="CreatePlus" />
-        <p>Mint a new Token </p>
+        <p>Create Token</p>
       </button>
 
     </div>
