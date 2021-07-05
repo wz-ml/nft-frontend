@@ -104,7 +104,7 @@ const User = () => {
         </div>
         <div className="UserAssetContainer">
           <h2>Your Assets</h2>
-          <button>
+          <button className="CreateButton">
             <Plus />
             <p>Mint a new Token </p>
           </button>
