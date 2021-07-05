@@ -34,6 +34,7 @@
 
 .card-text{
     /*padding: 0px 0px 0px 10px;*/
+    padding-left: 1.5rem;
     transform: rotate(90deg);
     /* height: 50px; */
  
@@ -46,5 +47,6 @@
 
 .card-text h5{
     width: 16rem;
+    text-align: left;
     /* transform: rotate(180deg); */
 }
