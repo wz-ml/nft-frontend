@@ -30,6 +30,7 @@ const Asset = () => {
   const [tokenOwnerId, setTokenOwnerId] = useState("");
   const [chosenCharity, setChosenCharity] = useState("");
   const [schemaName, setSchemaName] = useState("");
+  const [isOnSale, setSaleState] = useState(false);
 
   /**
    * Uses React effects perform one-time actions.
@@ -70,10 +71,22 @@ const Asset = () => {
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
     setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
+
+    setSaleState(currentlyOnSale(tokenData));
     console.log(tokenData);
     console.log(toUnitAmount(tokenData.orders[0].base_price, tokenData.asset_contract));
   }
 
+   function currentlyOnSale(tokenData){ //checks if the displayed NFT is listed for sale
+
+    var arrayLength = tokenData.orders.length;
+    for (var i = 0; i < arrayLength; i++){
+      if (tokenData.orders[i].side === 1){ //if order is a sell listing
+        return true;
+      }
+    }
+
+  } 
 
   function renderBuyToggle(){
     return(
@@ -226,26 +239,6 @@ const Asset = () => {
     });
   }
 
-  async function currentlyOnSale(){ //checks if there is the displayed NFT is on sale
-
-    let urlParts = window.location.pathname.split('/');
-    const [asset_contract_address, token_id] = urlParts.splice(-2);
-    const seaport = await getOpenSeaPort();
-
-    try {
-      const order = await seaport.api.getOrder({
-        side: OrderSide.Sell,
-        asset_contract_address,
-        token_id,
-          });
-
-        return true;
-        }
-      catch {
-        return false;
-      }
-  }
-
   function renderToggles(){
 
     let userInfo = JSON.parse(getCookie("uid"));
@@ -257,7 +250,7 @@ const Asset = () => {
     }
 
     if(isOwner){ 
-       if(currentlyOnSale()){
+       if(isOnSale){
         return (
             <div className="AssetButtonContainer">
               {renderCancelToggle()}
