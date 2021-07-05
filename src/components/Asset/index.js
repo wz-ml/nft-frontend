@@ -249,7 +249,7 @@ const Asset = () => {
           <div className="priceField">
             {tokenPrice === -1
               ? <p><i>This is not currently listed for sale</i></p>
-              : <p>Ξ {tokenPrice}</p>
+              : <h2>Ξ {tokenPrice.toFixed(3)}</h2>
             }
           </div>
           <span className="renderToggles">{renderToggles()}</span>
