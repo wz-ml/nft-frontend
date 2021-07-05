@@ -57,7 +57,7 @@
   text-decoration: none;
 }
 
-.card-text h3, .card-text h5{
+.card-text h4, .card-text h5{
     width: 16rem;
     font-weight: normal;
     text-align: left;

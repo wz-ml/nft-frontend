@@ -52,7 +52,7 @@ export default class AssetMetadata extends React.Component {
           <div className="card-body h-25">
             <div className="card-text text-truncate">
               <a target="_blank" rel="noopener noreferrer" href={`/asset/${assetAddr}/${assetId}`} className="card-link">
-                <h3>{asset.name}</h3>
+                <h4>{asset.name}</h4>
                 <h5><i>{assetContractName}</i></h5>
               </a>
             </div>
