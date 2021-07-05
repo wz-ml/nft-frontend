@@ -22,8 +22,15 @@
     background-image: var(--blue-gradient);
 }
 
-.card-image{
+.image-link{
+    display: grid;
+    place-items: center;
+
     height: 100%;
+}
+
+.card-image{
+    min-height: 100%;
     min-width: 100%;
 }
 

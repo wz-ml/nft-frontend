@@ -27,7 +27,7 @@ export default class AssetMetadata extends React.Component {
       <React.Fragment>
         <div className="card-container">
           <div className="img-container">
-            <a target="_blank" rel="noopener noreferrer" className="text-center d-inline-block m-100" href={`/asset/${assetAddr}/${assetId}`}>
+            <a target="_blank" rel="noopener noreferrer" className="image-link text-center d-inline-block m-100" href={`/asset/${assetAddr}/${assetId}`}>
               <img
                 className="card-image"
                 alt="Asset artwork"
