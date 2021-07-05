@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Plus} from "react-bootstrap-icons";
 import "./index.css";
+import * as Mint from "./mint";
 
 const Create = () => {  
     const [imgPreview, setImgPreview] = useState(null);
@@ -19,7 +20,6 @@ const Create = () => {
         setError(true);
       }
     };
-  
 
     return (
         <div className = "createThing">
