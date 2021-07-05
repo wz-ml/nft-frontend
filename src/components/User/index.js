@@ -11,6 +11,7 @@ import "./index.css";
 import {getCookie} from "../../constants";
 import fetch from "node-fetch"
 import AssetMetadata from "../common/assetInfo/AssetMetadata.js";
+import {Plus} from "react-bootstrap-icons";
 
 const User = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
@@ -101,9 +102,15 @@ const User = () => {
             <p>&nbsp;{walletAddress}</p>
           </div>
         </div>
-        <h3><i>Your Assets</i></h3>
-        <div className="UserAssets">
-          {userAssets}
+        <div className="UserAssetContainer">
+          <h2>Your Assets</h2>
+          <button>
+            <Plus />
+            <p>Mint a new Token </p>
+          </button>
+          <div className="UserAssets">
+            {userAssets}
+          </div>
         </div>
       </div>
     );
