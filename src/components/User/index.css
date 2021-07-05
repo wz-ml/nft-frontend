@@ -42,14 +42,19 @@
   overflow: hidden;
   display: flex;
 
+
   border-radius: 50%;
   box-shadow: 1rem 1rem 1rem -0.5rem var(--shadow-color);
 }
 
-.UserAssets{
-  width: auto;
+.UserAssetContainer{
   margin: 0 20vmin;
   margin-top: 5rem;
+  text-align: start;
+}
+
+.UserAssets{
+  width: auto;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
