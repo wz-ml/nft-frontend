@@ -143,7 +143,7 @@ const Donate = () => {
   
   // Close the dropdown if the user clicks outside of it
   window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
+    if (!event.target.matches('.allCharitiesButton')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
@@ -157,7 +157,6 @@ const Donate = () => {
 
 
   return(
-      
     <div>
      <h1>
         <br></br>
@@ -167,23 +166,20 @@ const Donate = () => {
     <h3 className="charitySelect">Select your Charity:</h3>
 
 <div className="dropdown">
-  <button className="dropbtn" onClick={showDropdownContent}>All Charities</button>
+  <button className="allCharitiesButton" onClick={showDropdownContent}>All Charities</button>
   <div className="dropdown-content" id="myDropdown">
-    <a href="#">Charity 1</a>
-    <a href="#">AVERYLONGCHARITYNAMEAVERYLONGCHARITYNAME</a>
-    <a href="#">Charity 3</a>
+    <a href="#">{((Object.keys(charityAddrs))[0])} </a>
+    <a href="#">{((Object.keys(charityAddrs))[1])}</a>
+    <a href="#">{((Object.keys(charityAddrs))[2])}</a>
   </div>
 </div>
 
-<div><br></br></div>
 
-<div className="donateButton">
-<button>
+<div className="donateButtonDiv">
+<button className="donateButton">
         DONATE 
     </button>
 </div>
-
-
 
     </div>
   );
