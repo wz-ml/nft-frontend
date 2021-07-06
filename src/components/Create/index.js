@@ -46,11 +46,13 @@ const Create = () => {
             {!imgPreview && (
               <>
               <p></p>
-              <label htmlFor="fileUpload" className="customFileUpload">Drag & drop file</label>
-              <input type="file" id="fileUpload" onChange={handleImageChange}/>
-              <div>
-              or <span className="fileTypeDescription">browse media on your device</span>
+              <label htmlFor="fileUpload" className="customFileUpload">
+                Drag & drop file
+                <div>
+                  or <span className="fileTypeDescription">browse media on your device</span>
                 </div>  
+              </label>
+              <input type="file" id="fileUpload" onChange={handleImageChange}/>
               </>
             )}
           </div>
