@@ -22,7 +22,7 @@ const Create = () => {
   
 
     return (
-        <div className = "createThing">
+      <div className = "createThing">
  
         <div className = "createNewItem_text">
             <h1>Create new item</h1>
