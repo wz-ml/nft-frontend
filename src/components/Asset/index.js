@@ -12,7 +12,7 @@ import { OrderSide } from 'opensea-js/lib/types';
 import "./index.css"
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { getCookie } from '../../constants';
+import { getCookie, smartContract } from '../../constants';
 
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
@@ -32,6 +32,19 @@ const Asset = () => {
   const [isOnSale, setSaleState] = useState(false);
   const [tokenPrice, setTokenPrice] = useState(-1);
 
+  const [transactionBusy, setTransactionBusy] = useState(false);
+
+  function addSmartContractListener(){
+    smartContract.events.Approval({}, (err, data) => {
+      if(err){
+        console.error(err);
+        return;
+      }
+
+      console.log(data);
+    })
+  }
+
   /**
    * Uses React effects perform one-time actions.
    *
@@ -39,6 +52,7 @@ const Asset = () => {
    */
   useEffect(() => {
     window.addEventListener("load", getDetails);
+    addSmartContractListener();
   });
 
   /**
