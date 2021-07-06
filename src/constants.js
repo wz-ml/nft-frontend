@@ -4,7 +4,7 @@ import { PortisProvider } from 'portis'
 
 import env from "react-dotenv";
 import {createAlchemyWeb3} from "@alch/alchemy-web3"
-const contractABI = require("../../token_abi.json");
+const contractABI = require("./token_abi.json");
 const contractAddress = "0x5f0ea95e05af06499b4f91a772f781816122dd54";
 const alchemyKey = env.ALCHEMY_KEY;
 const web3 = createAlchemyWeb3(alchemyKey);
