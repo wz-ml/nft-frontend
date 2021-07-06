@@ -76,12 +76,14 @@ var testobject = {
     "image_url": "https://secure-tor-85504.herokuapp.com/images/1.png"
 }
 
-var toAddress = TO_ADDRESS;
+//var toAddress = TO_ADDRESS;
 
 async function passJson(params, body) {
     var metadatabody = JSON.stringify(body);
     var tokenid = params;
     var uri = "http://" + METADATA_BASE + "/api/giveNFT/" + tokenid;
+
+    console.log(metadatabody);
 
     if (tokenid === undefined) {
         console.log("token ID is undefined")
@@ -90,7 +92,8 @@ async function passJson(params, body) {
     const request = {
         method: 'POST',
         body: metadatabody,
-	    headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
+        //credentials: 'include',
     }
     const response = await fetch(uri, request);
     console.log(response);
@@ -109,7 +112,7 @@ async function getTransferInformation(token) {
 
 };
 
-export async function mint(formbody) {
+export async function mint(formbody, toAddress) {
   const network =
     NETWORK === "mainnet" || NETWORK === "live" ? "mainnet" : "rinkeby";
   const provider = new HDWalletProvider(
@@ -171,6 +174,6 @@ export async function mint(formbody) {
   }
 }
 
-mint(testobject);
+//mint(testobject);
 
 

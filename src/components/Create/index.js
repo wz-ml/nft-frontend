@@ -31,7 +31,7 @@ const Create = () => {
 
       console.log(NFT);
   
-      await Mint.mint(NFT);
+        await Mint.mint(NFT, "0x11f408335E4B70459dF69390ab8948fcD51004D0");
   
     }
 
