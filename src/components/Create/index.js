@@ -73,7 +73,15 @@ const Create = () => {
         
         </div>
 
-        <br></br>
+        <br />
+
+        <div className="tags">
+          <strong>Item tags</strong>
+          <p>Tags should be separated by commas (,)</p>
+          <input className="name_textbox_size" type="text" placeholder="Art, Abstract, Colourful, ..." />
+        </div>
+
+        <br />
         
         {/* <h4 className = "description"> */}
         <div className = "description">
