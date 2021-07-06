@@ -78,7 +78,7 @@ var testobject = {
 
 var toAddress = TO_ADDRESS;
 
-export async function passJson(params, body) {
+async function passJson(params, body) {
     var metadatabody = JSON.stringify(body);
     var tokenid = params;
     var uri = "http://" + METADATA_BASE + "/api/giveNFT/" + tokenid;

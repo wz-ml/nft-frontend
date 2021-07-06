@@ -21,6 +21,20 @@ const Create = () => {
       }
     };
 
+    async function createNFT(){
+
+      var NFT = {
+        "name": document.getElementById("nameField").value,
+        "description": document.getElementById("descriptionField").value,
+        "image_url": "https://secure-tor-85504.herokuapp.com/images/1.png" //temp until image hosting is implemented
+      }
+
+      console.log(NFT);
+  
+      await Mint.mint(NFT);
+  
+    }
+
     return (
         <div className = "createThing">
  
@@ -68,7 +82,7 @@ const Create = () => {
         {/* </div> */}
 
         {/* <div className = "name_textbox"> */}
-        <input className="name_textbox_size" type="text" placeholder="Item Name"></input>
+        <input className="name_textbox_size" id="nameField" type="text" placeholder="Item Name"></input>
         {/* </div> */}
         
         </div>
@@ -85,13 +99,13 @@ const Create = () => {
         <span style= {{color:"blue" }} > Markdown </span>
         syntax is supported.
         </p>
-        <textarea className="description_textbox" name="comment[body]" rows="1" cols="50" wrap="physical" id="comment_text_area" placeholder="Provide a detailed description of your item."></textarea>
+        <textarea className="description_textbox" name="comment[body]" rows="1" cols="50" wrap="physical" id="descriptionField" placeholder="Provide a detailed description of your item."></textarea>
 
         </div>
         {/* </h4> */}
 
       </form>
-      <button className="CreateButton">
+      <button className="CreateButton" onClick={() => createNFT()}>
         <Plus className="CreatePlus" />
         <p>Create Token</p>
       </button>
