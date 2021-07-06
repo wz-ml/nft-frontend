@@ -7,7 +7,27 @@ const Create = () => {
     const [error, setError] = useState(false);
   
     const handleImageChange = (e) => {
-      const selected = e.target.files[0];
+      e.preventDefault();
+      let selected = undefined;
+
+      if(e.target.files){
+        selected = e.target.files[0];
+      }
+
+      if(selected === undefined && e.dataTransfer.items){
+        if(e.dataTransfer.items[0].kind !== "file"){
+          return;
+        }
+
+        selected = e.dataTransfer.items[0].getAsFile();
+      }
+
+      if(selected === undefined){
+        selected = e.dataTransfer.items[0].name;
+      }
+
+      console.log(selected);
+
       const ALLOWED_TYPES = ["image/png" , "image/jpeg" , "image/jpg"];
       if(selected && ALLOWED_TYPES.includes(selected.type)){
         let reader = new FileReader();
@@ -20,6 +40,10 @@ const Create = () => {
       }
     };
   
+  const dragOverHandler = (evt) => {
+    console.log("upload occurring");
+    evt.preventDefault();
+  }
 
     return (
       <div className = "createThing">
@@ -37,7 +61,7 @@ const Create = () => {
         </div>
 
       <div className="App2">
-        <div className="container">
+        <div className="container" onDrop={handleImageChange} onDragOver={dragOverHandler}>
           {error && <p className="errorMsg">File not supported</p>}
           <div 
           className="imgPreview"
@@ -52,7 +76,7 @@ const Create = () => {
                   or <span className="fileTypeDescription">browse media on your device</span>
                 </div>  
               </label>
-              <input type="file" id="fileUpload" onChange={handleImageChange}/>
+              <input type="file" id="fileUpload" onChange={handleImageChange} />
               </>
             )}
           </div>
