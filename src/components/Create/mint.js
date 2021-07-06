@@ -113,6 +113,7 @@ async function getTransferInformation(token) {
 };
 
 export async function mint(formbody, toAddress) {
+
   const network =
     NETWORK === "mainnet" || NETWORK === "live" ? "mainnet" : "rinkeby";
   const provider = new HDWalletProvider(

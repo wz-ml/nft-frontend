@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Plus} from "react-bootstrap-icons";
 import "./index.css";
 import * as Mint from "./mint";
+import { getCookie } from '../../constants';
 
 const Create = () => {  
     const [imgPreview, setImgPreview] = useState(null);
@@ -30,8 +31,10 @@ const Create = () => {
       }
 
       console.log(NFT);
-  
-        await Mint.mint(NFT, "0x11f408335E4B70459dF69390ab8948fcD51004D0");
+
+      let userInfo = JSON.parse(getCookie("uid"));
+      
+      await Mint.mint(NFT, userInfo["walletAddress"]);
   
     }
 
