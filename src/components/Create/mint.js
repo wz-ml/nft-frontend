@@ -1,4 +1,5 @@
-const HDWalletProvider = require("truffle-hdwallet-provider");
+//const HDWalletProvider = require("truffle-hdwallet-provider");
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 const web3 = require("web3");
 const fetch = require('node-fetch');
 const MNEMONIC = "kitchen surprise flame reject catalog estate human brother boring they pretty tray";
