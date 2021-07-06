@@ -175,6 +175,37 @@ const Donate = () => {
 </div>
 
 
+
+
+<div className="thankYou">
+<h3>
+  Thank you for your kindness and generosity!
+  </h3>
+  <br></br>
+    <h4>Every donation counts, no matter how small!</h4>
+    <img className="generous" src="https://content.thriveglobal.com/wp-content/uploads/2020/02/be-generous-1.jpg?w=1550">
+</img>
+</div>
+
+
+
+<div className="nftInfo">
+<h3 className="nftName">*NFT NAME HERE*</h3>
+
+{/* <div> */}
+<img className="nftImg" src="https://cdn.vox-cdn.com/thumbor/_rw6XhJ3hVZ7_ThnekECYB0qhFo=/0x0:1252x974/1200x800/filters:focal(526x387:726x587)/cdn.vox-cdn.com/uploads/chorus_image/image/68904499/Screen_Shot_2021_03_02_at_3.21.50_PM.0.png">
+</img>
+{/* </div> */}
+</div>
+
+
+
+
+
+
+
+
+
 <div className="donateButtonDiv">
 <button className="donateButton">
         DONATE 

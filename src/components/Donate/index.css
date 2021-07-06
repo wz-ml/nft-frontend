@@ -71,14 +71,47 @@
       bottom: 0;
     }
 
-
   .donateButton {
       background-color: #3498DB;
       color: white;
       padding: 10px;
       font-size: 13px;
       cursor: pointer;
-
-
-      
   }
+  
+  .thankYou {
+    border: solid;
+    border-color: palegoldenrod;
+    /* margin-bottom: 16px; */
+    /* width: max-content; */
+    position: absolute;
+    right: 3.5vw;
+  }
+  
+  .generous {
+    margin-top: 2vh;
+    width: 16.5vw;
+    height: 11vw;
+  }
+
+.nftInfo {
+  border: solid;
+  border-color: turquoise;
+  margin-left: 4vw;
+  max-width: max-content;
+}
+
+.nftName {
+  text-align: center;
+  /* margin-left: 4vw; */
+}
+
+.nftImg {
+  width: 15vw;
+  height: 24vh;
+  float: left;
+  margin-top: 1vh;
+  /* margin-right: 90vw; */
+  /* margin-left: 3.5vw; */
+}
+
