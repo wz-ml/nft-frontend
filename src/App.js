@@ -9,6 +9,7 @@ import Asset from "./components/Asset";
 import Create from './components/Create';
 import User from "./components/User";
 import Sell from "./components/Sell"
+import Progress_bar from "./components/Progress_bar"
 import './App.css';
 
 import {getCookie} from "./constants.js";
@@ -116,6 +117,9 @@ function App(){
             <li>
               <Link to="/Sell">Sell</Link>
             </li>
+            <li>
+              <Link to="/Progress_bar">Progress_bar</Link>
+            </li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
@@ -124,6 +128,7 @@ function App(){
           <Route path="/Create" component={Create}/>
           <Route path="/user" component={User} />
           <Route path="/Sell" component={Sell} />
+          <Route path="/Progress_bar" component={Progress_bar} />
         </div>
       </Router>
     </div>
