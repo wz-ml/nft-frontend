@@ -14,15 +14,6 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { getCookie } from '../../constants';
 
-import env from "react-dotenv";
-import {createAlchemyWeb3} from "@alch/alchemy-web3"
-const contractABI = require("../../token_abi.json");
-const contractAddress = "0x5f0ea95e05af06499b4f91a772f781816122dd54";
-const alchemyKey = env.ALCHEMY_KEY;
-const web3 = createAlchemyWeb3(alchemyKey);
-
-const smartContract = new web3.eth.Contract(contractABI, contractAddress);
-
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
   "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",

@@ -2,6 +2,15 @@ import * as Web3 from 'web3'
 import BigNumber from 'bignumber.js'
 import { PortisProvider } from 'portis'
 
+import env from "react-dotenv";
+import {createAlchemyWeb3} from "@alch/alchemy-web3"
+const contractABI = require("../../token_abi.json");
+const contractAddress = "0x5f0ea95e05af06499b4f91a772f781816122dd54";
+const alchemyKey = env.ALCHEMY_KEY;
+const web3 = createAlchemyWeb3(alchemyKey);
+
+export const smartContract = new web3.eth.Contract(contractABI, contractAddress);
+
 export const OPENSEA_URL = "https://opensea.io"
 export const OPENSEA_JS_URL = "https://github.com/ProjectOpenSea/opensea-js"
 export const GITHUB_URL = "https://github.com/BCharity-Net/nft-frontend"
