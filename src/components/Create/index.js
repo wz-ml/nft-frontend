@@ -35,6 +35,8 @@ const Create = () => {
           setImgPreview(reader.result);
         }
         reader.readAsDataURL(selected);
+
+        setError(false);
       } else {
         setError(true);
       }
