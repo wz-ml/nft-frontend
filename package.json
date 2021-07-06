@@ -16,6 +16,7 @@
     "url": "git+https://github.com/BCharity-Net/nft-frontend.git"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.1.1",
     "@metamask/detect-provider": "^1.2.0",
     "axios": "^0.21.1",
     "bignumber.js": "^8.0.1",
