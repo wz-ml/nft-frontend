@@ -44,6 +44,11 @@
     "eslint-plugin-react": "^7.10.0",
     "react-scripts": "^2.0.0-next.a671462c"
   },
+  "react-dotenv": {
+    "whitelist": [
+      "ALCHEMY_KEY"
+    ]
+  },
   "license": "MIT",
   "browserslist": {
     "development": [
