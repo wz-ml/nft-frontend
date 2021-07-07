@@ -112,6 +112,7 @@ const Donate = () => {
         </form>
       </div>
     );
+  }
 
   function renderDonateToggle(){
     const charities = Object.entries(charityAddrs);
