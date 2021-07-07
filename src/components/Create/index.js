@@ -3,6 +3,7 @@ import {Plus} from "react-bootstrap-icons";
 import "./index.css";
 import * as Mint from "./mint";
 import { getCookie } from '../../constants';
+import fetch from "node-fetch";
 
 const Create = () => {  
     const [imgPreview, setImgPreview] = useState(null);
