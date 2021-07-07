@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Plus} from "react-bootstrap-icons";
 import "./index.css";
 
 const Create = () => {  
@@ -24,10 +25,9 @@ const Create = () => {
         <div className = "createThing">
  
         <div className = "createNewItem_text">
-            <h1>
-            Create new item
-            </h1>
+            <h1>Create new item</h1>
         </div>
+
         <div className="file_types">
         {/* <h4> */}
         <strong className = "file_descrip">Use an image as your NFT!</strong>
@@ -35,19 +35,22 @@ const Create = () => {
         File types supported: JPG, PNG, JPEG
         {/* </h4> */}
         </div>
+
       <div className="App2">
         <div className="container">
           {error && <p className="errorMsg">File not supported</p>}
           <div 
           className="imgPreview"
-          style= {{background: imgPreview ? `url("${imgPreview}")no-repeat center/cover` : "#131313"}}
+          style= {{background: imgPreview ? `url("${imgPreview}")no-repeat center/cover` : "#ffffff"}}
           >
             {!imgPreview && (
               <>
-              <p>Add an image</p>
-              <label htmlFor="fileUpload" className="customFileUpload">Choose file</label>
+              <p></p>
+              <label htmlFor="fileUpload" className="customFileUpload">Drag & drop file</label>
               <input type="file" id="fileUpload" onChange={handleImageChange}/>
-              <span>(jpg, jpeg or png)</span>
+              <div>
+              or <span className="fileTypeDescription">browse media on your device</span>
+                </div>  
               </>
             )}
           </div>
@@ -56,7 +59,8 @@ const Create = () => {
           )}
         </div>
       </div>
-          <form>
+
+      <form>
         <br></br><br></br>
         <div className = "name">
         {/* <div className = "name_text"> */}
@@ -73,26 +77,29 @@ const Create = () => {
         
         {/* <h4 className = "description"> */}
         <div className = "description">
-        <strong>Description</strong>
+        <strong>Description</strong><br></br>
 
+      
         <p className="description_text">
         The description will be included on the item's detail page underneath its image.
         <span style= {{color:"blue" }} > Markdown </span>
         syntax is supported.
         </p>
-        
         <textarea className="description_textbox" name="comment[body]" rows="1" cols="50" wrap="physical" id="comment_text_area" placeholder="Provide a detailed description of your item."></textarea>
+
         </div>
         {/* </h4> */}
 
-        </form>
+      </form>
+      <button className="CreateButton">
+        <Plus className="CreatePlus" />
+        <p>Create Token</p>
+      </button>
 
-        </div>
+    </div>
 
-    );
+  );
   
-    };
-
+};
 
 export default Create;
-// IMPORTANT TIMESTAMP: 10:14

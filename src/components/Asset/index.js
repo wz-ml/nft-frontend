@@ -29,6 +29,7 @@ const Asset = () => {
   const [tokenOwnerId, setTokenOwnerId] = useState("");
   const [chosenCharity, setChosenCharity] = useState("");
   const [schemaName, setSchemaName] = useState("");
+  const [isOnSale, setSaleState] = useState(false);
   const [tokenPrice, setTokenPrice] = useState(-1);
 
   /**
@@ -70,6 +71,7 @@ const Asset = () => {
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
     setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
+    setSaleState(currentlyOnSale(tokenData));
 
     if(tokenData.orders.length > 0){
       setTokenPrice(tokenData.orders[0].base_price * Math.pow(10, -18));
@@ -78,6 +80,27 @@ const Asset = () => {
     console.log(tokenData);
   }
 
+  function scalePhoto(event){
+    let height = event.target.height;
+    let width = event.target.width;
+
+    if(height < 100 && width < 100){
+      event.target.classList.add("TinyImg");
+    }
+
+    event.target.classList.add("AssetImage");
+  }
+   
+  function currentlyOnSale(tokenData){ //checks if the displayed NFT is listed for sale
+
+    var arrayLength = tokenData.orders.length;
+    for (var i = 0; i < arrayLength; i++){
+      if (tokenData.orders[i].side === 1){ //if order is a sell listing
+        return true;
+      }
+    }
+
+  } 
 
   function renderBuyToggle(){
     return(
@@ -90,6 +113,14 @@ const Asset = () => {
       <span>
         <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
         <input type="text" id="salePrice" defaultValue={"0"} placeholder="sale price" />
+      </span>
+    );
+  }
+
+  function renderCancelToggle(){
+    return(
+      <span>
+        <button type="button" onClick={() => cancelOrder()} className="button"> Cancel Sell Listing</button>
       </span>
     );
   }
@@ -175,6 +206,26 @@ const Asset = () => {
     const transactionHash = await seaport.fulfillOrder({order, accountAddress});
   }
 
+  async function cancelOrder(){
+
+    const seaport = await getOpenSeaPort()
+
+    let userInfo = JSON.parse(getCookie("uid"));
+    const accountAddress = userInfo["walletAddress"];
+
+    let urlParts = window.location.pathname.split('/');
+    const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+    const order = await seaport.api.getOrder({
+      side: OrderSide.Sell,
+      asset_contract_address,
+      token_id,
+        });
+
+    const transactionHash = await seaport.cancelOrder({order, accountAddress});
+
+  }
+
   async function makeTransfer(){
 
     const seaport = await getOpenSeaPort();
@@ -208,17 +259,25 @@ const Asset = () => {
     const userAddress = userInfo["walletAddress"];
     var isOwner = false;
 
-    if (userAddress === tokenOwnerId){
+    if (userAddress === tokenOwnerId){ //check if the user owns the NFT displayed
       isOwner = true;
     }
 
-    if(isOwner){
-      return (
-        <div className="AssetButtonContainer">
-          {renderDonateToggle()}
-          {renderSellToggle()}
-        </div>
-      );
+    if(isOwner){ 
+       if(isOnSale){
+        return (
+            <div className="AssetButtonContainer">
+              {renderCancelToggle()}
+            </div>
+          );
+        } else {
+          return (
+            <div className="AssetButtonContainer">
+              {renderDonateToggle()}
+              {renderSellToggle()}
+            </div>
+          );    
+       }
     }
 
     return (
@@ -235,11 +294,11 @@ const Asset = () => {
           <h1 className="tokenName">{tokenName}</h1>
           <p className="tokenCollection"><i>{tokenCollection}</i></p>
           <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
-          <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
+          <img src={imgUrl} alt={"Asset Image"} onLoad={scalePhoto}/>
           <div className="priceField">
             {tokenPrice === -1
               ? <p><i>This is not currently listed for sale</i></p>
-              : <p>Ξ {tokenPrice}</p>
+              : <h2>Ξ {tokenPrice.toFixed(3)}</h2>
             }
           </div>
           <span className="renderToggles">{renderToggles()}</span>
