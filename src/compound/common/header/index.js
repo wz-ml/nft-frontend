@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './bcharity_logo.png';
-import { ReactComponent as LoginIcon } from './login.svg';
 import './Header.css';
 
 function Header(){
@@ -28,60 +27,29 @@ function Header(){
                 <div className="navbar-item" onClick={updateNavbar}>Marketplace</div>
                 <div className="navbar-item" onClick={updateNavbar}>Resources</div>
             </div>
-            <div className="navbar_search">
+            <div className = "navbar_search">
                 <input type="text" placeholder="Search..." />
             </div>
-            <Login>
-                <Login_item icon={<LoginIcon />}>
-                    <DropdownMenu />
-                </Login_item>
-            </Login>
         </section>
     )
-}
 
-function Login(props) {
-    return (
-        <div className="login-section">
-            <ul className="login-div">{ props.children }</ul>
-        </div>
-    );
-}
-
-function Login_item(props){
-
-    const [open, setOpen] = useState(false);
-
-    return (
-        <li className="login-item">
-            <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
-                {props.icon}
-            </a>
-
-            {open && props.children}
-        </li>
-    )
-}
-
-function DropdownMenu(){
-
-    function DropdownItem(props){
-        return (
-            <a href="#" className="menu-item">
-                <span className="icon-button">{props.leftIcon}</span>
-                {props.children}
-                <span className="icon-right">{props.rightIcon}</span>
-            </a>
-        );
-    }
-
-    return (
-        <div className="dropdown">
-            <DropdownItem>My Profile</DropdownItem>
-            <DropdownItem>My NFT</DropdownItem>
-            <DropdownItem>Log out</DropdownItem>
-        </div>
-    )
+    /*
+    return (        
+        <section className = "header">
+            <section className = "header-top__logo">
+                <img src="./bcharity_logo.png"alt="bcharity_logo"></img>
+            </section>
+            <section className = "header-top__BCHARITY">
+                BCHARITY
+            </section>
+            <section className = "header-top__navbar">
+                <Navbar />
+            </section>
+            <section classNme = "header-top__search">
+                <SearchFilter />
+            </section>
+        </section>
+    )*/
 }
 
 export default Header;

@@ -1,0 +1,62 @@
+.charitySelect {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    /* border: none; */
+    cursor: pointer;
+    border: solid;
+    border-color: blueviolet;
+}
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    border: dashed;
+    border-color: orange;
+    margin-bottom: 60px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    /* position: absolute; */
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: auto;
+    border: solid;
+    border-color: red;
+}
+  
+  .dropdown-content a {
+    color: black;
+    padding: 8px 5px 8px 5px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #c3c3c3;}
+  
+  .show {display: block;}
+
+
+  .donateButton {
+      display: block;
+      margin: auto;
+      border: double;
+      border-color: lightgreen;
+      /* width: max-content; */
+      
+  }

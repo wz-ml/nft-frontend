@@ -11,6 +11,7 @@ import "./index.css";
 import {getCookie} from "../../constants";
 import fetch from "node-fetch"
 import AssetMetadata from "../common/assetInfo/AssetMetadata.js";
+import {Plus} from "react-bootstrap-icons";
 
 const User = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
@@ -21,6 +22,10 @@ const User = () => {
 
   useEffect(() => {
     let userCookie = getCookie("uid");
+
+    if(userCookie === undefined){
+      window.location.reload(false);
+    }
 
     let userData = JSON.parse(userCookie);
 
@@ -87,7 +92,7 @@ const User = () => {
       <div className="UserInfoContainer">
         <div className="UserStyleContainer" 
           style={{
-            backgroundImage: `url(${"https://cdn.pixabay.com/photo/2015/04/05/16/12/lego-708088_960_720.jpg"}`,
+            backgroundImage: `url(${"https://cdn.pixabay.com/photo/2015/04/05/16/12/lego-708088_960_720.jpg"})`,
           }}
         >
           <div className="ProfileInfo">
@@ -97,9 +102,15 @@ const User = () => {
             <p>&nbsp;{walletAddress}</p>
           </div>
         </div>
-        <h3><i>Your Assets</i></h3>
-        <div className="UserAssets">
-          {userAssets}
+        <div className="UserAssetContainer">
+          <h2>Your Assets</h2>
+          <button className="CreateButton">
+            <Plus className="CreatePlus" />
+            <p>Mint a new Token </p>
+          </button>
+          <div className="UserAssets">
+            {userAssets}
+          </div>
         </div>
       </div>
     );
