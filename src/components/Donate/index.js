@@ -113,7 +113,38 @@ const Donate = () => {
       </div>
     );
 
+  function renderDonateToggle(){
+    const charities = Object.entries(charityAddrs);
+    
+    for (let charity in charities) {
+
+        charities.push(createCharityRadio(charity));
+
     }
+
+/*    const charities = Object.keys(charityAddrs);
+    console.log(charities);
+    charities.forEach((key, index) => {
+        console.log(`${key}: ${charityAddrs[key]}`);
+    });
+    const charities = [];
+    for (let charity in charityAddrs) {
+        charities.push(createCharityRadio(charity));
+        charities.push({charity: value.charity});
+        charities.push(", ");
+    } */
+
+
+
+    return (
+        <div className="donateContainer">
+            <button className="button" onClick={() => makeTransfer()}>Donate</button>
+            <form className="charitySelection">
+              {charities}
+            </form>
+        </div>
+    );
+  }
 
   async function makeTransfer(){
 
@@ -142,18 +173,59 @@ const Donate = () => {
     });
   }
 
+  function showDropdownContent() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+
   return(
     <div>
-      <h2>Donate Page</h2>
+      <h1>
+        <br></br>
+          Donate Your NFT Here!
+      </h1>
+      {/* {renderDonateToggle()} */}
       <h1 className="tokenName">{tokenName}</h1>
       <p className="tokenCollection"><i>{tokenCollection}</i></p>
       <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
       {renderDonateToggle(charityAddrs)}
-      
+      <h3 className="charitySelect">Select your Charity:</h3>
+
+      <div className="dropdown">
+        <button className="dropbtn" onClick={showDropdownContent}>All Charities</button>
+        <div className="dropdown-content" id="myDropdown">
+          <a href="#">Charity 1</a>
+          <a href="#">AVERYLONGCHARITYNAMEAVERYLONGCHARITYNAME</a>
+          <a href="#">Charity 3</a>
+        </div>
+      </div>
+
+      <div><br></br></div>
+
+      <div className="donateButton">
+          <button>
+              DONATE 
+          </button>
+      </div>
+
+
+
     </div>
-    
-  )
-}
+  );
+};
 
 export default Donate;
-
