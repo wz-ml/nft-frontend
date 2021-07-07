@@ -136,7 +136,6 @@ export async function mint(formbody, toAddress) {
       { gasLimit: "1000000" }
     );
 
-
     // Creatures issued directly to the owner.
     for (var i = 0; i < NUM_CREATURES; i++) {
       const result = await factoryContract.methods
@@ -173,6 +172,10 @@ export async function mint(formbody, toAddress) {
       "Add NFT_CONTRACT_ADDRESS or FACTORY_CONTRACT_ADDRESS to the environment variables"
     );
   }
+
+  web3Instance.disconnect();
+  provider.engine.stop();
+
 }
 
 //mint(testobject);
