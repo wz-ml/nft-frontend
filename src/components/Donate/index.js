@@ -1,3 +1,13 @@
+/**
+ * @author Stuart Chen
+ * 
+ * @version 2021.07.07 - Connection to asset page
+ * 
+ * 2021.07.03 - Base development
+ * 
+ * @since 2021.07.03
+ */
+
 import React from "react";
 import {useEffect, useState} from "react";
 import fetch from "node-fetch";

@@ -87,10 +87,17 @@ const Asset = () => {
   }
 
   function renderSellToggle(){
+    let urlParts = window.location.pathname.split('/');
+    const [collectionAddr, tokenID] = urlParts.splice(-2);
+
     return(
       <span>
-        <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
-        <input type="text" id="salePrice" defaultValue={"0"} placeholder="sale price" />
+        <a href={`/Sell/${collectionAddr}/${tokenID}`}>
+          <button id="button" className="button">Sell</button>
+        </a>
+        
+      {/*  onClick={() => makeSellOrder()} className="button"> Sell</button>
+        <input type="text" id="salePrice" defaultValue={"0"} placeholder="sale price" />*/}
       </span>
     );
   }
