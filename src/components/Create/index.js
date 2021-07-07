@@ -31,6 +31,18 @@ const Create = () => {
 
       console.log(folderName);
 
+      const body = new FormData
+      body.append("file", "@cat.png")
+
+      fetch("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/Z29vZGJ5ZV93b3JsZA/cat.png", {
+          body,
+          headers: {
+              "Content-Type": "multipart/form-data"
+          },
+          method: "POST"
+      })
+
+
       var NFT = {
         "name": document.getElementById("nameField").value,
         "description": document.getElementById("descriptionField").value,

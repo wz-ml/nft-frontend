@@ -173,7 +173,6 @@ export async function mint(formbody, toAddress) {
     );
   }
 
-  web3Instance.disconnect();
   provider.engine.stop();
 
 }
