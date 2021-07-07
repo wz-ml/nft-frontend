@@ -11,6 +11,8 @@
     grid-template-columns: 4fr 0.5fr;
     /* margin-left: auto; */
     border-radius: 1rem;
+
+    box-shadow: 1rem 1rem 1rem -0.75rem var(--shadow-color); /* change 1: added box-shadow */
 }
 
 .img-container{
@@ -22,9 +24,21 @@
     background-image: var(--blue-gradient);
 }
 
-.card-image{
+.image-link {
+    display: grid;
+    place-items: center;            /* CHANGE 2 (entire image link) */
     height: 100%;
-    width: 100%;
+}
+
+
+.card-image{
+    min-height: 100%;
+    min-width: 100%;
+    image-rendering: auto; /* Change 3: applied min- to both height and width, also added image-rendering */
+}
+
+.tiny-img {
+    image-rendering: crisp-edges !important; /* Change 4: added the .tiny-img */
 }
 
 .card-body{
@@ -34,6 +48,7 @@
 
 .card-text{
     /*padding: 0px 0px 0px 10px;*/
+    padding-left: 1.5rem; /* Change 5: Added padding-left */
     transform: rotate(90deg);
     /* height: 50px; */
  
@@ -44,7 +59,10 @@
   text-decoration: none;
 }
 
+.card-text h4 /* Change 6: added card-text's h4, before it used to be only h5 */
 .card-text h5{
-    width: 16rem;
+    width: 16.0rem;
+    font-weight: normal;
+    text-align: left;
     /* transform: rotate(180deg); */
 }
