@@ -27,7 +27,7 @@ const Create = () => {
       let userData = JSON.parse(getCookie("uid"));
       let walletAddress = userData.walletAddress;
 
-      let folderName = btoa(userData.substring(5) + userData.subString(-5));
+      let folderName = btoa(walletAddress.substring(0,5) + walletAddress.substring(10,14));
 
       console.log(folderName);
 
