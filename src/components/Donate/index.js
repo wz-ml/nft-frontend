@@ -124,39 +124,6 @@ const Donate = () => {
     );
   }
 
-  function renderDonateToggle(){
-    const charities = Object.entries(charityAddrs);
-    
-    for (let charity in charities) {
-
-        charities.push(createCharityRadio(charity));
-
-    }
-
-/*    const charities = Object.keys(charityAddrs);
-    console.log(charities);
-    charities.forEach((key, index) => {
-        console.log(`${key}: ${charityAddrs[key]}`);
-    });
-    const charities = [];
-    for (let charity in charityAddrs) {
-        charities.push(createCharityRadio(charity));
-        charities.push({charity: value.charity});
-        charities.push(", ");
-    } */
-
-
-
-    return (
-        <div className="donateContainer">
-            <button className="button" onClick={() => makeTransfer()}>Donate</button>
-            <form className="charitySelection">
-              {charities}
-            </form>
-        </div>
-    );
-  }
-
   async function makeTransfer(){
 
     const seaport = await getOpenSeaPort();
