@@ -40,8 +40,6 @@ function App(){
     let expiryDate = new Date();
     expiryDate.setDate(new Date().getDate() + 1);
 
-    // delete existing cookie if it exists
-    document.cookie = "uid=\"\"; max-age=-1"
     document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
 
     // console.log(JSON.parse(getCookie("uid"))); // DEBUG
