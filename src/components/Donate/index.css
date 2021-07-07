@@ -11,8 +11,8 @@
     font-size: 16px;
     /* border: none; */
     cursor: pointer;
-    border: solid;
-    border-color: blueviolet;
+    /* border: solid;
+    border-color: blueviolet; */
 }
   
   .dropbtn:hover, .dropbtn:focus {
@@ -20,10 +20,11 @@
   }
   
   .dropdown {
+    margin-top: 6px;
     position: relative;
     display: inline-block;
-    border: dashed;
-    border-color: orange;
+    /* border: dashed;
+    border-color: orange; */
     /* margin-bottom: 300px; */
   }
   
@@ -36,8 +37,8 @@
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     margin: auto;
-    border: solid;
-    border-color: red;
+    /* border: solid;
+    border-color: red; */
     
     position: absolute;
     z-index: 1;
@@ -64,11 +65,11 @@
   .donateButtonDiv {
       display: block;
       margin: auto;
-      border: double;
-      border-color: lightgreen;
+      /* border: double;
+      border-color: lightgreen; */
       position: fixed;
       width: 100%;
-      bottom: 0;
+      bottom: 3.5vh;
     }
 
   .donateButton {
@@ -80,23 +81,28 @@
   }
   
   .thankYou {
-    border: solid;
-    border-color: palegoldenrod;
+    /* border: solid;
+    border-color: palegoldenrod; */
     /* margin-bottom: 16px; */
     /* width: max-content; */
     position: absolute;
     right: 3.5vw;
   }
   
+  .thankYou_sub {
+    margin-top: 4px;
+  }
+
   .generous {
-    margin-top: 2vh;
+    margin-top: 6px;
     width: 16.5vw;
     height: 11vw;
   }
 
 .nftInfo {
-  border: solid;
-  border-color: turquoise;
+  margin-top: 4px;
+  /* border: solid;
+  border-color: turquoise; */
   margin-left: 4vw;
   max-width: max-content;
 }
@@ -110,7 +116,7 @@
   width: 15vw;
   height: 24vh;
   float: left;
-  margin-top: 1vh;
+  margin-top: 3px;
   /* margin-right: 90vw; */
   /* margin-left: 3.5vw; */
 }
