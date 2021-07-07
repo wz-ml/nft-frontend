@@ -111,7 +111,7 @@ const Asset = () => {
   function renderSellToggle(){
     return(
       <span>
-        <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
+        <button type="button" id="sellButton"  onClick={() => makeSellOrder()} className="button"> Sell</button>
         <input type="text" id="salePrice" defaultValue={"0"} placeholder="sale price" />
       </span>
     );
@@ -186,6 +186,7 @@ const Asset = () => {
     accountAddress,
     startAmount: getSalePrice()})
 
+    document.getElementById("sellButton").innerHTML = "NFT listed for sale";
 
   }
 
