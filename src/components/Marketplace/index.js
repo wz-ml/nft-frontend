@@ -60,4 +60,3 @@ export default class Marketplace extends React.Component {
     )
   }
 }
-
