@@ -1,11 +1,11 @@
 import React from "react";
 import {useEffect, useState} from "react";
+import fetch from "node-fetch";
 
+import { OrderSide } from 'opensea-js/lib/types';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { getCookie } from '../../constants';
-
-
 
 var charityAddrs = {
     "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
@@ -37,13 +37,12 @@ const Donate = () => {
   /**
    * Gets the details of the connected NFT, found within the url.
    * A valid NFT collection address and tokenID are expected within
-   * the url in the format:
+   * the url in the format: 
    * <code>https://(URL)/asset/(Collection Address)/(tokenID)</code>
    *
    * Will fetch the data needed from the opensea API and update the page.
    */
-
-  async function getDetails(){
+   async function getDetails(){
     let urlParts = window.location.pathname.split('/');
     const [collectionAddr, tokenID] = urlParts.splice(-2);
 
@@ -152,7 +151,9 @@ const Donate = () => {
       {renderDonateToggle(charityAddrs)}
       
     </div>
+    
   )
 }
 
 export default Donate;
+

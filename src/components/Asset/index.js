@@ -21,6 +21,7 @@ var charityAddrs = {
 }
 
 const Asset = () => {
+  
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
   const [tokenName, setTokenName] = useState("");
@@ -127,10 +128,13 @@ const Asset = () => {
       charities.push(createCharityRadio(charity));
     }
 
+    let urlParts = window.location.pathname.split('/');
+    const [collectionAddr, tokenID] = urlParts.splice(-2);
+
     return(
       <div className="donateContainer">
-        <a href="/Donate">
-          <button className="button">Donate</button>
+        <a href={`/Donate/${collectionAddr}/${tokenID}`}>
+          <button id="button" className="button">Donate</button>
         </a>
         <form className="charitySelection">
           {charities}
