@@ -7,7 +7,27 @@ const Create = () => {
     const [error, setError] = useState(false);
   
     const handleImageChange = (e) => {
-      const selected = e.target.files[0];
+      e.preventDefault();
+      let selected = undefined;
+
+      if(e.target.files){
+        selected = e.target.files[0];
+      }
+
+      if(selected === undefined && e.dataTransfer.items){
+        if(e.dataTransfer.items[0].kind !== "file"){
+          return;
+        }
+
+        selected = e.dataTransfer.items[0].getAsFile();
+      }
+
+      if(selected === undefined){
+        selected = e.dataTransfer.items[0].name;
+      }
+
+      console.log(selected);
+
       const ALLOWED_TYPES = ["image/png" , "image/jpeg" , "image/jpg"];
       if(selected && ALLOWED_TYPES.includes(selected.type)){
         let reader = new FileReader();
@@ -15,14 +35,20 @@ const Create = () => {
           setImgPreview(reader.result);
         }
         reader.readAsDataURL(selected);
+
+        setError(false);
       } else {
         setError(true);
       }
     };
   
+  const dragOverHandler = (evt) => {
+    console.log("upload occurring");
+    evt.preventDefault();
+  }
 
     return (
-        <div className = "createThing">
+      <div className = "createThing">
  
         <div className = "createNewItem_text">
             <h1>Create new item</h1>
@@ -37,7 +63,7 @@ const Create = () => {
         </div>
 
       <div className="App2">
-        <div className="container">
+        <div className="container" onDrop={handleImageChange} onDragOver={dragOverHandler}>
           {error && <p className="errorMsg">File not supported</p>}
           <div 
           className="imgPreview"
@@ -46,11 +72,13 @@ const Create = () => {
             {!imgPreview && (
               <>
               <p></p>
-              <label htmlFor="fileUpload" className="customFileUpload">Drag & drop file</label>
-              <input type="file" id="fileUpload" onChange={handleImageChange}/>
-              <div>
-              or <span className="fileTypeDescription">browse media on your device</span>
+              <label htmlFor="fileUpload" className="customFileUpload">
+                Drag & drop file
+                <div>
+                  or <span className="fileTypeDescription">browse media on your device</span>
                 </div>  
+              </label>
+              <input type="file" id="fileUpload" onChange={handleImageChange} />
               </>
             )}
           </div>
@@ -73,7 +101,15 @@ const Create = () => {
         
         </div>
 
-        <br></br>
+        <br />
+
+        <div className="tags">
+          <strong>Item tags</strong>
+          <p>Tags should be separated by commas (,)</p>
+          <input className="name_textbox_size" type="text" placeholder="Art, Abstract, Colourful, ..." />
+        </div>
+
+        <br />
         
         {/* <h4 className = "description"> */}
         <div className = "description">
