@@ -13,9 +13,6 @@ import './Sell.css'
 function Sell(){
 
     const[data, setData] = useState(null)
-
-    const button = document.querySelector('button')
-    
     
     function changeData(val){
         setData(val.target.value);
