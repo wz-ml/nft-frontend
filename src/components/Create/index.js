@@ -24,6 +24,12 @@ const Create = () => {
     };
 
     async function createNFT(){
+      let userData = JSON.parse(getCookie("uid"));
+      let walletAddress = userData.walletAddress;
+
+      let folderName = btoa(userData.substring(5) + userData.subString(-5));
+
+      console.log(folderName);
 
       var NFT = {
         "name": document.getElementById("nameField").value,
