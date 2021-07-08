@@ -4,6 +4,7 @@ import "./index.css";
 import * as Mint from "./mint";
 import { getCookie } from '../../constants';
 import fetch from "node-fetch";
+import { v4 as uuidv4 } from 'uuid';
 
 const Create = () => {  
     const [imgPreview, setImgPreview] = useState(null);
@@ -27,14 +28,18 @@ const Create = () => {
       let userData = JSON.parse(getCookie("uid"));
       let walletAddress = userData.walletAddress;
 
-      let folderName = btoa(walletAddress.substring(0,5) + walletAddress.substring(10,14));
+      let folderName = btoa(walletAddress.substring(0, 5) + walletAddress.substring(10, 14));
+      let fileData = document.getElementById("fileUpload").value;
+      let extension = uuidv4();
 
       console.log(folderName);
 
       const body = new FormData
-      body.append("file", "@cat.png")
+      body.append("file", fileData)
 
-      fetch("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/Z29vZGJ5ZV93b3JsZA/cat.png", {
+      const address = ("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/" + folderName + "/" + extension)
+
+      fetch(address, {
           body,
           headers: {
               "Content-Type": "multipart/form-data"
