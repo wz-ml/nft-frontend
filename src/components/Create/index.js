@@ -25,46 +25,46 @@ const Create = () => {
     };
 
     async function createNFT(){
-      let userData = JSON.parse(getCookie("uid"));
-      let walletAddress = userData.walletAddress;
+        let userData = JSON.parse(getCookie("uid"));
+        let walletAddress = userData.walletAddress;
 
-      let folderName = btoa(walletAddress.substring(0, 5) + walletAddress.substring(10, 14));
-      //let fileData = document.getElementById("fileUpload").target.files[0];
-      let fileData = "./2.png"
-      let extension = uuidv4();
+        let folderName = btoa(walletAddress.substring(0, 5) + walletAddress.substring(10, 14));
+        //let fileData = document.getElementById("fileUpload").target.files[0];
+        let fileData = "./2.png"
+        let extension = uuidv4();
 
-      console.log("folder name is " + folderName);
-      console.log("extension name is " + extension);
-      console.log("file data is " + fileData);
+        console.log("folder name is " + folderName);
+        console.log("extension name is " + extension);
+        console.log("file data is " + fileData);
 
 
-      const inbody = new FormData
-      inbody.append("file", fileData)
-
-      
-      const address = ("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/" + folderName + "/" + extension)
-      const request = {
-          body: inbody,
-          method: "POST"
-      }
-
-      console.log(request);
-
-      fetch(address, request).then((Response) => { console.log(Response) });
+        const inbody = new FormData;
+        inbody.append("file", fileData);
 
       
+        const address = ("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/" + folderName + "/" + extension);
+        const request = {
+            body: inbody,
+            method: "POST"
+        };
 
-      var NFT = {
-        "name": document.getElementById("nameField").value,
-        "description": document.getElementById("descriptionField").value,
-        "image_url": address //temp until image hosting is implemented
-      }
+        console.log(request);
 
-      console.log(NFT);
+        fetch(address, request).then((Response) => { console.log(Response) });
 
-      let userInfo = JSON.parse(getCookie("uid"));
       
-      //await Mint.mint(NFT, userInfo["walletAddress"]);
+
+        var NFT = {
+          "name": document.getElementById("nameField").value,
+          "description": document.getElementById("descriptionField").value,
+          "image_url": address //temp until image hosting is implemented
+        }
+
+        console.log(NFT);
+
+        let userInfo = JSON.parse(getCookie("uid"));
+      
+        //await Mint.mint(NFT, userInfo["walletAddress"]);
   
     }
 
