@@ -16,6 +16,7 @@
     "url": "git+https://github.com/BCharity-Net/nft-frontend.git"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.1.1",
     "@metamask/detect-provider": "^1.2.0",
     "@truffle/hdwallet-provider": "^1.4.1",
     "axios": "^0.21.1",
@@ -31,6 +32,7 @@
     "react": "^16.8",
     "react-bootstrap-icons": "^1.5.0",
     "react-dom": "^16.4.1",
+    "react-dotenv": "^0.1.3",
     "react-icons-kit": "^1.1.7",
     "react-router-dom": "^5.2.0",
     "styled-components": "^3.3.3",
@@ -44,6 +46,11 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.10.0",
     "react-scripts": "^2.0.0-next.a671462c"
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "ALCHEMY_KEY"
+    ]
   },
   "license": "MIT",
   "browserslist": {

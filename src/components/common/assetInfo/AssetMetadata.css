@@ -2,9 +2,16 @@
     --card-bg-color: #fb61ba;
 }
 
+.frag {
+    /* background-color: red; */
+}
+
+
 .card-container{
     background-color: var(--pink-gradient-start);
     background-image: var(--pink-gradient);
+    /* background-color: chartreuse; */
+
     display: grid;
     width: 20.25rem;;
     height: 18rem;

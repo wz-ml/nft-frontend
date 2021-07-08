@@ -1,13 +1,22 @@
+* {
+  /* background-color: black */
+}
+
+.wholeThing {
+  border: solid;
+  border-color: blue;
+}
+
 .charitySelect {
     margin-top: 15px;
     margin-bottom: 5px;
 }
 
 
-.dropbtn {
+.allCharitiesButton {
     background-color: #3498DB;
     color: white;
-    padding: 16px;
+    padding: 14px;
     font-size: 16px;
     /* border: none; */
     cursor: pointer;
@@ -20,24 +29,34 @@
   }
   
   .dropdown {
+    margin-top: 6px;
     position: relative;
     display: inline-block;
     border: dashed;
     border-color: orange;
-    margin-bottom: 60px;
+    /* margin-bottom: 300px; */
   }
   
   .dropdown-content {
     display: none;
-    /* position: absolute; */
     background-color: #f1f1f1;
-    min-width: 160px;
+    min-width: max-content;
+    padding-left: 5px;
+    padding-right: 5px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
     margin: auto;
     border: solid;
     border-color: red;
+    
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+    /* position: absolute;
+    z-index: 1; */
 }
   
   .dropdown-content a {
@@ -52,11 +71,64 @@
   .show {display: block;}
 
 
-  .donateButton {
+  .donateButtonDiv {
       display: block;
       margin: auto;
       border: double;
       border-color: lightgreen;
-      /* width: max-content; */
-      
+      position: fixed;
+      width: 100%;
+      bottom: 3.5vh;
+    }
+
+  .donateButton {
+      background-color: #3498DB;
+      color: white;
+      padding: 10px;
+      font-size: 13px;
+      cursor: pointer;
   }
+  
+  .thankYou {
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    /* margin-bottom: 16px; */
+    /* width: max-content; */
+    position: absolute;
+    right: 3.5vw;
+  }
+  
+  .thankYou_sub {
+    margin-top: 4px;
+  }
+
+  .generous {
+    margin-top: 6px;
+    width: 16.5vw;
+    height: 11vw;
+  }
+
+.nftInfo {
+  margin-top: 4px;
+  border: solid;
+  border-color: turquoise;
+  border-width: 1px;
+  margin-left: 4vw;
+  max-width: max-content;
+}
+
+.nftName {
+  text-align: center;
+  /* margin-left: 4vw; */
+}
+
+.nftImg {
+  width: 15vw;
+  height: 24vh;
+  float: left;
+  margin-top: 3px;
+  /* margin-right: 90vw; */
+  /* margin-left: 3.5vw; */
+}
+
