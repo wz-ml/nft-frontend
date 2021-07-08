@@ -77,10 +77,10 @@ function Sell(){
 
     return (
         <section className='sellPage'>
-                <div className="tokenInfo">
-                    <h1 className="tokenName">{tokenName}</h1>
-                    <p className="tokenCollection"><i>{tokenCollection}</i></p>
-                    <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
+                <div className="sellTokenInfo">
+                    <h1 className="sellTokenName">{tokenName}</h1>
+                    <p className="sellTokenCollection"><i>{tokenCollection}</i></p>
+                    <img src={imgUrl} alt={"Asset Image"} className="SellImage"/>
                 </div>        
             <div className='sellpage-main'>
                 <div className='sellpage-top-set-price'>

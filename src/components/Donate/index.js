@@ -171,18 +171,19 @@ const Donate = () => {
 
 
   return(
-    <div>
+    <div className="sellpage">
       <h1>
         <br></br>
           Donate Your NFT Here!
       </h1>
-      {/* {renderDonateToggle()} */}
-      <h1 className="tokenName">{tokenName}</h1>
-      <p className="tokenCollection"><i>{tokenCollection}</i></p>
-      <img src={imgUrl} alt={"Asset Image"} className="AssetImage"/>
-      {renderDonateToggle(charityAddrs)}
+    <div className="donateTokenInfo">
+      <h3 className="donateTokenName">{tokenName}</h3>
+      <p className="donateTokenCollection"><i>{tokenCollection}</i></p>
+      <img src={imgUrl} alt={"Asset Image"} className="donateAssetImage"/>
+    </div>
+      <div className="donatepage-main">
+      <span className="renderDonateToggle">{renderDonateToggle(charityAddrs)}</span>
       <h3 className="charitySelect">Select your Charity:</h3>
-
       <div className="dropdown">
         <button className="dropbtn" onClick={showDropdownContent}>All Charities</button>
         <div className="dropdown-content" id="myDropdown">
@@ -200,7 +201,7 @@ const Donate = () => {
           </button>
       </div>
 
-
+      </div>
 
     </div>
   );

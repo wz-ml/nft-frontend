@@ -12,7 +12,7 @@
     padding-bottom: 8rem;
 }
 
-.tokenInfo {
+.sellTokenInfo {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 2rem 2rem auto;
@@ -20,19 +20,19 @@
     margin-bottom: 4rem;
 }
 
-.AssetImage {
+.SellImage {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
     justify-self: center;
 }
 
-.tokenName {
+.sellTokenName {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     justify-self: center;
 }
 
-.tokenCollection {
+.sellTokenCollection {
     grid-column: 2 / 3;
     grid-row: 2 / 3;    
     justify-self: center;    
