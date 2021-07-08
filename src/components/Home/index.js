@@ -37,6 +37,7 @@ function Home() {
                         <p>We only support MetaMask wallet at the moment</p>
                     </div>
                     <div className='create-item'>
+                        <img src={require('./collection.jpg')} width='50px' alt="Collection Icon"/>
                         <h4>Create your collection</h4>
                         <p>Click create and set up your collection. Add social links, a description, profile & banner images, and set a secondary sales fee.</p>
                     </div>
