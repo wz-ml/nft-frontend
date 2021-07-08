@@ -54,6 +54,8 @@ const Create = () => {
 
         let folderName = btoa(walletAddress.substring(0, 5) + walletAddress.substring(10, 14));
         let extension = uuidv4();
+
+        let imageUrl = "";
         
         const xhr = new XMLHttpRequest();
 
@@ -64,31 +66,23 @@ const Create = () => {
         console.log(inbody.getAll("file"));
       
         const address = `https://earlycelery.backendless.app/files/nft/${folderName}/${extension}?directoryPath`;
-        const request = {
-            body: inbody,
-            // method: "POST",
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            mode: 'cors'
-        };
-
-        delete request.headers["Content-Type"];
-        // request.headers["Content-Type"] = "multipart/form-data; boundary=-------------------2384729384";
-
-        console.log(request);
-
-        // fetch(address, request).then((Response) => { console.log(Response) });
 
         xhr.onreadystatechange = () => {
           if(xhr.readyState !== 4) return;
           if(!xhr.responseText) return;
-          console.log(xhr.status, JSON.parse(xhr.response));
+          if(xhr.status === 400){
+            console.error(JSON.parse(xhr.response));
+            return;
+          }
+          let response = JSON.parse(xhr.response)
+          console.log(xhr.status, response);
+          imageUrl = response.fileURL;
         }
 
         xhr.open("POST", address);
         xhr.send(inbody);
 
+        // from here, image should exist within imageUrl.
         var NFT = {
           "name": document.getElementById("nameField").value,
           "description": document.getElementById("descriptionField").value,
