@@ -4,20 +4,12 @@
     document.body.style instead */
 }
 
-:root {
-    --main-background-colour: orange;
-}
-
-
-
-
-
 .py-3 {
     border: solid;
     border-color: red;
     /* border-width: 1.5px; */
     
-    background-color: green;
+    /* background-color: green; */
     
 }
 

@@ -24,7 +24,9 @@
     width: 300px;
     font-size: 14pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.175);
+  }
 
 .name_textbox_size::placeholder {
     font-size: 14pt;
@@ -44,8 +46,7 @@
     /* margin: 0% 11% 0% 0%; */
     white-space: nowrap;
     font-size: 12.5pt;
-    /* display: inline-block; */
-    
+    /* display: inline-block; */    
 }
 
 .description_textbox{
@@ -58,7 +59,9 @@
     font-size: 14pt;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-bottom: 50px;
-    
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.175);
+
 }
 
 .description_textbox::placeholder {
@@ -92,6 +95,9 @@
     height: auto;
     /* border: solid;
     border-color: red; */
+    /* background: black; */
+
+    
   }
   
   .errorMsg {
@@ -108,8 +114,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #c6c6c6;
+    color: #a3a3a3;
     border: dashed;
+
+    /* border: 2px blue solid; */
+
+    /* background: transparent; */
+
   }
   
   .imgPreview input[type="file"]{
@@ -117,13 +128,14 @@
   }
   
   .customFileUpload {
-    color: #c6c6c6;
+    color: #a3a3a3;
     font-size: 13pt;
     font-weight: 500;
     padding: 6px 12px;
     cursor: pointer;
     /* border: dotted  ;
     border-color: blue; */
+    
   }
 
   .fileTypeDescription {

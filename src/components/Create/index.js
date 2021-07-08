@@ -43,7 +43,7 @@ const Create = () => {
           {error && <p className="errorMsg">File not supported</p>}
           <div 
           className="imgPreview"
-          style= {{background: imgPreview ? `url("${imgPreview}")no-repeat center/cover` : "#ffffff"}}
+          style= {{background: imgPreview ? `url("${imgPreview}")no-repeat center/cover` : "transparent"}}
           >
             {!imgPreview && (
               <>
