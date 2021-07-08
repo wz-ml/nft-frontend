@@ -170,6 +170,7 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
         <br></br>
         Donate Your NFT Here!
     </h1>
+
     {/* {renderDonateToggle()} */}
     <h3 className="charitySelect">Select your Charity:</h3>
     <p>(Please click the charity twice for confirmation purposes) </p>
