@@ -29,25 +29,33 @@ const Create = () => {
       let walletAddress = userData.walletAddress;
 
       let folderName = btoa(walletAddress.substring(0, 5) + walletAddress.substring(10, 14));
-      let fileData = document.getElementById("fileUpload").value;
+      //let fileData = document.getElementById("fileUpload").target.files[0];
+      let fileData = "./2.png"
       let extension = uuidv4();
 
       console.log("folder name is " + folderName);
-      console.log("file data is " + fileData)
+      console.log("extension name is " + extension);
+      console.log("file data is " + fileData);
 
 
-      const body = new FormData
-      body.append("file", fileData)
+      const inbody = new FormData
+      inbody.append("file", fileData)
 
+      
       const address = ("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/" + folderName + "/" + extension)
-
-      fetch(address, {
-          body,
+      const request = {
+          body: inbody,
           headers: {
               "Content-Type": "multipart/form-data"
           },
           method: "POST"
-      })
+      }
+
+      console.log(request);
+
+      const response = fetch(address, request);
+
+      console.log(response);
 
 
       var NFT = {
@@ -60,7 +68,7 @@ const Create = () => {
 
       let userInfo = JSON.parse(getCookie("uid"));
       
-      await Mint.mint(NFT, userInfo["walletAddress"]);
+      //await Mint.mint(NFT, userInfo["walletAddress"]);
   
     }
 
