@@ -14,37 +14,72 @@
 .ProfileInfo{
   position: relative;
   left: 5rem;
-  top: 20%;
+  top: calc(100% - 5rem);
   min-width: 18rem;
+  max-height: 6rem;
   width: max-content;
   background-image: var(--blue-gradient);
-  border-radius: 500px;
+  border-radius: 1000px;
   color: white;
 
   display: flex;
-  align-items: center;
+  align-items: end;
 
   padding-right: 1rem;
+}
+
+.ProfileInfo p{
+  margin: auto;
 }
 
 .ProfilePicContainer{
   min-height: 6rem;
   min-width: 6rem;
-  height: 20vmin;
-  width: 20vmin;
+  height: 15vmin;
+  width: 15vmin;
 
   background-color: blue;
   overflow: hidden;
   display: flex;
 
+
   border-radius: 50%;
   box-shadow: 1rem 1rem 1rem -0.5rem var(--shadow-color);
 }
 
+.UserAssetContainer{
+  margin: 0 20vmin;
+  margin-top: 5rem;
+  text-align: start;
+}
+
+.CreateButton{
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 3rem;
+
+  background-color: var(--pink-gradient-start);
+  background-image: var(--pink-gradient);
+
+  color: white;
+  border: none;
+  border-radius: 999rem;
+}
+
+.CreatePlus{
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.CreateButton p{
+  margin: auto;
+}
+
 .UserAssets{
   width: auto;
-  margin: 0 20vmin;
+  margin-top: 2rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
 }
