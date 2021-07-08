@@ -76,7 +76,6 @@ function Sell(){
     }
 
     const[data, setData] = useState(null)
-    const [schemaName, setSchemaName] = useState(""); //may have to implement ERC1155 support again...perhaps not now that Create function is working
 
     
     function changeData(val){
