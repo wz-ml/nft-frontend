@@ -80,9 +80,16 @@ const Create = () => {
 
         console.log(request);
 
-        fetch(address, request).then((Response) => { console.log(Response) });
+        // fetch(address, request).then((Response) => { console.log(Response) });
 
-      
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState !== 4) return;
+          if(!xhr.responseText) return;
+          console.log(xhr.status, JSON.parse(xhr.response));
+        }
+
+        xhr.open("POST", address);
+        xhr.send(inbody);
 
         var NFT = {
           "name": document.getElementById("nameField").value,
