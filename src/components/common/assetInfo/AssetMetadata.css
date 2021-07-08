@@ -2,9 +2,9 @@
     --card-bg-color: #fb61ba;
 }
 
-.frag {
-    /* background-color: red; */
-}
+/*.frag {
+     background-color: red; 
+}*/
 
 
 .card-container{
@@ -15,11 +15,11 @@
     display: grid;
     width: 20.25rem;;
     height: 18rem;
-    grid-template-columns: 4fr 0.5fr;
+    grid-template-columns: 4fr 0.75fr;
     /* margin-left: auto; */
     border-radius: 1rem;
 
-    box-shadow: 1rem 1rem 1rem -0.75rem var(--shadow-color); /* change 1: added box-shadow */
+    box-shadow: 1rem 1rem 1rem -0.75rem var(--shadow-color);
 }
 
 .img-container{
@@ -31,21 +31,21 @@
     background-image: var(--blue-gradient);
 }
 
-.image-link {
+.image-link{
     display: grid;
-    place-items: center;            /* CHANGE 2 (entire image link) */
+    place-items: center;
+
     height: 100%;
 }
-
 
 .card-image{
     min-height: 100%;
     min-width: 100%;
-    image-rendering: auto; /* Change 3: applied min- to both height and width, also added image-rendering */
+    image-rendering: auto;
 }
 
-.tiny-img {
-    image-rendering: crisp-edges !important; /* Change 4: added the .tiny-img */
+.tiny-img{
+    image-rendering: crisp-edges !important;
 }
 
 .card-body{
@@ -55,7 +55,7 @@
 
 .card-text{
     /*padding: 0px 0px 0px 10px;*/
-    padding-left: 1.5rem; /* Change 5: Added padding-left */
+    padding-left: 1.5rem;
     transform: rotate(90deg);
     /* height: 50px; */
  
@@ -66,9 +66,8 @@
   text-decoration: none;
 }
 
-.card-text h4 /* Change 6: added card-text's h4, before it used to be only h5 */
-.card-text h5{
-    width: 16.0rem;
+.card-text h4, .card-text h5{
+    width: 16rem;
     font-weight: normal;
     text-align: left;
     /* transform: rotate(180deg); */

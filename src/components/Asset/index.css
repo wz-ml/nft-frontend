@@ -25,6 +25,11 @@ h2 {
     grid-template-rows: 2rem 4rem 2rem 22rem 2rem 4rem 2rem;
     column-gap: 2rem;
     margin: auto;
+    margin-top: 1rem;
+}
+
+.TinyImg{
+    image-rendering: crisp-edges;
 }
 
 .AssetImage {

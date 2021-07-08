@@ -9,6 +9,8 @@ import Asset from "./components/Asset";
 import Create from './components/Create';
 import User from "./components/User";
 import Donate from './components/Donate';
+import Sell from "./components/Sell"
+import Progress_bar from "./components/Progress_bar"
 import './App.css';
 
 import {getCookie} from "./constants.js";
@@ -38,8 +40,6 @@ function App(){
     let expiryDate = new Date();
     expiryDate.setDate(new Date().getDate() + 1);
 
-    // delete existing cookie if it exists
-    document.cookie = "uid=\"\"; max-age=-1"
     document.cookie = `uid=${userString}; expires=${expiryDate}; SameSite=Lax;`;
 
     // console.log(JSON.parse(getCookie("uid"))); // DEBUG
@@ -119,6 +119,12 @@ function App(){
             <li>
               <Link to='/Donate'>Donate Here!</Link>
             </li>
+            <li>
+              <Link to="/Sell">Sell</Link>
+            </li>
+            <li>
+              <Link to="/Progress_bar">Progress_bar</Link>
+            </li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
@@ -127,6 +133,8 @@ function App(){
           <Route path="/Create" component={Create}/>
           <Route path="/user" component={User} />
           <Route path="/Donate" component={Donate}/>
+          <Route path="/Sell" component={Sell} />
+          <Route path="/Progress_bar" component={Progress_bar} />
         </div>
       </Router>
     </div>

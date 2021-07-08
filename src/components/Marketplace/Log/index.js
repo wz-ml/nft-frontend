@@ -162,9 +162,6 @@ export default class Log extends React.Component {
   render() {
     const { orders } = this.state
 
-    // document.body.style = 'background: var(--main-background-colour);'; // CHANGE BACKGROUND COLOR OF WHOLE PAGE
-    // The above statement has been moved to App.js
-
     return (
       <div className="py-3" id="Log">
         

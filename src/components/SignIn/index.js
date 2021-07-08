@@ -148,9 +148,9 @@ const SignIn = () => { // Change the name after
         </div>
         */}
 
-        <h3 className="why-metamask">
-          <a src="" href="Why use metamask?">
-            Why Use MetaMask?
+        <h3 className="metamaskQuestion">
+          <a href="https://docs.metamask.io/guide" target="_blank">
+            What is MetaMask?
           </a> 
         </h3> 
       </div>
