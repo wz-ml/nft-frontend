@@ -53,17 +53,9 @@ const Create = () => {
         let walletAddress = userData.walletAddress;
 
         let folderName = btoa(walletAddress.substring(0, 5) + walletAddress.substring(10, 14));
-      //let fileData = document.getElementById("fileUpload").target.files[0];
-      let fileData = imgPreview; //"./2.png"
         let extension = uuidv4();
-
-        console.log("folder name is " + folderName);
-        console.log("extension name is " + extension);
-        console.log("file data is " + fileData);
-        // console.log("image preview", imgPreview);
         
         const xhr = new XMLHttpRequest();
-
 
         const inbody = new FormData();
         // inbody.append("file", fileData);
