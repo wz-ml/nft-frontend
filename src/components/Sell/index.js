@@ -10,6 +10,12 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import './Sell.css'
 
+import { OpenSeaPort, Network } from 'opensea-js';
+import { getCookie, smartContract } from '../../constants';
+import detectEthereumProvider from '@metamask/detect-provider';
+
+
+
 function Sell(){
 
     const API_URL = "https://rinkeby-api.opensea.io/api/v1";
@@ -70,10 +76,43 @@ function Sell(){
     }
 
     const[data, setData] = useState(null)
+    const [schemaName, setSchemaName] = useState(""); //may have to implement ERC1155 support again...perhaps not now that Create function is working
+
     
     function changeData(val){
         setData(val.target.value);
     }
+
+    async function makeSellOrder(){
+
+        const seaport = await getOpenSeaPort()
+     
+        let urlParts = window.location.pathname.split('/');
+        const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
+    
+        let userInfo = JSON.parse(getCookie("uid"));
+        const accountAddress = userInfo["walletAddress"];
+    
+        let asset = {tokenId, tokenAddress};
+        // if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
+    
+        const listing = await seaport.createSellOrder({
+        asset,
+        accountAddress,
+        startAmount: getSalePrice()})
+    
+    }
+
+    async function getOpenSeaPort(){
+        const provider = await detectEthereumProvider();
+        return new OpenSeaPort(provider, {
+            networkName: Network.Rinkeby
+        });
+    }
+    
+    function getSalePrice(){
+        return Number(document.getElementById("salePrice").value);
+      }
 
     return (
         <section className='sellPage'>
@@ -96,10 +135,10 @@ function Sell(){
                     <div className='set-sell-price'>
                         <div className='set-sell-price-left'>
                             <h3 className='price'>Price</h3>
-                            <p className='price-description'>Will be on sale untill you transfer this item or cancel it.</p>
+                            <p className='price-description'>Will be on sale until you transfer this item or cancel it.</p>
                         </div>
                         <div className='set-sell-price-right'>
-                            <input type="number" placeholder="Amount" onChange={changeData} />
+                            <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
                         </div>
                     </div>
                 </div>
@@ -109,7 +148,7 @@ function Sell(){
                     <div className='listing-section'>
                         <h3 className='listing'>Listing</h3>
                         <p className='listing-description'>Your item will be listed for {data}</p>
-                        <button className='post-button'>Post your listing</button>
+                        <button className='post-button' onClick={() => makeSellOrder()}>Post your listing</button>
                     </div>
                     <hr />
                     <div className='fees-section'>

@@ -1,5 +1,6 @@
 import React from "react";
 import {useEffect, useState} from "react";
+import fetch from "node-fetch";
 import "./index.css";
 
 import detectEthereumProvider from '@metamask/detect-provider';
@@ -68,7 +69,7 @@ const Donate = () => {
   }
 
   function updateChosenCharity(evt){
-    setChosenCharity(evt.target.value);
+    setChosenCharity(evt.target.innerHTML);
     // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
   }
 
@@ -124,7 +125,7 @@ const Donate = () => {
         fromAddress, //your address (you must own the asset)
         toAddress: charityAddrs[chosenCharity]
     })
-  }
+  } 
 
   async function getOpenSeaPort(){
     const provider = await detectEthereumProvider();
@@ -179,9 +180,9 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
 <div className="dropdown">
   <button className="allCharitiesButton" onClick={showDropdownContent}>All Charities</button>
   <div className="dropdown-content" id="myDropdown">
-    <a href="#">{((Object.keys(charityAddrs))[0])}</a>
-    <a href="#">{((Object.keys(charityAddrs))[1])}</a>
-    <a href="#">{((Object.keys(charityAddrs))[2])}</a>
+    <a href="#" onClick={updateChosenCharity}>{((Object.keys(charityAddrs))[0])}</a>
+    <a href="#" onClick={updateChosenCharity}>{((Object.keys(charityAddrs))[1])}</a>
+    <a href="#" onClick={updateChosenCharity}>{((Object.keys(charityAddrs))[2])}</a>
   </div>
 </div>
 
@@ -203,17 +204,16 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
   <h3 className="nftName">{tokenName}</h3>
   <img className="nftImg" src={imgUrl} alt={"Asset Image"}></img>
 </div>
-
-
 <div className="donateButtonDiv">
-<button className="donateButton">
+
+<button className="donateButton" onClick={() => makeTransfer()}> 
         DONATE 
     </button>
 </div>
 
 <footer></footer>
     </div>
-  );
+  ); //both renderDonateToggle() functions are not used anywhere. have to add makeTransfer() onClick event here.
   
 };
 
