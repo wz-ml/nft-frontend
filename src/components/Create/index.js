@@ -63,6 +63,7 @@ const Create = () => {
         const inbody = new FormData;
         inbody.append("file", fileData);
 
+        console.log(inbody.getAll("file"));
       
         const address = ("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/" + folderName + "/" + extension);
         const request = {
