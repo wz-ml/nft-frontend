@@ -32,7 +32,9 @@ const Create = () => {
       let fileData = document.getElementById("fileUpload").value;
       let extension = uuidv4();
 
-      console.log(folderName);
+      console.log("folder name is " + folderName);
+      console.log("file data is " + fileData)
+
 
       const body = new FormData
       body.append("file", fileData)
@@ -51,7 +53,7 @@ const Create = () => {
       var NFT = {
         "name": document.getElementById("nameField").value,
         "description": document.getElementById("descriptionField").value,
-        "image_url": "https://secure-tor-85504.herokuapp.com/images/1.png" //temp until image hosting is implemented
+        "image_url": address //temp until image hosting is implemented
       }
 
       console.log(NFT);
