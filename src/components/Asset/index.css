@@ -22,7 +22,7 @@ h2 {
     background-color: white;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2rem 4rem 2rem 22rem 2rem 4rem 2rem;
+    grid-template-rows: 2rem 4rem 2rem auto 2rem 4rem 2rem;
     column-gap: 2rem;
     margin: auto;
 }
@@ -33,7 +33,7 @@ h2 {
 
 .AssetImage {
     grid-column: 1 / 2;
-    grid-row: 1 / 5;
+    grid-row: 4 / 5;
     justify-self: end;    
     width: auto;
     height: 30rem;
