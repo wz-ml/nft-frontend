@@ -1,23 +1,15 @@
-/**
- * @author Stuart Chen
- * 
- * @version 2021.07.07 - Connection to asset page
- * 
- * 2021.07.03 - Base development
- * 
- * @since 2021.07.03
- */
-
 import React from "react";
 import {useEffect, useState} from "react";
-import fetch from "node-fetch";
+import "./index.css";
 
-import { OrderSide } from 'opensea-js/lib/types';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { getCookie } from '../../constants';
+import { getCookie, smartContract } from '../../constants';
+import { func } from "prop-types";
 
-var charityAddrs = {
+
+
+let charityAddrs = {
     "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
     "Charity 2 (Rui Address)": "0x6926f20dD0e6cf785052705bB39c91816a753D23",
     "Charity 3 (Ethan Address)": "0x1437B4031f2b6c3a6d1D5F68502407283c3fAE31",
@@ -35,24 +27,23 @@ const Donate = () => {
   const [schemaName, setSchemaName] = useState("");
   const [tokenPrice, setTokenPrice] = useState(-1);
 
-  /**
-   * Uses React effects perform one-time actions.
-   *
-   * - Adds a load event listener to fetch the details of the connected NFT
-   */
+  function addSmartContractListener(){
+    smartContract.events.Approval({}, (err, data) => {
+      if(err){
+        console.error(err);
+        return;
+      }
+
+      console.log(data);
+    })
+  }
+
   useEffect(() => {
     window.addEventListener("load", getDetails);
+    addSmartContractListener();
   });
 
-  /**
-   * Gets the details of the connected NFT, found within the url.
-   * A valid NFT collection address and tokenID are expected within
-   * the url in the format: 
-   * <code>https://(URL)/asset/(Collection Address)/(tokenID)</code>
-   *
-   * Will fetch the data needed from the opensea API and update the page.
-   */
-   async function getDetails(){
+  async function getDetails(){
     let urlParts = window.location.pathname.split('/');
     const [collectionAddr, tokenID] = urlParts.splice(-2);
 
@@ -62,12 +53,6 @@ const Donate = () => {
       .catch((err) => console.error(err));
   }
 
-  /**
- * Updates the page with the new token details
- *
- * @param tokenData {Object} the parsed JSON object retrieved after fetching
- * details from the opensea API.
- */
   async function updateDetails(tokenData){
     setTokenName(tokenData.name)
     setTokenCollection(tokenData.collection.name);
@@ -81,7 +66,6 @@ const Donate = () => {
 
     console.log(tokenData);
   }
-
 
   function updateChosenCharity(evt){
     setChosenCharity(evt.target.value);
@@ -103,26 +87,24 @@ const Donate = () => {
       );
   }
 
-  function renderDonateToggle(charityListObject){
-    let charities = [];
-
-    /* for (let counter = 0; counter < charityListObject.length; counter++) {
-      charities.push(createCharityRadio(charityListObject[counter]));
-    } */
+  function renderDonateToggle(){
+    const charities = Object.entries(charityAddrs);
     
-     for (let charity in charityListObject) {
-      charities.push(createCharityRadio(charity));
-    } 
+    for (let charity in charities) {
+
+        charities.push(createCharityRadio(charity));
+
+    }
 
     return (
-      <div className="donateContainer">
-        <button className="button" onClick={() => makeTransfer()}>Donate</button>
-        <form className="charitySelection">
-          {charities}
-        </form>
-      </div>
+        <div className="donateContainer">
+            <button className="button" onClick={() => makeTransfer()}>Donate</button>
+            <form className="charitySelection">
+              {charities}
+            </form>
+        </div>
     );
-  }
+    }
 
   async function makeTransfer(){
 
@@ -151,10 +133,14 @@ const Donate = () => {
     });
   }
 
+
+
   function showDropdownContent() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
 
+  
+  
   // Close the dropdown if the user clicks outside of it
   window.onclick = function(event) {
     if (!event.target.matches('.allCharitiesButton')) {
@@ -179,36 +165,12 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
 }
 
   return(
-<<<<<<< HEAD
-    <div className="sellpage">
-      <h1>
-        <br></br>
-          Donate Your NFT Here!
-      </h1>
-    <div className="donateTokenInfo">
-      <h3 className="donateTokenName">{tokenName}</h3>
-      <p className="donateTokenCollection"><i>{tokenCollection}</i></p>
-      <img src={imgUrl} alt={"Asset Image"} className="donateAssetImage"/>
-    </div>
-      <div className="donatepage-main">
-      <span className="renderDonateToggle">{renderDonateToggle(charityAddrs)}</span>
-      <h3 className="charitySelect">Select your Charity:</h3>
-      <div className="dropdown">
-        <button className="dropbtn" onClick={showDropdownContent}>All Charities</button>
-        <div className="dropdown-content" id="myDropdown">
-          <a href="#">Charity 1</a>
-          <a href="#">AVERYLONGCHARITYNAMEAVERYLONGCHARITYNAME</a>
-          <a href="#">Charity 3</a>
-        </div>
-      </div>
-
-      <div><br></br></div>
-=======
     <div className="wholeThing">
      <h1>
         <br></br>
         Donate Your NFT Here!
     </h1>
+
     {/* {renderDonateToggle()} */}
     <h3 className="charitySelect">Select your Charity:</h3>
     <p>(Please click the charity twice for confirmation purposes) </p>
@@ -238,9 +200,8 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
 
 
 <div className="nftInfo">
-  <h3 className="nftName">*NFT NAME HERE*</h3>
-  <img className="nftImg" src="https://cdn.vox-cdn.com/thumbor/_rw6XhJ3hVZ7_ThnekECYB0qhFo=/0x0:1252x974/1200x800/filters:focal(526x387:726x587)/cdn.vox-cdn.com/uploads/chorus_image/image/68904499/Screen_Shot_2021_03_02_at_3.21.50_PM.0.png">
-  </img>
+  <h3 className="nftName">{tokenName}</h3>
+  <img className="nftImg" src={imgUrl} alt={"Asset Image"}></img>
 </div>
 
 
@@ -249,20 +210,8 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
         DONATE 
     </button>
 </div>
->>>>>>> eric-branch
 
-      <div className="donateButton">
-          <button>
-              DONATE 
-          </button>
-      </div>
-
-<<<<<<< HEAD
-      </div>
-
-=======
 <footer></footer>
->>>>>>> eric-branch
     </div>
   );
   

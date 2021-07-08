@@ -42,14 +42,11 @@ const Create = () => {
       }
     };
   
-<<<<<<< HEAD
-  const dragOverHandler = (evt) => {
-    console.log("upload occurring");
-    evt.preventDefault();
-  }
+    const dragOverHandler = (evt) => {
+      console.log("upload occurring");
+      evt.preventDefault();
+    }
 
-=======
->>>>>>> eric-branch
     return (
       <div className = "createThing">
  
