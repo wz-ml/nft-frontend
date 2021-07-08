@@ -1,7 +1,7 @@
 
 .homepage {
     margin-top: 8px;
-    /* border: 2px red solid; */
+    border: 2px red solid;
     display: grid;
 }
 
@@ -12,14 +12,14 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;
-    /* border: 2px darkgreen solid; */
+    border: 2px darkgreen solid;
 }
 
 .homepage-top-left{
     background-color: transparent;
     font-size: 35px;
     margin-right: 60px;
-    /* border: 2px blue solid; */
+    border: 2px blue solid;
 
 }
 
@@ -28,7 +28,7 @@
     /* text-align: center; */
     /* margin-left: 25%; */
     width: max-content;
-    /* border: 2px orange solid; */
+    border: 2px orange solid;
     margin-left: auto;
     margin-right: auto;
 
@@ -43,7 +43,7 @@
     border-radius: 0.5rem;
     color: var(--blue-gradient-start);
     padding: 15px 40px 15px 40px;
-    /* border: 2px lightgreen solid; */
+    border: 2px lightgreen solid;
     cursor: pointer;
 }
 
@@ -54,7 +54,7 @@
     color: white;
     border-radius: 0.5rem;
     padding: 15px 40px 15px 40px;
-    /* border: 2px purple solid; */
+    border: 2px purple solid;
     cursor: pointer;
 }
 
