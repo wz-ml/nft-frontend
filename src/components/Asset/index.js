@@ -119,14 +119,14 @@ const Asset = () => {
 
   function renderBuyToggle(){
     return(
-      <button className="button" type="button" onClick={() => makeBuyOrder()}>Buy</button>
+      <button className="button" id="buyButton" type="button" onClick={() => makeBuyOrder()}>Buy</button>
     );
   }
 
   function renderSellToggle(){
     return(
       <span>
-        <button type="button" onClick={() => makeSellOrder()} className="button"> Sell</button>
+        <button type="button" id="sellButton"  onClick={() => makeSellOrder()} className="button"> Sell</button>
         <input type="text" id="salePrice" defaultValue={"0"} placeholder="sale price" />
       </span>
     );
@@ -135,7 +135,7 @@ const Asset = () => {
   function renderCancelToggle(){
     return(
       <span>
-        <button type="button" onClick={() => cancelOrder()} className="button"> Cancel Sell Listing</button>
+        <button type="button" id="cancelSellButton" onClick={() => cancelOrder()} className="button"> Cancel Sell Listing</button>
       </span>
     );
   }
@@ -178,6 +178,9 @@ const Asset = () => {
 
     return(
       <div className="donateContainer">
+      {/*MOVE THIS TO DONATE PAGE
+      <button className="button" id="donateButton" onClick={() => makeTransfer()}>Donate</button>
+      */}
         <a href={`/Donate/${collectionAddr}/${tokenID}`}>
           <button id="button" className="button">Donate</button>
         </a>
@@ -207,6 +210,9 @@ const Asset = () => {
     asset,
     accountAddress,
     startAmount: getSalePrice()})
+
+    document.getElementById("sellButton").innerHTML = "NFT listed for sale";
+
   }
 
   async function makeBuyOrder(){
@@ -226,6 +232,10 @@ const Asset = () => {
         });
     
     const transactionHash = await seaport.fulfillOrder({order, accountAddress});
+
+    waitForTx(transactionHash); //wait until transaction is completed
+    document.getElementById("buyButton").innerHTML = "NFT purchased!";
+
   }
 
   async function cancelOrder(){
@@ -245,6 +255,9 @@ const Asset = () => {
         });
 
     const transactionHash = await seaport.cancelOrder({order, accountAddress});
+
+    waitForTx(transactionHash); //wait until transaction is completed
+    document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
 
   }
 
@@ -266,6 +279,10 @@ const Asset = () => {
       fromAddress, //your address (you must own the asset)
       toAddress: charityAddrs[chosenCharity]
     })
+
+    waitForTx(transactionHash); //wait until transaction is completed
+    document.getElementById("donateButton").innerHTML = "Donation Complete!";
+
   }
 
   async function getOpenSeaPort(){
@@ -273,6 +290,17 @@ const Asset = () => {
     return new OpenSeaPort(provider, {
       networkName: Network.Rinkeby
     });
+  }
+
+  function waitForTx(tx_hash){
+
+    var Web3 = require("web3");
+    const web3 = new Web3(new Web3.providers.HttpProvider('https://eth-rinkeby.alchemyapi.io/v2/TDvA5STwGZ7Uv_loxm5msg-tuujVCk4_')); //read-only provider
+
+    var result = null;
+    while (result === null){ //blocking function that resolves after transaction is completed
+      result = web3.eth.getTransactionReceipt(tx_hash); 
+    }
   }
 
   function renderToggles(){
