@@ -45,18 +45,14 @@ const Create = () => {
       const address = ("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/" + folderName + "/" + extension)
       const request = {
           body: inbody,
-          headers: {
-              "Content-Type": "multipart/form-data"
-          },
           method: "POST"
       }
 
       console.log(request);
 
-      const response = fetch(address, request);
+      fetch(address, request).then((Response) => { console.log(Response) });
 
-      console.log(response);
-
+      
 
       var NFT = {
         "name": document.getElementById("nameField").value,
