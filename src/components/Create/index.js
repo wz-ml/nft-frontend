@@ -65,11 +65,18 @@ const Create = () => {
 
         console.log(inbody.getAll("file"));
       
-        const address = ("https://api.backendless.com/AD3CB4F2-2229-93EE-FFFE-A667BBA40900/E273AF64-34D7-4085-AF58-C5961F8EE3D3/files/nft/" + folderName + "/" + extension);
+        const address = `https://earlycelery.backendless.app/files/nft/${folderName}/${extension}?directoryPath`;
         const request = {
             body: inbody,
-            method: "POST"
+            // method: "POST",
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            mode: 'cors'
         };
+
+        delete request.headers["Content-Type"];
+        // request.headers["Content-Type"] = "multipart/form-data; boundary=-------------------2384729384";
 
         console.log(request);
 
