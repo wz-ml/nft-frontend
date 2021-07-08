@@ -58,10 +58,14 @@ const Create = () => {
         console.log("folder name is " + folderName);
         console.log("extension name is " + extension);
         console.log("file data is " + fileData);
+        // console.log("image preview", imgPreview);
+        
+        const xhr = new XMLHttpRequest();
 
 
-        const inbody = new FormData;
-        inbody.append("file", fileData);
+        const inbody = new FormData();
+        // inbody.append("file", fileData);
+        inbody.append("file", uploadFile, "upload");
 
         console.log(inbody.getAll("file"));
       
