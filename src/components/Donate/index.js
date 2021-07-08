@@ -165,7 +165,7 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
 }
 
   return(
-    <div>
+    <div className="wholeThing">
      <h1>
         <br></br>
         Donate Your NFT Here!
