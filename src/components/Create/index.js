@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Create = () => {  
     const [imgPreview, setImgPreview] = useState(null);
+    const [uploadFile, setUploadFile] = useState(null);
     const [error, setError] = useState(false);
   
     const handleImageChange = (e) => {
@@ -31,6 +32,7 @@ const Create = () => {
       }
 
       console.log(selected);
+      setUploadFile(selected);
 
       const ALLOWED_TYPES = ["image/png" , "image/jpeg" , "image/jpg"];
       if(selected && ALLOWED_TYPES.includes(selected.type)){
