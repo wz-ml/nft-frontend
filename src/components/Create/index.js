@@ -77,24 +77,24 @@ const Create = () => {
           let response = JSON.parse(xhr.response)
           console.log(xhr.status, response);
           imageUrl = response.fileURL;
+
+          var NFT = {
+              "name": document.getElementById("nameField").value,
+              "description": document.getElementById("descriptionField").value,
+              "image_url": imageUrl 
+          }
+          //console.log(NFT);
+
+          let userInfo = JSON.parse(getCookie("uid"));
+          Mint.mint(NFT, userInfo["walletAddress"]);
+
         }
 
         xhr.open("POST", address);
         xhr.send(inbody);
 
         // from here, image should exist within imageUrl.
-        var NFT = {
-          "name": document.getElementById("nameField").value,
-          "description": document.getElementById("descriptionField").value,
-          "image_url": address //temp until image hosting is implemented
-        }
-
-        console.log(NFT);
-
-        let userInfo = JSON.parse(getCookie("uid"));
-      
-        //await Mint.mint(NFT, userInfo["walletAddress"]);
-  
+        
     }
 
     const dragOverHandler = (evt) => {
