@@ -20,13 +20,13 @@ function Header(){
             <div className = "navbar_logo">
                 <img src="./bcharity_logo.png"alt="bcharity_logo"></img>
             </div>
-            <div className = "navbar_bcharity">
+            <div className="navbar_bcharity">
                 BCHARITY
             </div>
             <div className = "navbar-item-container">
                 <div className="navbar-item navbar-active" onClick={updateNavbar}>Home</div>
-                 <div className="navbar-item" onClick={updateNavbar}>Marketplace</div>
-                 <div className="navbar-item" onClick={updateNavbar}>Resources</div>
+                <div className="navbar-item" onClick={updateNavbar}>Marketplace</div>
+                <div className="navbar-item" onClick={updateNavbar}>Resources</div>
              </div>
              <div className="navbar_search">
                  <input type="text" placeholder="Search..." />
@@ -77,9 +77,9 @@ function DropdownMenu(){
 
     return (
         <div className="dropdown">
-            <DropdownItem>My Profile</DropdownItem>
-            <DropdownItem>My NFT</DropdownItem>
-            <DropdownItem>Log out</DropdownItem>
+            <DropdownItem>Sign In</DropdownItem>
+            <DropdownItem>My NFTs</DropdownItem>
+            <DropdownItem>Log off</DropdownItem>
         </div>
     )
 }
