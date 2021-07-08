@@ -51,8 +51,8 @@ const Create = () => {
         let walletAddress = userData.walletAddress;
 
         let folderName = btoa(walletAddress.substring(0, 5) + walletAddress.substring(10, 14));
-        //let fileData = document.getElementById("fileUpload").target.files[0];
-        let fileData = "./2.png"
+      //let fileData = document.getElementById("fileUpload").target.files[0];
+      let fileData = imgPreview; //"./2.png"
         let extension = uuidv4();
 
         console.log("folder name is " + folderName);
