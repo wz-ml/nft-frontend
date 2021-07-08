@@ -89,7 +89,10 @@ function App(){
     addWalletListener();
   });
 
+  document.body.style = 'background: var(--main-background-colour);'; // CHANGE BACKGROUND COLOR OF WHOLE PAGE
+
   return (
+    
     <div className = "App">
       <Header />
       <Router>

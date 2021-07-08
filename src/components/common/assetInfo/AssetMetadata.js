@@ -38,7 +38,7 @@ export default class AssetMetadata extends React.Component {
       : assetImage = asset.image_url
 
     return (
-      <React.Fragment>
+      <div className="frag">
         <div className="card-container">
           <div className="img-container">
             <a target="_blank" rel="noopener noreferrer" className="image-link text-center d-inline-block m-100" href={`/asset/${assetAddr}/${assetId}`}>
@@ -58,7 +58,7 @@ export default class AssetMetadata extends React.Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+    </div>
     )
   }
 }

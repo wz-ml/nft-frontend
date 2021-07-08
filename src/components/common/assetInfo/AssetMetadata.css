@@ -2,9 +2,16 @@
     --card-bg-color: #fb61ba;
 }
 
+.frag {
+    /* background-color: red; */
+}
+
+
 .card-container{
     background-color: var(--pink-gradient-start);
     background-image: var(--pink-gradient);
+    /* background-color: chartreuse; */
+
     display: grid;
     width: 20.25rem;;
     height: 18rem;
@@ -12,7 +19,11 @@
     /* margin-left: auto; */
     border-radius: 1rem;
 
+<<<<<<< HEAD
     box-shadow: 1rem 1rem 1rem -0.75rem var(--shadow-color);
+=======
+    box-shadow: 1rem 1rem 1rem -0.75rem var(--shadow-color); /* change 1: added box-shadow */
+>>>>>>> eric-branch
 }
 
 .img-container{
@@ -24,6 +35,7 @@
     background-image: var(--blue-gradient);
 }
 
+<<<<<<< HEAD
 .image-link{
     display: grid;
     place-items: center;
@@ -39,6 +51,23 @@
 
 .tiny-img{
     image-rendering: crisp-edges !important;
+=======
+.image-link {
+    display: grid;
+    place-items: center;            /* CHANGE 2 (entire image link) */
+    height: 100%;
+}
+
+
+.card-image{
+    min-height: 100%;
+    min-width: 100%;
+    image-rendering: auto; /* Change 3: applied min- to both height and width, also added image-rendering */
+}
+
+.tiny-img {
+    image-rendering: crisp-edges !important; /* Change 4: added the .tiny-img */
+>>>>>>> eric-branch
 }
 
 .card-body{
@@ -48,7 +77,11 @@
 
 .card-text{
     /*padding: 0px 0px 0px 10px;*/
+<<<<<<< HEAD
     padding-left: 1.5rem;
+=======
+    padding-left: 1.5rem; /* Change 5: Added padding-left */
+>>>>>>> eric-branch
     transform: rotate(90deg);
     /* height: 50px; */
  
@@ -59,8 +92,14 @@
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 .card-text h4, .card-text h5{
     width: 16rem;
+=======
+.card-text h4 /* Change 6: added card-text's h4, before it used to be only h5 */
+.card-text h5{
+    width: 16.0rem;
+>>>>>>> eric-branch
     font-weight: normal;
     text-align: left;
     /* transform: rotate(180deg); */

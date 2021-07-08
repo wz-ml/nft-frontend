@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Order from '../Order';
 import { OrderSide } from 'opensea-js/lib/types';
 import { connectWallet } from '../../../constants';
+import "./index.css";
 
 export default class Log extends React.Component {
   static propTypes = {
@@ -161,9 +162,17 @@ export default class Log extends React.Component {
   render() {
     const { orders } = this.state
 
+<<<<<<< HEAD
     return (
       <div className="py-3" id="Log">
+=======
+    // document.body.style = 'background: var(--main-background-colour);'; // CHANGE BACKGROUND COLOR OF WHOLE PAGE
+    // The above statement has been moved to App.js
+>>>>>>> eric-branch
 
+    return (
+      <div className="py-3" id="Log">
+        
         {this.renderFilters()}
 
         {orders != null

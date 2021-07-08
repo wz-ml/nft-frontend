@@ -6,7 +6,7 @@ export default class BundleMetadata extends React.Component {
     const { bundle } = this.props
 
     return (
-      <React.Fragment>
+      <div>
         <a target="_blank" rel="noopener noreferrer" className="text-center d-inline-block m-100" href={bundle.permalink}>
           <DivImgWrapper>
             {bundle.assets.map((asset, i) =>
@@ -29,7 +29,7 @@ export default class BundleMetadata extends React.Component {
             </a>
           </p>
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 }

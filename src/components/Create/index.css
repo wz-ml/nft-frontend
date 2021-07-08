@@ -1,3 +1,7 @@
+.createThing {
+  /* border: red solid; */
+}
+
 .createNewItem_text {
     text-align: left;
     padding-left: 80px;
@@ -9,25 +13,54 @@
     text-align: left;
     padding-left: 80px;
     padding-top: 20px;
+    /* border: 1px purple solid;   */
+  }
+  
+.file_descrip {
+  /* border: 1px red solid; */
+  margin-bottom: 20px;
+  /* margin-top: 200px; */
+}
+
+.file_descrip_detailed {
+  margin-top: 2px;
+  /* border: 1px purple solid; */
+  width: max-content;
+
+}
+
+  .removeButton {
+    margin-top: 2.5px;
+    /* margin-bottom:; */
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.175);
+    font-weight: 550;
+    font-size: 14px;
+    padding: 5px;
+    /* border: 3px blue solid; */
 }
 
 
 .name {
     text-align: left;
     padding-left: 80px;
-    font-size: 14.5pt;
-}
+    font-size: 21px;
+    margin-top: -8px;
+  /* border: 3px red solid; */
+  }
 
 
 
 .name_textbox_size {
     width: 300px;
-    font-size: 14pt;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.175);
+  }
 
 .name_textbox_size::placeholder {
-    font-size: 14pt;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }   
 
@@ -41,33 +74,35 @@
     font-weight: bold;
     text-align: left;
     padding-left: 80px;
-    font-size: 14.5pt;
+    font-size: 21px;
 }
 
 .description_text {
     font-weight: normal;
     /* margin: 0% 11% 0% 0%; */
     white-space: nowrap;
-    font-size: 12.5pt;
-    /* display: inline-block; */
-    
+    font-size: 17px;
+    /* display: inline-block; */    
 }
 
 .description_textbox{
     /* margin: 0% 10.5% 0% 0%; */
+    margin-top: 2px;
     height: 100px;
-    width: 815px;
+    width: 832px;
     padding-top: 0;
     padding-left: 0;
     line-height: 1em; 
-    font-size: 14pt;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-bottom: 50px;
-    
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.175);
+
 }
 
 .description_textbox::placeholder {
-    font-size: 14pt;
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 } 
 
@@ -97,6 +132,9 @@
     height: auto;
     /* border: solid;
     border-color: red; */
+    /* background: black; */
+
+    
   }
   
   .errorMsg {
@@ -113,8 +151,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #c6c6c6;
+    color: #a3a3a3;
     border: dashed;
+
+    /* border: 2px blue solid; */
+
+    /* background: transparent; */
+
   }
   
   .imgPreview input[type="file"]{
@@ -122,16 +165,17 @@
   }
   
   .customFileUpload {
-    color: #c6c6c6;
-    font-size: 13pt;
+    color: #a3a3a3;
+    font-size: 17px;
     font-weight: 500;
     padding: 6px 12px;
     cursor: pointer;
     /* border: dotted  ;
     border-color: blue; */
+    
   }
 
   .fileTypeDescription {
     color: #36a4da;
-    /* font-size: 13pt; */
+    font-size: 17px;
   }

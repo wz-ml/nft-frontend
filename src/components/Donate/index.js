@@ -157,7 +157,7 @@ const Donate = () => {
 
   // Close the dropdown if the user clicks outside of it
   window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
+    if (!event.target.matches('.allCharitiesButton')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
@@ -169,8 +169,17 @@ const Donate = () => {
     }
   }
 
+var div = document.getElementsByClassName('dropdown-content');
+for(var i=0 ; i < div.length ; i++){
+for(var j=0 ; j < div[i].children.length ; j++){
+div[i].children[j].addEventListener('click',function(){
+this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
+})
+}
+}
 
   return(
+<<<<<<< HEAD
     <div className="sellpage">
       <h1>
         <br></br>
@@ -194,6 +203,53 @@ const Donate = () => {
       </div>
 
       <div><br></br></div>
+=======
+    <div className="wholeThing">
+     <h1>
+        <br></br>
+        Donate Your NFT Here!
+    </h1>
+    {/* {renderDonateToggle()} */}
+    <h3 className="charitySelect">Select your Charity:</h3>
+    <p>(Please click the charity twice for confirmation purposes) </p>
+
+
+<div className="dropdown">
+  <button className="allCharitiesButton" onClick={showDropdownContent}>All Charities</button>
+  <div className="dropdown-content" id="myDropdown">
+    <a href="#">{((Object.keys(charityAddrs))[0])}</a>
+    <a href="#">{((Object.keys(charityAddrs))[1])}</a>
+    <a href="#">{((Object.keys(charityAddrs))[2])}</a>
+  </div>
+</div>
+
+
+
+
+<div className="thankYou">
+<h3>
+  Thank you for your kindness and generosity!
+  </h3>
+    <h4 className="thankYou_sub">Every donation counts, no matter how small!</h4>
+    <img className="generous" src="https://content.thriveglobal.com/wp-content/uploads/2020/02/be-generous-1.jpg?w=1550">
+</img>
+</div>
+
+
+
+<div className="nftInfo">
+  <h3 className="nftName">*NFT NAME HERE*</h3>
+  <img className="nftImg" src="https://cdn.vox-cdn.com/thumbor/_rw6XhJ3hVZ7_ThnekECYB0qhFo=/0x0:1252x974/1200x800/filters:focal(526x387:726x587)/cdn.vox-cdn.com/uploads/chorus_image/image/68904499/Screen_Shot_2021_03_02_at_3.21.50_PM.0.png">
+  </img>
+</div>
+
+
+<div className="donateButtonDiv">
+<button className="donateButton">
+        DONATE 
+    </button>
+</div>
+>>>>>>> eric-branch
 
       <div className="donateButton">
           <button>
@@ -201,10 +257,15 @@ const Donate = () => {
           </button>
       </div>
 
+<<<<<<< HEAD
       </div>
 
+=======
+<footer></footer>
+>>>>>>> eric-branch
     </div>
   );
+  
 };
 
 export default Donate;
