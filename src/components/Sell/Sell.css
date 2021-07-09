@@ -136,6 +136,7 @@ input {
 
 .post-button:hover{
     background-color: blue;
+    cursor: pointer;
 }
 
 .fees-section{
