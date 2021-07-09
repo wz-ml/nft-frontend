@@ -1,11 +1,10 @@
 import React from "react";
 import {useEffect, useState} from "react";
-import fetch from "node-fetch";
 import "./index.css";
 
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { getCookie, smartContract } from '../../constants';
+import { getCookie } from '../../constants';
 import { func } from "prop-types";
 
 
@@ -28,21 +27,6 @@ const Donate = () => {
   const [schemaName, setSchemaName] = useState("");
   const [tokenPrice, setTokenPrice] = useState(-1);
 
-  function addSmartContractListener(){
-    smartContract.events.Approval({}, (err, data) => {
-      if(err){
-        console.error(err);
-        return;
-      }
-
-      console.log(data);
-    })
-  }
-
-  useEffect(() => {
-    window.addEventListener("load", getDetails);
-    addSmartContractListener();
-  });
 
   async function getDetails(){
     let urlParts = window.location.pathname.split('/');
@@ -68,8 +52,9 @@ const Donate = () => {
     console.log(tokenData);
   }
 
+
   function updateChosenCharity(evt){
-    setChosenCharity(evt.target.innerHTML);
+    setChosenCharity(evt.target.value);
     // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
   }
 
@@ -96,6 +81,20 @@ const Donate = () => {
         charities.push(createCharityRadio(charity));
 
     }
+
+/*    const charities = Object.keys(charityAddrs);
+    console.log(charities);
+    charities.forEach((key, index) => {
+        console.log(`${key}: ${charityAddrs[key]}`);
+    });
+    const charities = [];
+    for (let charity in charityAddrs) {
+        charities.push(createCharityRadio(charity));
+        charities.push({charity: value.charity});
+        charities.push(", ");
+    } */
+
+
 
     return (
         <div className="donateContainer">
@@ -125,7 +124,7 @@ const Donate = () => {
         fromAddress, //your address (you must own the asset)
         toAddress: charityAddrs[chosenCharity]
     })
-  } 
+  }
 
   async function getOpenSeaPort(){
     const provider = await detectEthereumProvider();
@@ -180,9 +179,9 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
 <div className="dropdown">
   <button className="allCharitiesButton" onClick={showDropdownContent}>All Charities</button>
   <div className="dropdown-content" id="myDropdown">
-    <a href="#" onClick={updateChosenCharity}>{((Object.keys(charityAddrs))[0])}</a>
-    <a href="#" onClick={updateChosenCharity}>{((Object.keys(charityAddrs))[1])}</a>
-    <a href="#" onClick={updateChosenCharity}>{((Object.keys(charityAddrs))[2])}</a>
+    <a href="#">{((Object.keys(charityAddrs))[0])}</a>
+    <a href="#">{((Object.keys(charityAddrs))[1])}</a>
+    <a href="#">{((Object.keys(charityAddrs))[2])}</a>
   </div>
 </div>
 
@@ -201,19 +200,22 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
 
 
 <div className="nftInfo">
-  <h3 className="nftName">{tokenName}</h3>
-  <img className="nftImg" src={imgUrl} alt={"Asset Image"}></img>
+  <h3 className="nftName">*NFT NAME HERE*</h3>
+  <img className="nftImg" src="https://cdn.vox-cdn.com/thumbor/_rw6XhJ3hVZ7_ThnekECYB0qhFo=/0x0:1252x974/1200x800/filters:focal(526x387:726x587)/cdn.vox-cdn.com/uploads/chorus_image/image/68904499/Screen_Shot_2021_03_02_at_3.21.50_PM.0.png">
+  </img>
 </div>
-<div className="donateButtonDiv">
 
-<button className="donateButton" onClick={() => makeTransfer()}> 
+
+<div className="donateButtonDiv">
+<button className="donateButton">
         DONATE 
     </button>
 </div>
 
+
 <footer></footer>
     </div>
-  ); //both renderDonateToggle() functions are not used anywhere. have to add makeTransfer() onClick event here.
+  );
   
 };
 
