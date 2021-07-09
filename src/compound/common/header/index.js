@@ -94,14 +94,14 @@ function DropdownMenu(){
     return (
         <div className="dropdown">
             <DropdownItem>
-                <NavLink as={Link} to={"/Signin"}>
+                <a href={"/Signin"}>
                     Sign In
-                </NavLink>
+                </a>
             </DropdownItem>
             <DropdownItem>
-                <NavLink as={Link} to={"/user"}>
+                <a href={"/user"}>
                     My NFTs
-                </NavLink>
+                </a>
             </DropdownItem>
             <DropdownItem>Log off</DropdownItem>
         </div>
