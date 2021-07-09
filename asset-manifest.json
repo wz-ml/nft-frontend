@@ -1,7 +1,7 @@
 {
   "main.css": "./public/static/css/main.88f5e3bd.chunk.css",
-  "main.js": "./public/static/js/main.42ec7ad9.chunk.js",
-  "main.js.map": "./public/static/js/main.42ec7ad9.chunk.js.map",
+  "main.js": "./public/static/js/main.525d5931.chunk.js",
+  "main.js.map": "./public/static/js/main.525d5931.chunk.js.map",
   "runtime~main.js": "./public/static/js/runtime~main.9cbf37f2.js",
   "runtime~main.js.map": "./public/static/js/runtime~main.9cbf37f2.js.map",
   "static/js/2.f67ad8bc.chunk.js": "./public/static/js/2.f67ad8bc.chunk.js",
@@ -9,7 +9,7 @@
   "static/js/3.d73945d1.chunk.js": "./public/static/js/3.d73945d1.chunk.js",
   "static/js/3.d73945d1.chunk.js.map": "./public/static/js/3.d73945d1.chunk.js.map",
   "index.html": "./public/index.html",
-  "precache-manifest.43c2b27d4a10494ac3a280643956b862.js": "./public/precache-manifest.43c2b27d4a10494ac3a280643956b862.js",
+  "precache-manifest.0572336bdc04e393e06dcf26aaebf86a.js": "./public/precache-manifest.0572336bdc04e393e06dcf26aaebf86a.js",
   "service-worker.js": "./public/service-worker.js",
   "static/css/main.88f5e3bd.chunk.css.map": "./public/static/css/main.88f5e3bd.chunk.css.map",
   "static/media/bcharity_logo.png": "./public/static/media/bcharity_logo.3b9be324.png",
