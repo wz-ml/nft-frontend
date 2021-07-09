@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "./public/precache-manifest.d7e6dcfd7fb6bcbdfd2d403ba02c265d.js"
+  "https://bcharity-net.github.io/nft-marketplace/precache-manifest.22af004e7193479a5bf3f4345bab55e7.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("./public/index.html", {
+workbox.routing.registerNavigationRoute("https://bcharity-net.github.io/nft-marketplace/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
