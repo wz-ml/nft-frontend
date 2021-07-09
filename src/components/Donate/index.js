@@ -4,9 +4,8 @@ import "./index.css";
 
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
-import { getCookie } from '../../constants';
+import { getCookie, smartContract } from '../../constants';
 import { func } from "prop-types";
-
 
 
 let charityAddrs = {
@@ -27,6 +26,20 @@ const Donate = () => {
   const [schemaName, setSchemaName] = useState("");
   const [tokenPrice, setTokenPrice] = useState(-1);
 
+  function addSmartContractListener(){
+    smartContract.events.Approval({}, (err, data) => {
+      if(err){
+        console.error(err);
+        return;
+      } 
+      console.log(data);
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener("load", getDetails);
+    addSmartContractListener();
+  });
 
   async function getDetails(){
     let urlParts = window.location.pathname.split('/');
@@ -58,7 +71,9 @@ const Donate = () => {
     // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
   }
 
- function createCharityRadio(charityName) {
+/* NOT NEEDED ANYMORE
+
+function createCharityRadio(charityName) {
       return(
         <span className="charityRadio">
         <div key={charityName}>
@@ -73,28 +88,15 @@ const Donate = () => {
       );
   }
 
-  function renderDonateToggle(){
+
+function renderDonateToggle(){
     const charities = Object.entries(charityAddrs);
     
     for (let charity in charities) {
 
         charities.push(createCharityRadio(charity));
 
-    }
-
-/*    const charities = Object.keys(charityAddrs);
-    console.log(charities);
-    charities.forEach((key, index) => {
-        console.log(`${key}: ${charityAddrs[key]}`);
-    });
-    const charities = [];
-    for (let charity in charityAddrs) {
-        charities.push(createCharityRadio(charity));
-        charities.push({charity: value.charity});
-        charities.push(", ");
-    } */
-
-
+    } 
 
     return (
         <div className="donateContainer">
@@ -104,7 +106,7 @@ const Donate = () => {
             </form>
         </div>
     );
-    }
+    } */
 
   async function makeTransfer(){
 
@@ -124,6 +126,10 @@ const Donate = () => {
         fromAddress, //your address (you must own the asset)
         toAddress: charityAddrs[chosenCharity]
     })
+
+    waitForTx(transactionHash); //wait until transaction is completed
+    document.getElementById("donateButton").innerHTML = "Donation Complete!";
+
   }
 
   async function getOpenSeaPort(){
@@ -133,7 +139,16 @@ const Donate = () => {
     });
   }
 
+  function waitForTx(tx_hash){
 
+    var Web3 = require("web3");
+    const web3 = new Web3(new Web3.providers.HttpProvider('https://eth-rinkeby.alchemyapi.io/v2/TDvA5STwGZ7Uv_loxm5msg-tuujVCk4_')); //read-only provider
+
+    var result = null;
+    while (result === null){ //blocking function that resolves after transaction is completed
+      result = web3.eth.getTransactionReceipt(tx_hash); 
+    }
+  }
 
   function showDropdownContent() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -167,7 +182,6 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
   return(
     <div className="wholeThing">
      <h1>
-        <br></br>
         Donate Your NFT Here!
     </h1>
 
@@ -180,7 +194,9 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
   <button className="allCharitiesButton" onClick={showDropdownContent}>All Charities</button>
   <div className="dropdown-content_eric" id="myDropdown">
     <a href="#">{((Object.keys(charityAddrs))[0])}</a>
-    <a href="#">{((Object.keys(charityAddrs))[1])}</a>
+    {/* <a href="#">{((Object.keys(charityAddrs))[1])}</a> */}
+    <a href="#">long charity name long charity name </a>
+    
     <a href="#">{((Object.keys(charityAddrs))[2])}</a>
   </div>
 </div>
