@@ -1,5 +1,5 @@
 {
-  "main.css": "./public/static/css/main.17cb6195.chunk.css",
+  "main.css": "./public/static/css/main.1265136f.chunk.css",
   "main.js": "./public/static/js/main.227e3116.chunk.js",
   "main.js.map": "./public/static/js/main.227e3116.chunk.js.map",
   "runtime~main.js": "./public/static/js/runtime~main.9cbf37f2.js",
@@ -9,9 +9,9 @@
   "static/js/3.d73945d1.chunk.js": "./public/static/js/3.d73945d1.chunk.js",
   "static/js/3.d73945d1.chunk.js.map": "./public/static/js/3.d73945d1.chunk.js.map",
   "index.html": "./public/index.html",
-  "precache-manifest.1aff64bc77c104ac993dff8fc2a77839.js": "./public/precache-manifest.1aff64bc77c104ac993dff8fc2a77839.js",
+  "precache-manifest.c2ce6253f24f52b64c14b2b232de29f2.js": "./public/precache-manifest.c2ce6253f24f52b64c14b2b232de29f2.js",
   "service-worker.js": "./public/service-worker.js",
-  "static/css/main.17cb6195.chunk.css.map": "./public/static/css/main.17cb6195.chunk.css.map",
+  "static/css/main.1265136f.chunk.css.map": "./public/static/css/main.1265136f.chunk.css.map",
   "static/media/bcharity_logo.png": "./public/static/media/bcharity_logo.3b9be324.png",
   "static/media/cat.jpg": "./public/static/media/cat.2008f596.jpg",
   "static/media/collection.jpg": "./public/static/media/collection.274cedb3.jpg",
