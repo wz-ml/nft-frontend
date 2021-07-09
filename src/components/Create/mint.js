@@ -81,7 +81,7 @@ var testobject = {
 async function passJson(params, body) {
     var metadatabody = JSON.stringify(body);
     var tokenid = params;
-    var uri = "http://" + METADATA_BASE + "/api/giveNFT/" + tokenid;
+    var uri = "https://" + METADATA_BASE + "/api/giveNFT/" + tokenid;
 
     console.log(metadatabody);
 
