@@ -9,6 +9,10 @@
 
 import React from 'react'
 import "./Home.css"
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import Create from '../Create';
+import Marketplace from "../Marketplace";
 
 function Home() {
     return (
@@ -16,10 +20,20 @@ function Home() {
             <div className='homepage-top'>
                 <div className="homepage-top-left">
                     <h1>Discover, sell, and donate extraordinary NFTs</h1>
+                    <Route>
                     <div className='homepage-top-left-button-container'>
-                        <button className='top-button-left'>Explore</button>
-                        <button className='top-button-right'>Create</button>
+                        <button className='top-button-left'>
+                            <NavLink as={Link} to={"/marketplace"}>
+                                Explore
+                            </NavLink>
+                        </button>
+                        <button className='top-button-right'>
+                            <NavLink as={Link} to={"/Create"}>
+                                Create
+                            </NavLink>
+                        </button>
                     </div> 
+                    </Route>
                 </div>
                 <div className="homepage-top-right">
                     <h3>A temporary placeholder (Tobe the most recent published nft item in the marketplace)</h3>
@@ -102,7 +116,14 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <div>
+             <Switch>
+                <Route path="/Create"><Create /></Route>
+                <Route path="/marketplace"><Marketplace /></Route>
+             </Switch>
+            </div>
         </section>
+        
     )
 }
 

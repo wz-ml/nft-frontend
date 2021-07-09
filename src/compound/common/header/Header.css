@@ -27,20 +27,17 @@ a {
   width: 20%;
   height: 10%;
 }
-
 .header-top__BCHARITY{
   font-size: 2em;
   margin-left: 0px;
   margin-right: 50px;
 }
-
 .header-top__navbar {
   justify-content: center;
   color: var(--blue-gradient-start);
   background-color: white;
   margin-left: 100px;
 }
-
 */
 .navbar {
   display: flex;
@@ -90,10 +87,15 @@ a {
   margin-left: 25px;
   margin-right: 25px;
   font-size: 1.5em;
+  font-style: none;
   text-decoration: inherit;
   color: black;
   padding-top: 3px;
   flex-shrink: 1;
+}
+
+.navlink-items{
+  text-decoration: none;
 }
 
 .navbar-item.navbar-active{
@@ -102,6 +104,7 @@ a {
   margin-left: 15px;
   margin-right: 25px;
   color: white;
+  font-style: none;
   font-size: 1.5em;
   text-decoration: inherit;
   background: linear-gradient(70deg, var(--blue-gradient-start) 15%, var(--blue-gradient-end));
@@ -177,6 +180,7 @@ a {
 }
 
 .dropdown {
+  z-index: 2;
   position: absolute;
   top: 70px;
   width: 300px;
@@ -193,7 +197,6 @@ a {
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
-  transition: background var(--speed);
   padding: 0.5rem;
 }
 
