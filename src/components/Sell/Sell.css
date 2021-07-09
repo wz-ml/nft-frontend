@@ -134,8 +134,8 @@ input {
     border-radius: 0.5rem;
 }
 
-button:hover{
-    background-color: var(--blue-gradient-end);
+.post-button:hover{
+    background-color: blue;
 }
 
 .fees-section{
