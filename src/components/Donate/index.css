@@ -3,14 +3,11 @@
 }
 
 .wholeThing {
-  border: blue solid;
+  /* border: blue solid; */
   height: 80vh;
   max-height: 100vh;
   /* padding-bottom: 22.5vh; */
   position: relative;
-  /* max-width: 200vh; */
-  max-width: 100vw;
-  /* width: 100vw; */
 }
 
 .charitySelect {
@@ -26,26 +23,22 @@
     font-size: 16px;
     /* border: none; */
     cursor: pointer;
-    border: purple solid;
+    /* border: purple solid; */
 }
   
   .dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
   }
   
-  .dropdown {
-    margin-top: 60px;
-    /* position: relative; */
+  .dropdown_eric {
+    margin-top: 6px;
+    position: relative;
     display: inline-block;
-    height: 350px;
     border: orange dashed;
-    margin-bottom: 300px;
-    background-color: transparent;
-    /* left: auto;
-    right: auto; */
+    /* margin-bottom: 300px; */
   }
   
-  .dropdown-content {
+  .dropdown-content_eric {
     display: none;
     background-color: #f1f1f1;
     min-width: max-content;
@@ -54,7 +47,8 @@
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     margin: auto;
-    border: red solid;
+    border: solid;
+    /* border-color: red; */
     
     position: absolute;
     z-index: 1;
@@ -66,62 +60,62 @@
     z-index: 1; */
 }
   
-  .dropdown-content a {
+  .dropdown-content_eric a {
     color: black;
     padding: 8px 5px 8px 5px;
     text-decoration: none;
     display: block;
   }
   
-  .dropdown a:hover {background-color: #c3c3c3;}
+  .dropdown_eric a:hover {background-color: #c3c3c3;}
   
   .show {display: block;}
-  
-  
+
+
   .donateButtonDiv {
-    /* display: block; */
-    /* margin: auto; */
-    /* border: lightgreen double; */
-    /* position: fixed; */
-    
-    /* width: max-content; */
-    /* bottom: 3.5vh; */
-    /* margin-bottom: 10vh; */
-    
-    /* position: absolute; */
-    /* bottom: 10px; */
-    /* margin-left: 50vw; */
-    
-    
-    
-    
-    /* padding-top: 25%; */
-  }
-  
+      /* display: block; */
+      /* margin: auto; */
+      /* border: lightgreen double; */
+      /* position: fixed; */
+      
+      /* width: max-content; */
+      /* bottom: 3.5vh; */
+      /* margin-bottom: 10vh; */
+
+      /* position: absolute; */
+      /* bottom: 10px; */
+      /* margin-left: 50vw; */
+
+
+
+
+      /* padding-top: 25%; */
+    }
+
   .donateButton {
-    background-color: #3498DB;
-    color: white;
-    padding: 10px;
-    font-size: 13px;
-    cursor: pointer;
-    
-    margin-top: 7%;
-    
-    
-    /* position: absolute; */
-    /* margin: 0 auto;
-    display: block; */
-    
-    /* margin-top: 50px; */
-    /* left: 25%; */
-    
-    /* bottom: 50px;  */
-  }
+      background-color: #3498DB;
+      color: white;
+      padding: 10px;
+      font-size: 13px;
+      cursor: pointer;
+
+      margin-top: 10%;
+      
+
+      /* position: absolute; */
+      /* margin: 0 auto;
+      display: block; */
+
+      /* margin-top: 50px; */
+      /* left: 25%; */
+
+      /* bottom: 50px;  */
+    }
   
   
   .nftInfo {
-    margin-top: 80px;
-    border: 2px turquoise solid;
+    margin-top: 4px;
+    /* border: 2px turquoise solid; */
     margin-left: 4vw;
     max-width: max-content;
   }
@@ -143,10 +137,9 @@
   }
   
   .thankYou {
-    border: 2px hotpink solid;
+    /* border: 2px hotpink solid; */
     /* margin-bottom: 16px; */
     /* width: max-content; */
-    margin-top: 80px;
     position: absolute;
     right: 3.5vw;
   }

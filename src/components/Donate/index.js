@@ -144,7 +144,7 @@ const Donate = () => {
   // Close the dropdown if the user clicks outside of it
   window.onclick = function(event) {
     if (!event.target.matches('.allCharitiesButton')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var dropdowns = document.getElementsByClassName("dropdown-content_eric");
       var i;
       for (i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
@@ -155,7 +155,7 @@ const Donate = () => {
     }
   }
 
-var div = document.getElementsByClassName('dropdown-content');
+var div = document.getElementsByClassName('dropdown-content_eric');
 for(var i=0 ; i < div.length ; i++){
 for(var j=0 ; j < div[i].children.length ; j++){
 div[i].children[j].addEventListener('click',function(){
@@ -176,9 +176,9 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
     <p>(Please click the charity twice for confirmation purposes) </p>
 
 
-<div className="dropdown">
+<div className="dropdown_eric">
   <button className="allCharitiesButton" onClick={showDropdownContent}>All Charities</button>
-  <div className="dropdown-content" id="myDropdown">
+  <div className="dropdown-content_eric" id="myDropdown">
     <a href="#">{((Object.keys(charityAddrs))[0])}</a>
     <a href="#">{((Object.keys(charityAddrs))[1])}</a>
     <a href="#">{((Object.keys(charityAddrs))[2])}</a>
