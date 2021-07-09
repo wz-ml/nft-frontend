@@ -91,13 +91,13 @@ function App(){
 
   document.body.style = 'background: var(--main-background-colour);'; // CHANGE BACKGROUND COLOR OF WHOLE PAGE
 
-  return (
+   return (
     
     <div className = "App">
       <Header />
-      <Router>
+       <Router>
         <div>
-          <ul>
+          <ul className="LinkList">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -139,7 +139,7 @@ function App(){
       </Router>
     </div>
   );
-}
+} 
 
 // next line is very temporary
 /*
