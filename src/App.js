@@ -97,8 +97,7 @@ function App(){
       <Header />
        <Router>
         <div>
-          {/* REMOVING THE LIST OF LINKS FROM THE TOP-CENTRE OF EVERY PAGE
-          <ul>
+          <ul className="LinkList">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -126,7 +125,7 @@ function App(){
             <li>
               <Link to="/Progress_bar">Progress_bar</Link>
             </li>
-          </ul> */}
+          </ul>
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/signin" component={SignIn}/>
