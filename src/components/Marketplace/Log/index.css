@@ -4,33 +4,26 @@
     document.body.style instead */
 }
 
-:root {
-    --main-background-colour: orange;
-}
-
-
-
-
-
 .py-3 {
-    border: solid;
-    border-color: red;
+    /* border: solid; */
+    /* border-color: red; */
     /* border-width: 1.5px; */
     
-    background-color: green;
+    /* background-color: green; */
     
 }
 
 
 .card-deck {
-    border: solid;
-    border-color: blue;
+    /* border: solid; */
+    /* border-color: blue; */
     /* border-width: 1.5px; */
 }
 
 
 .text-center {
-    border: solid;
-    border-color: violet;
+    /* border: solid; */
+    /* border-color: violet; */
     /* border-width: 1.5px; */
 }
+

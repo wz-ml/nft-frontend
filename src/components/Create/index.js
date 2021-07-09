@@ -112,8 +112,9 @@ const Create = () => {
         <div className="file_types">
         {/* <h4> */}
         <strong className = "file_descrip">Use an image as your NFT!</strong>
-        <br></br>
+        <div className="file_descrip_detailed">
         File types supported: JPG, PNG, JPEG
+        </div>
         {/* </h4> */}
         </div>
 
@@ -122,7 +123,7 @@ const Create = () => {
           {error && <p className="errorMsg">File not supported</p>}
           <div 
           className="imgPreview"
-          style= {{background: imgPreview ? `url("${imgPreview}")no-repeat center/cover` : "#ffffff"}}
+          style= {{background: imgPreview ? `url("${imgPreview}")no-repeat center/cover` : "transparent"}}
           >
             {!imgPreview && (
               <>
@@ -138,7 +139,7 @@ const Create = () => {
             )}
           </div>
           {imgPreview && (
-            <button onClick={() => setImgPreview(null)}>Remove image</button>
+            <button className="removeButton" onClick={() => setImgPreview(null)}>Remove image</button>
           )}
         </div>
       </div>
