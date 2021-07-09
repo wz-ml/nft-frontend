@@ -95,7 +95,6 @@ a {
   color: black;
   padding-top: 3px;
   flex-shrink: 1;
-  text-decoration: none;
 }
 
 .navlink-items{
@@ -184,6 +183,7 @@ a {
 }
 
 .dropdown {
+  z-index: 2;
   position: absolute;
   top: 70px;
   width: 300px;
@@ -200,7 +200,6 @@ a {
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
-  transition: background var(--speed);
   padding: 0.5rem;
 }
 
