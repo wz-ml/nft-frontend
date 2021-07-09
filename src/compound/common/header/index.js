@@ -23,7 +23,6 @@ function Header(){
         });
     }
     return (
-        <Router>
         <section className = "navbar">
 
             <div className = "navbar_logo">
@@ -35,14 +34,14 @@ function Header(){
 
             <div className = "navbar-item-container">
                 <div className="navbar-item navbar-active" onClick={updateNavbar}>
-                    <NavLink as={Link} to={"/home"} className="navlink-items">
+                    <a href={"/home"} className="navlink-items">
                         Home
-                    </NavLink>
+                    </a>
                 </div>
                 <div className="navbar-item" onClick={updateNavbar}>
-                    <NavLink as={Link} to={"/marketplace"} className="navlink-items">
+                    <a href={"/marketplace"} className="navlink-items">
                         Marketplace
-                    </NavLink>
+                    </a>
                 </div>
                 <div className="navbar-item" onClick={updateNavbar}>About</div>
              </div>
@@ -55,15 +54,6 @@ function Header(){
                  </Login_item>
              </Login>
          </section>
-         <div>
-             <Switch>
-                <Route path="/home"><Home /></Route>
-                <Route path="/marketplace"><Marketplace /></Route>
-                <Route path="/signin"><SignIn /></Route>
-                <Route path="/user"><User /></Route>
-             </Switch>
-         </div>
-         </Router>
      )
  }  
 
