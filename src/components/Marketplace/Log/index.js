@@ -5,6 +5,8 @@ import { OrderSide } from 'opensea-js/lib/types';
 import { connectWallet } from '../../../constants';
 import "./index.css";
 
+
+
 export default class Log extends React.Component {
   static propTypes = {
     seaport: PropTypes.object.isRequired,
@@ -26,20 +28,29 @@ export default class Log extends React.Component {
   }
 
   async fetchData() {
+
+    var token_ids = [];
+    for (var i = 0; i < 200; i++)  {
+      token_ids[i] = i;
+    }
+    console.log(token_ids);
+
     const { accountAddress } = this.props
     const { orders, count } = await this.props.seaport.api.getOrders({
       maker: this.state.onlyByMe ? accountAddress : undefined,
       owner: this.state.onlyForMe ? accountAddress : undefined,
       side: this.state.side,
-      bundled: this.state.onlyBundles ? true : undefined
+      bundled: this.state.onlyBundles ? true : undefined,
       // Possible query options:
-      // 'asset_contract_address'
+      asset_contract_address: "0x5F0ea95E05af06499B4F91a772f781816122Dd54",
       // 'taker'
       // 'token_id'
-      // 'token_ids'
+      token_ids
       // 'sale_kind'
       
     }, this.state.page)
+
+    console.log(orders);
 
     this.setState({ orders, total: count })
   }
@@ -161,6 +172,8 @@ export default class Log extends React.Component {
 
   render() {
     const { orders } = this.state
+
+    document.body.style = 'background: var(--main-background-colour);'; // CHANGE BACKGROUND COLOR OF WHOLE PAGE
 
     return (
       <div className="py-3" id="Log">
