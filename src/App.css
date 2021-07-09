@@ -19,6 +19,7 @@
 
 .App {
   text-align: center;
+  outline: purple solid;
 }
 
 .App-logo {
@@ -45,6 +46,7 @@
 
 .App-link {
   color: #61dafb;
+  /* color: red; */
 }
 
 @keyframes App-logo-spin {

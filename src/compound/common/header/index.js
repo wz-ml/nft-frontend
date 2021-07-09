@@ -17,12 +17,14 @@ function Header(){
     }
     return (
         <section className = "navbar">
+
             <div className = "navbar_logo">
                 <img src="./bcharity_logo.png"alt="bcharity_logo"></img>
             </div>
             <div className="navbar_bcharity">
                 BCHARITY
             </div>
+
             <div className = "navbar-item-container">
                 <div className="navbar-item navbar-active" onClick={updateNavbar}>Home</div>
                 <div className="navbar-item" onClick={updateNavbar}>Marketplace</div>

@@ -15,7 +15,7 @@ function Home() {
         <section className='homepage'>
             <div className='homepage-top'>
                 <div className="homepage-top-left">
-                    <h1>Discover, sell, and donate extradinary NFTs</h1>
+                    <h1>Discover, sell, and donate extraordinary NFTs</h1>
                     <div className='homepage-top-left-button-container'>
                         <button className='top-button-left'>Explore</button>
                         <button className='top-button-right'>Create</button>
