@@ -173,34 +173,21 @@ const Asset = () => {
   }
 
   function renderDonateToggle(){
-    let charities = [];
-    let counter = 0;
-
-    for(let charity in charityAddrs){
-      charities.push(createCharityRadio(charity));
-    }
 
     let urlParts = window.location.pathname.split('/');
     const [collectionAddr, tokenID] = urlParts.splice(-2);
 
     return(
       <div className="donateContainer">
-      {/*MOVE THIS TO DONATE PAGE
-      <button className="button" id="donateButton" onClick={() => makeTransfer()}>Donate</button>
-      */}
         <a href={`/Donate/${collectionAddr}/${tokenID}`}>
           <button id="button" className="button">Donate</button>
         </a>
-        <form className="charitySelection">
-          {charities}
-        </form>
       </div>
     );
   }
 
-// onClick={() => makeTransfer()}
-
-  async function makeSellOrder(){
+/* MOVED TO SELL PAGE
+async function makeSellOrder(){
 
     const seaport = await getOpenSeaPort()
  
@@ -220,7 +207,7 @@ const Asset = () => {
 
     document.getElementById("sellButton").innerHTML = "NFT listed for sale";
 
-  }
+  } */
 
   async function makeBuyOrder(){
 
@@ -268,7 +255,8 @@ const Asset = () => {
 
   }
 
-  async function makeTransfer(){
+/* MOVED TO DONATE PAGE 
+async function makeTransfer(){
 
     const seaport = await getOpenSeaPort();
 
@@ -290,7 +278,7 @@ const Asset = () => {
     waitForTx(transactionHash); //wait until transaction is completed
     document.getElementById("donateButton").innerHTML = "Donation Complete!";
 
-  }
+  } */
 
   async function getOpenSeaPort(){
     const provider = await detectEthereumProvider();

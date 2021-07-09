@@ -24,6 +24,9 @@
     grid-column: 2 / 3;
     grid-row: 3 / 4;
     justify-self: center;
+    height: 30rem;
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 1rem;
 }
 
 .sellTokenName {

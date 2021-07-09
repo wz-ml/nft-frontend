@@ -91,12 +91,13 @@ function App(){
 
   document.body.style = 'background: var(--main-background-colour);'; // CHANGE BACKGROUND COLOR OF WHOLE PAGE
 
-  return (
+   return (
     
     <div className = "App">
       <Header />
-      <Router>
+       <Router>
         <div>
+          {/* REMOVING THE LIST OF LINKS FROM THE TOP-CENTRE OF EVERY PAGE
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -125,7 +126,7 @@ function App(){
             <li>
               <Link to="/Progress_bar">Progress_bar</Link>
             </li>
-          </ul>
+          </ul> */}
           <Route exact path="/" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/signin" component={SignIn}/>
@@ -139,7 +140,7 @@ function App(){
       </Router>
     </div>
   );
-}
+} 
 
 // next line is very temporary
 /*
