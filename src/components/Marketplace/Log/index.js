@@ -29,6 +29,8 @@ export default class Log extends React.Component {
 
   async fetchData() {
 
+    //temp solution! how to filter specifically for giveNFT collection, AND for nft's that are on sale?
+    //throws error for i > 300, looks like we are being throttled? unsure if it is realistic to iterate through all NFT's like I have done here.
     var token_ids = [];
     for (var i = 0; i < 200; i++)  {
       token_ids[i] = i;
