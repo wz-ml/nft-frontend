@@ -19,7 +19,7 @@
 
 .App {
   text-align: center;
-  outline: purple solid;
+  outline: purple transparent;
 }
 
 .App-logo {
