@@ -3,7 +3,7 @@
 }
 
 .wholeThing {
-  border: blue solid;
+  border: blue transparent;
   height: 80vh;
   max-height: 100vh;
   /* padding-bottom: 22.5vh; */
