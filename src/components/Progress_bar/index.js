@@ -1,4 +1,5 @@
 import React from 'react'
+import {useState} from "react";
 
 const ProgressBar = (props) => {
     const { bgcolor, completed } = props;
@@ -6,15 +7,15 @@ const ProgressBar = (props) => {
     const containerStyles = {
         height: 20,
         width: '60%',
-        backgroundColor: "#e0e0de",
+        border: "1px solid var(--shadow-color)",
         borderRadius: 50,
-        margin: 50
+        margin: "1rem 0"
     }
 
     const fillerStyles = {
         heigth: '100%',
         width: `${completed}%`,
-        backgroundColor: bgcolor,
+        background: bgcolor,
         borderRadius: 'inherit',
         textAlign: 'right'
     }
@@ -28,7 +29,7 @@ const ProgressBar = (props) => {
     return (
         <div style={containerStyles}>
             <div style={fillerStyles}>
-                <span style={labelStyles}>{`${completed}%`}</span>
+                <span style={labelStyles}></span>
             </div>
         </div>
     )
@@ -48,4 +49,4 @@ function Progress_bar(){
     );
 }
 
-export default Progress_bar
+export default ProgressBar
