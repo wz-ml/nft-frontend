@@ -230,29 +230,35 @@ async function makeSellOrder(){
     
     setProgress(50)
 
-    const order = await seaport.api.getOrder({
-      side: OrderSide.Sell,
-      asset_contract_address,
-      token_id,
+    try{
+      const order = await seaport.api.getOrder({
+          side: OrderSide.Sell,
+          asset_contract_address,
+          token_id,
         });
 
-    setProgress(75);
-    
-    const transactionHash = await seaport.fulfillOrder({order, accountAddress});
+      setProgress(75);
 
+      const th = await seaport.fulfillOrder({order, accountAddress});
 
-    let result = waitForTx(transactionHash); //wait until transaction is completed
-    document.getElementById("buyButton").innerHTML = "NFT purchased!";
+      let result = waitForTx(th); //wait until transaction is completed
+      document.getElementById("buyButton").innerHTML = "NFT purchased!";
 
-    setProgress(100);
-    setTransactionHash(transactionHash);
+      setProgress(100);
+      setTransactionHash(transactionHash);
 
-    if(result === null){
+      if(result === null){
+        setProgressBg("var(--failure-color)");
+        return;
+      }
+
+      setProgressBg("var(--success-color)");
+    }catch(err){
+      setProgress(100);
       setProgressBg("var(--failure-color)");
+      console.error(err);
       return;
     }
-
-    setProgressBg("var(--success-color)");
   }
 
   async function cancelOrder(){
