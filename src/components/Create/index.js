@@ -210,21 +210,21 @@ const Create = () => {
         </div>
         {/* </h4> */}
 
-      </form>
-      {
-        progress > -1
-        ? <ProgressBar completed={progress} bgcolor={progressBg} />
-        : <></>
-      }
-      {
-        transactionHash !== ""
-        ? <p>Your transaction is: {transactionHash}</p>
-        : <></>
-      }
-      <button className="CreateButton" onClick={() => createNFT()} disabled={disableButton}>
-        <Plus className="CreatePlus" />
-        <p>Create Token</p>
-      </button>
+        </form>
+        {
+          progress > -1
+          ? <ProgressBar completed={progress} bgcolor={progressBg} />
+          : <></>
+        }
+        {
+          transactionHash !== ""
+          ? <p>Your transaction is: {transactionHash}</p>
+          : <></>
+        }
+        <button className="CreateButton" onClick={() => createNFT()} disabled={disableButton}>
+          <Plus className="CreatePlus" />
+          <p>Create Token</p>
+        </button>
     </div>
 
   );
