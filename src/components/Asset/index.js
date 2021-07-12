@@ -315,11 +315,21 @@ async function makeTransfer(){
     const web3 = new Web3(new Web3.providers.HttpProvider('https://eth-rinkeby.alchemyapi.io/v2/TDvA5STwGZ7Uv_loxm5msg-tuujVCk4_')); //read-only provider
 
     var result = null;
-    while (result === null){ //blocking function that resolves after transaction is completed
-      result = web3.eth.getTransactionReceipt(tx_hash); 
-    }
+    // while (result === null){ //blocking function that resolves after transaction is completed
+    result = web3.eth.getTransactionReceipt(tx_hash); 
+    // }
 
-    return result;
+    result
+      .then((response) => {
+        console.log(response);
+        return response;
+      })
+      .catch((err) => {
+        console.error(err);
+        return null;
+      });
+
+    //return result;
   }
 
   function renderToggles(){
