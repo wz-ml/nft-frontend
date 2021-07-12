@@ -77,6 +77,8 @@ function Sell() {
 
     const[data, setData] = useState(null)
     const[method, setMethod] = useState('set')
+    const[bid, setBid] = useState(null)
+    const[reserved, setReserved] = useState(null)
     
     function changeData(val){
         setData(val.target.value);
@@ -84,6 +86,14 @@ function Sell() {
 
     function changeSellMethod(val){
         setMethod(val);
+    }
+
+    function changeBid(val){
+        setBid(val.target.value);
+    }
+
+    function changeReserved(val){
+        setReserved(val.target.value);
     }
 
     async function makeSellOrder(){
@@ -162,7 +172,7 @@ function Sell() {
                                         <p className='minimum-bid-description'>Set your public starting bid price.</p>
                                     </div>
                                     <div className='set-minimum-bid-right'>
-                                        <input type="number" placeholder="Amount" id="min-bid" onChange={changeData} />
+                                        <input type="number" placeholder="Amount" id="min-bid" onChange={changeBid} />
                                     </div>
                                 </div>
                                 <hr />
@@ -172,7 +182,7 @@ function Sell() {
                                         <p className='reserve-price-description'>Create a hidden limit by setting a reserve price.</p>
                                     </div>
                                     <div className='reserve-price-right'>
-                                        <input type="number" placeholder="Amount" id="reserve-p" onChange={changeData} />
+                                        <input type="number" placeholder="Amount" id="reserve-p" onChange={changeReserved} />
                                     </div>
                                 </div>
                                 <hr />
@@ -195,8 +205,26 @@ function Sell() {
                     <hr />
                     <div className='listing-section'>
                         <h3 className='listing'>Listing</h3>
-                        <p className='listing-description'>Your item will be listed for {data}</p>
-                        <button className='post-button' onClick={() => makeSellOrder()}>Post your listing</button>
+            
+                        {
+                            method==='set' &&
+                            <div>
+                                {
+                                    ({data}===null) ?
+                                        (<p className='error-msg'>Invalid price.</p>) : 
+                                        (<p className='listing-description'>Your item will be listed for {data}</p>)
+                                }
+                                <button className='post-button' onClick={() => makeSellOrder()}>Post your listing</button>
+                            </div>
+                        }
+                        {
+                            method==='bid' &&
+                            <div>
+                                <p className='listing-description'>Your item will be auctioned.
+                                The highest bidder will win it on a date, as long as their bid is at least {reserved}</p>
+                                <button className='post-button' /*onClick={() => makeSellOrder()}*/>Post your listing</button>
+                            </div>
+                        }
                     </div>
                     <hr />
                     <div className='fees-section'>
