@@ -26,6 +26,7 @@ h2 {
     column-gap: 2rem;
     margin: auto;
     margin-top: 1rem;
+    align-items: center;
 }
 
 .TinyImg{
