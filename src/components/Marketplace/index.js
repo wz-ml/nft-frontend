@@ -36,19 +36,19 @@ export default class Marketplace extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="MarketplaceContainer">
         <header>
           <h1 className="title">
             The Ship's Log
           </h1>
-          <h4 className="subtitle">
+          {/* <h4 className="subtitle">
           Lorem ipsum sit amet, consectetur adipiscing elit.
           </h4>
           <h6>
             <a target="_blank" rel="noopener noreferrer" href={OPENSEA_JS_URL}>
               <img alt="OpenSea logo" className="mr-2" src="/opensea-logo.png" />OpenSea.js
             </a> example dapp
-          </h6>
+          </h6> */}
         </header>
         <Sidebar />
         <main>

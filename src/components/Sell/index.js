@@ -157,6 +157,15 @@ function Sell() {
                             method==='bid' && <div>I am bid price</div>
                         }
                     </div>
+                    {/* <div className='minimum-bid'>
+                        <div className='set-minimum-bid-left'>
+                            <h3 className='minimum-bid'>Minimum Bid</h3>
+                            <p className='minimum-bid-description'>Set your public starting bid price.</p>
+                        </div>
+                        <div className='set-sell-price-right'>
+                            <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
+                        </div>
+                    </div> */}
                 </div>
 
                 {/* Summary part of the page */}

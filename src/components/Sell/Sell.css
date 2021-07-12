@@ -54,6 +54,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 30px;
+    column-gap: 1rem;
 }
 
 .sell-methods-items{
