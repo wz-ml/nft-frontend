@@ -99,7 +99,8 @@ function Sell(){
         asset,
         accountAddress,
         startAmount: getSalePrice()})
-    
+
+        document.getElementById("sellButton").innerHTML = "NFT listed for sale";
     }
 
     async function getOpenSeaPort(){
@@ -108,7 +109,7 @@ function Sell(){
             networkName: Network.Rinkeby
         });
     }
-    
+
     function getSalePrice(){
         return Number(document.getElementById("salePrice").value);
       }

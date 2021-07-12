@@ -1,8 +1,15 @@
 import React from 'react';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as LoginIcon } from './login.svg';
+import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+import Marketplace from "./../../../components/Marketplace";
+import Home from '../../../components/Home';
+import SignIn from '../../../components/SignIn';
+import User from "../../../components/User";
 import './bcharity_logo.png';
 import './Header.css';
+import { nonEmptyArray } from 'check-types';
 
 function Header(){
     const updateNavbar = async (evt) => {
@@ -26,9 +33,17 @@ function Header(){
             </div>
 
             <div className = "navbar-item-container">
-                <div className="navbar-item navbar-active" onClick={updateNavbar}>Home</div>
-                <div className="navbar-item" onClick={updateNavbar}>Marketplace</div>
-                <div className="navbar-item" onClick={updateNavbar}>Resources</div>
+                <div className="navbar-item navbar-active" onClick={updateNavbar}>
+                    <NavLink as={Link} to={"/home"} className="navlink-items">
+                        Home
+                    </NavLink>
+                </div>
+                <div className="navbar-item" onClick={updateNavbar}>
+                    <NavLink as={Link} to={"/marketplace"} className="navlink-items">
+                        Marketplace
+                    </NavLink>
+                </div>
+                <div className="navbar-item" onClick={updateNavbar}>About</div>
              </div>
              <div className="navbar_search">
                  <input type="text" placeholder="Search..." />
@@ -59,7 +74,6 @@ function Login_item(props){
             <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
                 {props.icon}
             </a>
-
             {open && props.children}
         </li>
     )
@@ -79,8 +93,16 @@ function DropdownMenu(){
 
     return (
         <div className="dropdown">
-            <DropdownItem>Sign In</DropdownItem>
-            <DropdownItem>My NFTs</DropdownItem>
+            <DropdownItem>
+                <NavLink as={Link} to={"/Signin"}>
+                    Sign In
+                </NavLink>
+            </DropdownItem>
+            <DropdownItem>
+                <NavLink as={Link} to={"/user"}>
+                    My NFTs
+                </NavLink>
+            </DropdownItem>
             <DropdownItem>Log off</DropdownItem>
         </div>
     )
