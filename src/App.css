@@ -12,6 +12,9 @@
 
   --shadow-color: #88888822;
 
+  --success-color: #6ef961;
+  --failure-color: #f9616e;
+
   --main-background-colour: linear-gradient(45deg , pink, white, lightblue );; 
   /* Added by Eric; July 8th */
 
@@ -60,4 +63,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.DonateTransactionDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-bottom: 1rem;
+}
+
+.DonateTransactionDetails p{
+    text-align: left;
+    height: 1rem;
 }

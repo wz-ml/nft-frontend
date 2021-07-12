@@ -1,8 +1,8 @@
 .MarketplaceContainer {
   min-height: 100%;
-  height: 100vh;
+  height: auto;
   width: 100%;
-  
+  padding-bottom: 2rem;
 }
 
 .title {
@@ -24,11 +24,15 @@ header {
   width: 100%;
 }
 
+.MarketplaceMain {
+  height: 100%;
+}
+
 .card-deck {
   /* background-color: Gray; */
   max-width: calc(100vw - 12rem);
   min-height: 10em;
-  max-height: 100vh;
+  max-height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-flow: row;

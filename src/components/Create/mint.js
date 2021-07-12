@@ -101,10 +101,9 @@ async function passJson(params, body) {
 };
 
 
-async function getTransferInformation(token) {
+async function getTransferInformation(token, transaction) {
     var events = await token.getPastEvents('Transfer', {
-        fromBlock: 0,
-        toBlock: 'latest'
+        filter: { transactionHash: transaction }
     });
     
     const tokenId = events.slice(-1)[0].returnValues.tokenId;
@@ -141,9 +140,10 @@ export async function mint(formbody, toAddress) {
       const result = await factoryContract.methods
         .mint(DEFAULT_OPTION_ID, toAddress)
         .send({ from: OWNER_ADDRESS });
-      const tokenId = await getTransferInformation(nftfetchContract);
+        const tokenId = await getTransferInformation(nftfetchContract, result.transactionHash);
       await passJson(tokenId, formbody);
       console.log("Minted token from factory. Transaction: " + result.transactionHash + "\ntoken ID: " + tokenId);
+      return result.transactionHash;
     }
 
   } else if (NFT_CONTRACT_ADDRESS) {
@@ -163,14 +163,16 @@ export async function mint(formbody, toAddress) {
       const result = await nftContract.methods
         .mintTo(toAddress)
         .send({ from: OWNER_ADDRESS });
-      const id = await getTransferInformation(nftfetchContract);
+        const id = await getTransferInformation(nftfetchContract, result.transactionHash);
       await passJson(id, formbody);	
       console.log("Minted token to you. Transaction: " + result.transactionHash + "\n token ID: " + id);
+      return result.transactionHash;
     }
   } else {
     console.error(
       "Add NFT_CONTRACT_ADDRESS or FACTORY_CONTRACT_ADDRESS to the environment variables"
     );
+    return null;
   }
 
   provider.engine.stop();
