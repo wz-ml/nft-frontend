@@ -167,9 +167,9 @@ export default class Log extends React.Component {
 
     return (
       <div className="row">
-        <div className="mb-3 ml-4">
+        <div className="mb-3_ml-4">
           Filter orderbook:
-          <div className="btn-group ml-4" role="group">
+          <div className="btn-group_ml-4" role="group">
             <button type="button" className={"btn btn-outline-primary " + (sellSide ? "active" : "")} data-toggle="button" onClick={() => this.toggleSide(OrderSide.Sell)}>
               Auctions
             </button>
@@ -177,7 +177,7 @@ export default class Log extends React.Component {
               Bids
             </button>
           </div>
-        </div>
+        {/* </div>
         <div className="mb-3 ml-4">
           <div className="btn-group" role="group">
             <button type="button" className={"btn btn-outline-secondary " + (onlyForMe ? "active" : "")} data-toggle="button" onClick={() => this.toggleForMe()}>
@@ -191,7 +191,7 @@ export default class Log extends React.Component {
         <div className="mb-3 ml-4">
           <button type="button" className={"btn btn-outline-info " + (onlyBundles ? "active" : "")} data-toggle="button" onClick={() => this.toggleBundles()}>
             Bundles
-          </button>
+          </button> */}
         </div>
       </div>
     )
