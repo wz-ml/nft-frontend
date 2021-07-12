@@ -213,7 +213,7 @@ const Create = () => {
         </form>
         <div className="DonateTransactionDetails">
         {
-          progress > -1
+          progress > 0
           ? <ProgressBar completed={progress} bgcolor={progressBg} />
           : <></>
         }
