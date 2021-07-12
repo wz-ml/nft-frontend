@@ -272,28 +272,35 @@ async function makeSellOrder(){
     let urlParts = window.location.pathname.split('/');
     const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
 
-    const order = await seaport.api.getOrder({
-      side: OrderSide.Sell,
-      asset_contract_address,
-      token_id,
-        });
+    try{
+      const order = await seaport.api.getOrder({
+        side: OrderSide.Sell,
+        asset_contract_address,
+        token_id,
+          });
 
-    setProgress(50);
-    const transactionHash = await seaport.cancelOrder({order, accountAddress});
+      setProgress(50);
+      const transactionHash = await seaport.cancelOrder({order, accountAddress});
 
-    setProgress(75);
-    let result = waitForTx(transactionHash); //wait until transaction is completed
-    document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
+      setProgress(75);
+      let result = waitForTx(transactionHash); //wait until transaction is completed
+      document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
 
-    setProgress(100);
-    setTransactionHash(transactionHash);
+      setProgress(100);
+      setTransactionHash(transactionHash);
 
-    if(result === null){
+      if(result === null){
+        setProgressBg("var(--failure-color)");
+        return;
+      }
+
+      setProgressBg("var(--success-color)");
+    }catch(err){
+      setProgress(100);
       setProgressBg("var(--failure-color)");
+      console.error(err);
       return;
     }
-
-    setProgressBg("var(--success-color)");
   }
 
 /* MOVED TO DONATE PAGE 
