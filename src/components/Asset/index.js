@@ -219,6 +219,7 @@ async function makeSellOrder(){
 
   async function makeBuyOrder(){
 
+    setProgress(25);
     const seaport = await getOpenSeaPort()
 
     let userInfo = JSON.parse(getCookie("uid"));
@@ -226,22 +227,31 @@ async function makeSellOrder(){
 
     let urlParts = window.location.pathname.split('/');
     const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
+    
+    setProgress(50)
 
     const order = await seaport.api.getOrder({
       side: OrderSide.Sell,
       asset_contract_address,
       token_id,
         });
+
+    setProgress(75);
     
     const transactionHash = await seaport.fulfillOrder({order, accountAddress});
 
-    waitForTx(transactionHash); //wait until transaction is completed
+
+    let result = waitForTx(transactionHash); //wait until transaction is completed
     document.getElementById("buyButton").innerHTML = "NFT purchased!";
 
+    setProgress(100);
+    setTransactionHash(transactionHash);
+    console.log(result);
   }
 
   async function cancelOrder(){
 
+    setProgress(25)
     const seaport = await getOpenSeaPort()
 
     let userInfo = JSON.parse(getCookie("uid"));
@@ -256,11 +266,15 @@ async function makeSellOrder(){
       token_id,
         });
 
+    setProgress(50);
     const transactionHash = await seaport.cancelOrder({order, accountAddress});
 
+    setProgress(75);
     waitForTx(transactionHash); //wait until transaction is completed
     document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
 
+    setProgress(100);
+    setTransactionHash(transactionHash);
   }
 
 /* MOVED TO DONATE PAGE 
@@ -304,6 +318,8 @@ async function makeTransfer(){
     while (result === null){ //blocking function that resolves after transaction is completed
       result = web3.eth.getTransactionReceipt(tx_hash); 
     }
+
+    return result;
   }
 
   function renderToggles(){
