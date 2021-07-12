@@ -34,14 +34,14 @@ function Header(){
 
             <div className = "navbar-item-container">
                 <div className="navbar-item navbar-active" onClick={updateNavbar}>
-                    <a href={"/home"} className="navlink-items">
+                    <NavLink as={Link} to={"/home"} className="navlink-items">
                         Home
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="navbar-item" onClick={updateNavbar}>
-                    <a href={"/marketplace"} className="navlink-items">
+                    <NavLink as={Link} to={"/marketplace"} className="navlink-items">
                         Marketplace
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="navbar-item" onClick={updateNavbar}>About</div>
              </div>
@@ -94,14 +94,14 @@ function DropdownMenu(){
     return (
         <div className="dropdown">
             <DropdownItem>
-                <a href={"/Signin"}>
+                <NavLink as={Link} to={"/Signin"}>
                     Sign In
-                </a>
+                </NavLink>
             </DropdownItem>
             <DropdownItem>
-                <a href={"/user"}>
+                <NavLink as={Link} to={"/user"}>
                     My NFTs
-                </a>
+                </NavLink>
             </DropdownItem>
             <DropdownItem>Log off</DropdownItem>
         </div>
