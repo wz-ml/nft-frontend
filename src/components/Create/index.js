@@ -191,6 +191,12 @@ const Create = () => {
         <p>Create Token</p>
       </button>
 
+      {
+        progress > -1
+        ? <ProgressBar completed={progress} bgcolor={"var(--pink-gradient)"} />
+        : <></>
+      }
+
     </div>
 
   );
