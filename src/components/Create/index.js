@@ -11,6 +11,8 @@ const Create = () => {
     const [imgPreview, setImgPreview] = useState(null);
     const [uploadFile, setUploadFile] = useState(null);
     const [error, setError] = useState(false);
+    const [progress, setProgress] = useState(-1);
+    const [completitonStatus, setCompletionStatus] = useState("");
   
     const handleImageChange = (e) => {
       e.preventDefault();
