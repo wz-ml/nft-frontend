@@ -52,6 +52,8 @@ const Create = () => {
     };
 
     async function createNFT(){
+        setProgress(0);
+
         let userData = JSON.parse(getCookie("uid"));
         let walletAddress = userData.walletAddress;
 
@@ -73,6 +75,7 @@ const Create = () => {
         xhr.onreadystatechange = () => {
           if(xhr.readyState !== 4) return;
           if(!xhr.responseText) return;
+          setProgress(75);
           if(xhr.status === 400){
             console.error(JSON.parse(xhr.response));
             return;
@@ -89,12 +92,14 @@ const Create = () => {
           //console.log(NFT);
 
           let userInfo = JSON.parse(getCookie("uid"));
-          Mint.mint(NFT, userInfo["walletAddress"]);
+          let success = Mint.mint(NFT, userInfo["walletAddress"]);
+          setProgress(100);
 
         }
 
         xhr.open("POST", address);
         xhr.send(inbody);
+        setProgress(50);
 
         // from here, image should exist within imageUrl.
         
