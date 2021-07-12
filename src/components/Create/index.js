@@ -12,7 +12,7 @@ const Create = () => {
     const [uploadFile, setUploadFile] = useState(null);
     const [error, setError] = useState(false);
     const [progress, setProgress] = useState(-1);
-    const [completitonStatus, setCompletionStatus] = useState("");
+    const [progressBg, setProgressBg] = useState("var(--blue-gradient)");
   
     const handleImageChange = (e) => {
       e.preventDefault();
@@ -186,16 +186,16 @@ const Create = () => {
         {/* </h4> */}
 
       </form>
+      {
+        progress > -1
+        ? <ProgressBar completed={progress} bgcolor={progressBg} />
+        : <></>
+      }
       <button className="CreateButton" onClick={() => createNFT()}>
         <Plus className="CreatePlus" />
         <p>Create Token</p>
       </button>
 
-      {
-        progress > -1
-        ? <ProgressBar completed={progress} bgcolor={"var(--pink-gradient)"} />
-        : <></>
-      }
 
     </div>
 
