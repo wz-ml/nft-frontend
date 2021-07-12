@@ -31,6 +31,10 @@ h2 {
 
 .tokenDescription{
     text-align: left;
+    min-height: 20vmin;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
 }
 
 .TinyImg{

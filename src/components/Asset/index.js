@@ -341,7 +341,9 @@ async function makeTransfer(){
           <h1 className="tokenName">{tokenName}</h1>
           <p className="tokenCollection"><i>{tokenCollection}</i></p>
           <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
-          <p className="tokenDescription">{tokenDescription}</p>
+          <div className="tokenDescription">
+            <p>{tokenDescription}</p>
+          </div>
           <img className="AssetImage" src={imgUrl} alt={"Asset Image"} onLoad={scalePhoto}/>
           <div className="priceField">
             {tokenPrice === -1
