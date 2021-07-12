@@ -5,6 +5,7 @@ import * as Mint from "./mint";
 import { getCookie } from '../../constants';
 import fetch from "node-fetch";
 import { v4 as uuidv4 } from 'uuid';
+import ProgressBar from "../Progress_bar";
 
 const Create = () => {  
     const [imgPreview, setImgPreview] = useState(null);
