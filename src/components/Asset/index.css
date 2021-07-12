@@ -36,8 +36,8 @@ h2 {
     grid-column: 1 / 2;
     grid-row: 1 / 5;
     justify-self: end;    
-    width: auto;
-    height: 30rem;
+    width: 100%;
+    height: auto;
     border: 2px solid rgb(223, 223, 223);
     border-radius: 1rem;
 }
