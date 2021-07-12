@@ -126,10 +126,14 @@ function Sell(){
                     <h3 className='select-sell-methods'>Select your sell method</h3>
                     <br />
                     <div className='sell-methods'>
-                        <div className='sell-methods-items'>
+                        <button type="button" className='sell-methods-items'>
                             <h4>Set Price</h4>
                             <p>Sell at a fixed price</p>
-                        </div>
+                        </button>
+                        <button type="button" className='sell-methods-items'>
+                            <h4>Highest Bid</h4>
+                            <p>Auction to the highest bidder</p>
+                        </button>
                     </div>
                     <hr />
                     <div className='set-sell-price'>
@@ -141,6 +145,15 @@ function Sell(){
                             <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
                         </div>
                     </div>
+                    {/* <div className='minimum-bid'>
+                        <div className='set-minimum-bid-left'>
+                            <h3 className='minimum-bid'>Minimum Bid</h3>
+                            <p className='minimum-bid-description'>Set your public starting bid price.</p>
+                        </div>
+                        <div className='set-sell-price-right'>
+                            <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
+                        </div>
+                    </div> */}
                 </div>
                 <div className='sellpage-top-summary'>
                     <h1 className='summary'>Summary</h1>
