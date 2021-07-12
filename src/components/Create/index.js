@@ -5,11 +5,16 @@ import * as Mint from "./mint";
 import { getCookie } from '../../constants';
 import fetch from "node-fetch";
 import { v4 as uuidv4 } from 'uuid';
+import ProgressBar from "../Progress_bar";
 
 const Create = () => {  
     const [imgPreview, setImgPreview] = useState(null);
     const [uploadFile, setUploadFile] = useState(null);
     const [error, setError] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [progressBg, setProgressBg] = useState("var(--blue-gradient)");
+    const [transactionHash, setTransactionHash] = useState("");
+    const [disableButton, setDisableButton] = useState(false);
   
     const handleImageChange = (e) => {
       e.preventDefault();
@@ -49,6 +54,9 @@ const Create = () => {
     };
 
     async function createNFT(){
+        setDisableButton(true);
+        setProgress(1);
+
         let userData = JSON.parse(getCookie("uid"));
         let walletAddress = userData.walletAddress;
 
@@ -65,13 +73,15 @@ const Create = () => {
 
         console.log(inbody.getAll("file"));
       
-        const address = `https://earlycelery.backendless.app/files/nft/${folderName}/${extension}?directoryPath`;
+        const address = `https://earlycelery.backendless.app/files/nft/${folderName}/${extension}`;
 
         xhr.onreadystatechange = () => {
           if(xhr.readyState !== 4) return;
           if(!xhr.responseText) return;
+          setProgress(75);
           if(xhr.status === 400){
             console.error(JSON.parse(xhr.response));
+            setProgressBg("var(--failure-color)");
             return;
           }
           let response = JSON.parse(xhr.response)
@@ -86,12 +96,30 @@ const Create = () => {
           //console.log(NFT);
 
           let userInfo = JSON.parse(getCookie("uid"));
-          Mint.mint(NFT, userInfo["walletAddress"]);
+          let uploadPromise = Mint.mint(NFT, userInfo["walletAddress"]);
 
+          uploadPromise.then((success) => {
+            setProgress(100);
+
+            if(success === null){
+              setProgressBg("var(--failure-color)");
+              return;
+            }
+
+            setProgressBg("var(--success-color)")
+            console.log(success);
+            setTransactionHash(success);
+            setDisableButton(false);
+          }).catch((err) => {
+            setProgress(100)
+            setProgressBg("var(--failure-color)");
+            setDisableButton(false);
+          });
         }
 
         xhr.open("POST", address);
         xhr.send(inbody);
+        setProgress(50);
 
         // from here, image should exist within imageUrl.
         
@@ -182,12 +210,23 @@ const Create = () => {
         </div>
         {/* </h4> */}
 
-      </form>
-      <button className="CreateButton" onClick={() => createNFT()}>
-        <Plus className="CreatePlus" />
-        <p>Create Token</p>
-      </button>
-
+        </form>
+        <div className="DonateTransactionDetails">
+        {
+          progress > 0
+          ? <ProgressBar completed={progress} bgcolor={progressBg} />
+          : <></>
+        }
+        {
+          transactionHash !== ""
+          ? <p>Your transaction is: {transactionHash}</p>
+          : <p></p>
+        }
+        </div>
+        <button className="CreateButton" onClick={() => createNFT()} disabled={disableButton}>
+          <Plus className="CreatePlus" />
+          <p>Create Token</p>
+        </button>
     </div>
 
   );

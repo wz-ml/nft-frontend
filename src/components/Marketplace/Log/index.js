@@ -31,11 +31,36 @@ export default class Log extends React.Component {
 
     //temp solution! how to filter specifically for giveNFT collection, AND for nft's that are on sale?
     //throws error for i > 300, looks like we are being throttled? unsure if it is realistic to iterate through all NFT's like I have done here.
-    var token_ids = [];
+    /* var token_ids = [];
     for (var i = 0; i < 200; i++)  {
       token_ids[i] = i;
     }
-    console.log(token_ids);
+    console.log(token_ids); */
+
+
+    //future permanent solution; however, this request is currently being rate-limited. I believe using an API key can fix this (perhaps can be used when we move to mainnet).
+    //fetch sell orders => take token_ids from orders => pass to getOrders() function along with asset_contract_address
+
+    const fetch = require('node-fetch'); 
+
+    const url = 'https://rinkeby-api.opensea.io/wyvern/v1/orders?collection_slug=givenft&bundled=false&include_bundled=false&include_invalid=false&limit=20&offset=0&order_by=created_date&order_direction=desc';
+    const options = {method: 'GET', headers: {Accept: 'application/json'}};
+    var token_ids = [];
+
+    try {
+
+      await fetch(url, options)
+        .then(res => res.json())
+        .then(json => {
+          console.log(json);
+          for (var i = 0; i < json.orders.length; i++){
+          token_ids.push(json.orders[i].asset.token_id);
+        }})
+        .catch(err => console.error('error:' + err));
+
+        console.log(token_ids);
+
+      } catch(error) {}
 
     const { accountAddress } = this.props
     const { orders, count } = await this.props.seaport.api.getOrders({
@@ -142,9 +167,9 @@ export default class Log extends React.Component {
 
     return (
       <div className="row">
-        <div className="mb-3 ml-4">
+        <div className="mb-3_ml-4">
           Filter orderbook:
-          <div className="btn-group ml-4" role="group">
+          <div className="btn-group_ml-4" role="group">
             <button type="button" className={"btn btn-outline-primary " + (sellSide ? "active" : "")} data-toggle="button" onClick={() => this.toggleSide(OrderSide.Sell)}>
               Auctions
             </button>
@@ -152,7 +177,7 @@ export default class Log extends React.Component {
               Bids
             </button>
           </div>
-        </div>
+        {/* </div>
         <div className="mb-3 ml-4">
           <div className="btn-group" role="group">
             <button type="button" className={"btn btn-outline-secondary " + (onlyForMe ? "active" : "")} data-toggle="button" onClick={() => this.toggleForMe()}>
@@ -166,7 +191,7 @@ export default class Log extends React.Component {
         <div className="mb-3 ml-4">
           <button type="button" className={"btn btn-outline-info " + (onlyBundles ? "active" : "")} data-toggle="button" onClick={() => this.toggleBundles()}>
             Bundles
-          </button>
+          </button> */}
         </div>
       </div>
     )

@@ -127,13 +127,14 @@ function App(){
             </li>
           </ul>
           <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/signin" component={SignIn}/>
           <Route path="/asset" component={Asset} />
-          <Route path="/Create" component={Create}/>
+          <Route path="/create" component={Create}/>
           <Route path="/user" component={User} />
-          <Route path="/Donate" component={Donate}/>
-          <Route path="/Sell" component={Sell} />
+          <Route path="/donate" component={Donate}/>
+          <Route path="/sell" component={Sell} />
           <Route path="/Progress_bar" component={Progress_bar} />
         </div>
       </Router>

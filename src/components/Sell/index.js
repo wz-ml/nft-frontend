@@ -6,7 +6,7 @@
  * @since 2021.06.30
  */
 
-import React from 'react'
+import React, { Component } from 'react'
 import { useEffect, useState } from "react";
 import './Sell.css'
 
@@ -16,7 +16,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
 
 
 
-function Sell(){
+function Sell() {
 
     const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
@@ -76,10 +76,24 @@ function Sell(){
     }
 
     const[data, setData] = useState(null)
-
+    const[method, setMethod] = useState('set')
+    const[bid, setBid] = useState(null)
+    const[reserved, setReserved] = useState(null)
     
     function changeData(val){
         setData(val.target.value);
+    }
+
+    function changeSellMethod(val){
+        setMethod(val);
+    }
+
+    function changeBid(val){
+        setBid(val.target.value);
+    }
+
+    function changeReserved(val){
+        setReserved(val.target.value);
     }
 
     async function makeSellOrder(){
@@ -112,43 +126,105 @@ function Sell(){
 
     function getSalePrice(){
         return Number(document.getElementById("salePrice").value);
-      }
+    }    
 
     return (
         <section className='sellPage'>
-                <div className="sellTokenInfo">
-                    <h1 className="sellTokenName">{tokenName}</h1>
-                    <p className="sellTokenCollection"><i>{tokenCollection}</i></p>
-                    <img src={imgUrl} alt={"Asset Image"} className="SellImage"/>
-                </div>        
+            <div className="sellTokenInfo">
+                <h1 className="sellTokenName">{tokenName}</h1>
+                <p className="sellTokenCollection"><i>{tokenCollection}</i></p>
+                <img src={imgUrl} alt={"Asset Image"} className="SellImage"/>
+            </div>        
             <div className='sellpage-main'>
                 <div className='sellpage-top-set-price'>
                     <h3 className='select-sell-methods'>Select your sell method</h3>
                     <br />
                     <div className='sell-methods'>
-                        <div className='sell-methods-items'>
+                        <button className='sell-methods-items' onClick={()=>changeSellMethod('set')}>
                             <h4>Set Price</h4>
                             <p>Sell at a fixed price</p>
-                        </div>
+                        </button>
+                        <button className='sell-methods-items' onClick={()=>changeSellMethod('bid')}>
+                            <h4>Highest Bid</h4>
+                            <p>Auction to the highest bidder</p>
+                        </button>
                     </div>
                     <hr />
-                    <div className='set-sell-price'>
-                        <div className='set-sell-price-left'>
-                            <h3 className='price'>Price</h3>
-                            <p className='price-description'>Will be on sale until you transfer this item or cancel it.</p>
-                        </div>
-                        <div className='set-sell-price-right'>
-                            <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
-                        </div>
+                    <div>
+                        {
+                            method==='set' && 
+                            <div className='set-sell-price'>
+                                <div className='set-sell-price-left'>
+                                    <h3 className='price'>Price</h3>
+                                    <p className='price-description'>Will be on sale until you transfer this item or cancel it.</p>
+                                </div>
+                                <div className='set-sell-price-right'>
+                                    <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
+                                </div>
+                            </div>
+                        }
+                        {
+                            method==='bid' && 
+                            <div className='auction'>
+                                <div className='minimum-bid'>
+                                    <div className='set-minimum-bid-left'>
+                                        <h3 className='minimum'>Minimum Bid</h3>
+                                        <p className='minimum-bid-description'>Set your public starting bid price.</p>
+                                    </div>
+                                    <div className='set-minimum-bid-right'>
+                                        <input type="number" placeholder="Amount" id="min-bid" onChange={changeBid} />
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className='reserve-price'>
+                                    <div className='reserve-price-left'>
+                                        <h3 className='reserve'>Reserve price</h3>
+                                        <p className='reserve-price-description'>Create a hidden limit by setting a reserve price.</p>
+                                    </div>
+                                    <div className='reserve-price-right'>
+                                        <input type="number" placeholder="Amount" id="reserve-p" onChange={changeReserved} />
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className='expiration-date'>
+                                    <div className='expiration-date'>
+                                        <h3 className='expir-date'>Expiration Date</h3>
+                                        <p className='expiration-date-desciption'>Your auction will automatically end at this time and the highest bidder will win. No need to cancel it!</p>
+                                    </div>
+                                    <div className='expiration-date-right'>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
+                {/* Summary part of the page */}
                 <div className='sellpage-top-summary'>
                     <h1 className='summary'>Summary</h1>
                     <hr />
                     <div className='listing-section'>
                         <h3 className='listing'>Listing</h3>
-                        <p className='listing-description'>Your item will be listed for {data}</p>
-                        <button className='post-button' onClick={() => makeSellOrder()}>Post your listing</button>
+            
+                        {
+                            method==='set' &&
+                            <div>
+                                {
+                                    ({data}===null) ?
+                                        (<p className='error-msg'>Invalid price.</p>) : 
+                                        (<p className='listing-description'>Your item will be listed for {data}</p>)
+                                }
+                                <button className='post-button' onClick={() => makeSellOrder()}>Post your listing</button>
+                            </div>
+                        }
+                        {
+                            method==='bid' &&
+                            <div>
+                                <p className='listing-description'>Your item will be auctioned.
+                                The highest bidder will win it on a date, as long as their bid is at least {reserved}</p>
+                                <button className='post-button' /*onClick={() => makeSellOrder()}*/>Post your listing</button>
+                            </div>
+                        }
                     </div>
                     <hr />
                     <div className='fees-section'>
