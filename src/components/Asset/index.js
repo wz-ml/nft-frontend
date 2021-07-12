@@ -150,6 +150,19 @@ const Asset = () => {
   function renderCancelToggle(){
     return(
       <span>
+        <div className="TransactionDetails">
+        {
+          progress > 0
+          ? <ProgressBar completed={progress} bgcolor={progressBg} />
+          : <></>
+        }
+        {
+          transactionHash !== ""
+          ? <p>Your transaction is: {transactionHash}</p>
+          : <p></p>
+        }
+        </div>
+
         <button type="button" id="cancelSellButton" onClick={() => cancelOrder()} className="button"> Cancel Sell Listing</button>
       </span>
     );
