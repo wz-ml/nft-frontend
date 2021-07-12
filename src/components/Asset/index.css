@@ -91,7 +91,7 @@ h2 {
     grid-row: 2 / 3;
     justify-self: start;
     text-align: left;
- }
+}
 
 .tokenCollection {
     grid-column: 2 / 3;
