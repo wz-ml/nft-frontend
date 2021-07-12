@@ -246,7 +246,13 @@ async function makeSellOrder(){
 
     setProgress(100);
     setTransactionHash(transactionHash);
-    console.log(result);
+
+    if(result === null){
+      setProgressBg("var(--failure-color)");
+      return;
+    }
+
+    setProgressBg("var(--success-color)");
   }
 
   async function cancelOrder(){
@@ -270,11 +276,18 @@ async function makeSellOrder(){
     const transactionHash = await seaport.cancelOrder({order, accountAddress});
 
     setProgress(75);
-    waitForTx(transactionHash); //wait until transaction is completed
+    let result = waitForTx(transactionHash); //wait until transaction is completed
     document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
 
     setProgress(100);
     setTransactionHash(transactionHash);
+
+    if(result === null){
+      setProgressBg("var(--failure-color)");
+      return;
+    }
+
+    setProgressBg("var(--success-color)");
   }
 
 /* MOVED TO DONATE PAGE 
