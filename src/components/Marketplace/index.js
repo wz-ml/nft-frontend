@@ -51,11 +51,11 @@ export default class Marketplace extends React.Component {
           </h6> */}
         </header>
         <Sidebar />
-        <main>
+        <div className="MarketplaceMain">
           <Log
             seaport={this.seaport}
             accountAddress={this.state.accountAddress} />
-        </main>
+        </div>
       </div>
     )
   }
