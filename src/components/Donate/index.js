@@ -216,8 +216,8 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
 
 
 <div className="nftInfo">
-  <h3 className="nftName">*NFT NAME HERE*</h3>
-  <img className="nftImg" src="https://cdn.vox-cdn.com/thumbor/_rw6XhJ3hVZ7_ThnekECYB0qhFo=/0x0:1252x974/1200x800/filters:focal(526x387:726x587)/cdn.vox-cdn.com/uploads/chorus_image/image/68904499/Screen_Shot_2021_03_02_at_3.21.50_PM.0.png">
+  <h3 className="nftName">{tokenName}</h3>
+  <img className="nftImg" src={imgUrl}>
   </img>
 </div>
 
