@@ -23,7 +23,7 @@ h2 {
     /* background-color: white;*/
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto 20vmin 1fr 1fr;
+    grid-template-rows: auto auto auto auto 1fr 1fr;
     column-gap: 2rem;
     margin: auto;
     align-items: center;
