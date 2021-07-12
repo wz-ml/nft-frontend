@@ -71,14 +71,14 @@ h2 {
 .priceField {
     grid-column: 2 / 3;
     grid-row: 5 / 6;
-    justify-self: center;
+    justify-self: left;
 }
 
 .renderToggles {
     grid-column: 2 / 3;
     align-self: center;
     grid-row: 6 / 7;
-    justify-self: center;
+    justify-self: left;
 }
 
 .tokenName {
