@@ -13,6 +13,7 @@ const Create = () => {
     const [error, setError] = useState(false);
     const [progress, setProgress] = useState(-1);
     const [progressBg, setProgressBg] = useState("var(--blue-gradient)");
+    const [transactionHash, setTransactionHash] = useState("");
   
     const handleImageChange = (e) => {
       e.preventDefault();
@@ -78,6 +79,7 @@ const Create = () => {
           setProgress(75);
           if(xhr.status === 400){
             console.error(JSON.parse(xhr.response));
+            setProgressBg("var(--failure-color)");
             return;
           }
           let response = JSON.parse(xhr.response)
@@ -95,6 +97,14 @@ const Create = () => {
           let success = Mint.mint(NFT, userInfo["walletAddress"]);
           setProgress(100);
 
+          if(success === null){
+            setProgressBg("var(--failure-color)");
+            return;
+          }
+
+          setProgressBg("var(--success-color)")
+          console.log(success);
+          setTransactionHash(success);
         }
 
         xhr.open("POST", address);
@@ -196,12 +206,15 @@ const Create = () => {
         ? <ProgressBar completed={progress} bgcolor={progressBg} />
         : <></>
       }
+      {
+        transactionHash !== ""
+        ? <p>Your transaction is: {transactionHash}</p>
+        : <></>
+      }
       <button className="CreateButton" onClick={() => createNFT()}>
         <Plus className="CreatePlus" />
         <p>Create Token</p>
       </button>
-
-
     </div>
 
   );
