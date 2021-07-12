@@ -154,20 +154,41 @@ function Sell() {
                             </div>
                         }
                         {
-                            method==='bid' && <div>I am bid price</div>
+                            method==='bid' && 
+                            <div className='auction'>
+                                <div className='minimum-bid'>
+                                    <div className='set-minimum-bid-left'>
+                                        <h3 className='minimum'>Minimum Bid</h3>
+                                        <p className='minimum-bid-description'>Set your public starting bid price.</p>
+                                    </div>
+                                    <div className='set-minimum-bid-right'>
+                                        <input type="number" placeholder="Amount" id="min-bid" onChange={changeData} />
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className='reserve-price'>
+                                    <div className='reserve-price-left'>
+                                        <h3 className='reserve'>Reserve price</h3>
+                                        <p className='reserve-price-description'>Create a hidden limit by setting a reserve price.</p>
+                                    </div>
+                                    <div className='reserve-price-right'>
+                                        <input type="number" placeholder="Amount" id="reserve-p" onChange={changeData} />
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className='expiration-date'>
+                                    <div className='expiration-date'>
+                                        <h3 className='expir-date'>Expiration Date</h3>
+                                        <p className='expiration-date-desciption'>Your auction will automatically end at this time and the highest bidder will win. No need to cancel it!</p>
+                                    </div>
+                                    <div className='expiration-date-right'>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                         }
                     </div>
-                    {/* <div className='minimum-bid'>
-                        <div className='set-minimum-bid-left'>
-                            <h3 className='minimum-bid'>Minimum Bid</h3>
-                            <p className='minimum-bid-description'>Set your public starting bid price.</p>
-                        </div>
-                        <div className='set-sell-price-right'>
-                            <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
-                        </div>
-                    </div> */}
                 </div>
-
                 {/* Summary part of the page */}
                 <div className='sellpage-top-summary'>
                     <h1 className='summary'>Summary</h1>
@@ -183,7 +204,6 @@ function Sell() {
                         <p className="fees-description">Listing is free! No fees are going to be deducted.</p>
                     </div>
                 </div>
-
             </div>
         </section>
     )
