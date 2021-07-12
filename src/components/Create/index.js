@@ -71,7 +71,7 @@ const Create = () => {
 
         console.log(inbody.getAll("file"));
       
-        const address = `https://earlycelery.backendless.app/files/nft/${folderName}/${extension}?directoryPath`;
+        const address = `https://earlycelery.backendless.app/files/nft/${folderName}/${extension}`;
 
         xhr.onreadystatechange = () => {
           if(xhr.readyState !== 4) return;
