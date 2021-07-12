@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from "react";
 
-export default const ProgressBar = (props) => {
+const ProgressBar = (props) => {
     const { bgcolor, completed } = props;
 
     const containerStyles = {
@@ -49,4 +49,4 @@ function Progress_bar(){
     );
 }
 
-// export default Progress_bar
+export default ProgressBar
