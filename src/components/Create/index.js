@@ -94,17 +94,23 @@ const Create = () => {
           //console.log(NFT);
 
           let userInfo = JSON.parse(getCookie("uid"));
-          let success = Mint.mint(NFT, userInfo["walletAddress"]);
-          setProgress(100);
+          let uploadPromise = Mint.mint(NFT, userInfo["walletAddress"]);
 
-          if(success === null){
+          uploadPromise.then((success) => {
+            setProgress(100);
+
+            if(success === null){
+              setProgressBg("var(--failure-color)");
+              return;
+            }
+
+            setProgressBg("var(--success-color)")
+            console.log(success);
+            setTransactionHash(success);
+          }).catch((err) => {
+            setProgress(100)
             setProgressBg("var(--failure-color)");
-            return;
-          }
-
-          setProgressBg("var(--success-color)")
-          console.log(success);
-          setTransactionHash(success);
+          });
         }
 
         xhr.open("POST", address);
