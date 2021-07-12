@@ -11,7 +11,7 @@ const Create = () => {
     const [imgPreview, setImgPreview] = useState(null);
     const [uploadFile, setUploadFile] = useState(null);
     const [error, setError] = useState(false);
-    const [progress, setProgress] = useState(-1);
+    const [progress, setProgress] = useState(0);
     const [progressBg, setProgressBg] = useState("var(--blue-gradient)");
     const [transactionHash, setTransactionHash] = useState("");
     const [disableButton, setDisableButton] = useState(false);
@@ -211,6 +211,7 @@ const Create = () => {
         {/* </h4> */}
 
         </form>
+        <div className="DonateTransactionDetails">
         {
           progress > -1
           ? <ProgressBar completed={progress} bgcolor={progressBg} />
@@ -219,8 +220,9 @@ const Create = () => {
         {
           transactionHash !== ""
           ? <p>Your transaction is: {transactionHash}</p>
-          : <></>
+          : <p></p>
         }
+        </div>
         <button className="CreateButton" onClick={() => createNFT()} disabled={disableButton}>
           <Plus className="CreatePlus" />
           <p>Create Token</p>
