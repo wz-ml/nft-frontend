@@ -31,30 +31,11 @@ export default class Log extends React.Component {
 
     //temp solution! how to filter specifically for giveNFT collection, AND for nft's that are on sale?
     //throws error for i > 300, looks like we are being throttled? unsure if it is realistic to iterate through all NFT's like I have done here.
-    /* var token_ids = [];
+    var token_ids = [];
     for (var i = 0; i < 200; i++)  {
       token_ids[i] = i;
     }
-    console.log(token_ids); */
-
-
-    //future permanent solution; however, this request is currently being rate-limited. I believe using an API key can fix this (perhaps can be used when we move to mainnet).
-    //fetch sell orders => take token_ids from orders => pass to getOrders() function along with asset_contract_address
-
-    const fetch = require('node-fetch'); 
-
-    const url = 'https://rinkeby-api.opensea.io/wyvern/v1/orders?collection_slug=givenft&bundled=false&include_bundled=false&include_invalid=false&limit=20&offset=0&order_by=created_date&order_direction=desc';
-    const options = {method: 'GET', headers: {Accept: 'application/json'}};
-    var token_ids = [];
-
-    await fetch(url, options)
-      .then(res => res.json())
-      .then(json => {
-        console.log(json);
-        for (var i = 0; i < json.orders.length; i++){
-        token_ids.push(json.orders[i].asset.token_id);
-      }})
-      .catch(err => console.error('error:' + err)); 
+    console.log(token_ids);
 
     const { accountAddress } = this.props
     const { orders, count } = await this.props.seaport.api.getOrders({
