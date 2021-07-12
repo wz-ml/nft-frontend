@@ -25,6 +25,7 @@ const Asset = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
   const [tokenName, setTokenName] = useState("");
+  const [tokenDescription, setTokenDescription] = useState("");
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [tokenOwnerId, setTokenOwnerId] = useState("");
@@ -82,6 +83,7 @@ const Asset = () => {
    */
   async function updateDetails(tokenData){
     setTokenName(tokenData.name)
+    setTokenDescription(tokenData.description);
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
@@ -339,6 +341,7 @@ async function makeTransfer(){
           <h1 className="tokenName">{tokenName}</h1>
           <p className="tokenCollection"><i>{tokenCollection}</i></p>
           <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
+          <p className="tokenDescription">{tokenDescription}</p>
           <img src={imgUrl} alt={"Asset Image"} onLoad={scalePhoto}/>
           <div className="priceField">
             {tokenPrice === -1
