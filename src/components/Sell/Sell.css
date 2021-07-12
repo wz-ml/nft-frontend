@@ -54,6 +54,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 30px;
+    column-gap: 1rem;
 }
 
 .sell-methods-items{
@@ -135,10 +136,12 @@ input {
     padding: 15px 20px 15px 20px;
     border: white;
     border-radius: 0.5rem;
+    transition-duration: 0.2s;
 }
 
 .post-button:hover{
-    background-color: blue;
+    background-color: rgb(16, 112, 255);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 15px 0 rgba(0,0,0,0.19);
     cursor: pointer;
 }
 

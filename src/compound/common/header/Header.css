@@ -54,7 +54,7 @@ a {
   flex-shrink: 1;
   margin-left: 15px;
   margin-right: 10px;
-  outline: blue solid;
+  outline: blue transparent;
 }
 
 .navbar_logo img {
@@ -71,14 +71,14 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
   box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
   height: 60px;
   /* margin-left: 150px; */
   border-radius: 0.5rem;
   flex-shrink: 1;
   margin-left: 6.5vw;
-  outline: yellow solid;
+  outline: yellow transparent;
 }
 
 .navbar-item { 
