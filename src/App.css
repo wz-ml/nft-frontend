@@ -12,12 +12,10 @@
 
   --shadow-color: #88888822;
 
+  --main-background-colour: linear-gradient(45deg , pink, white, lightblue );; /* Added by Eric; July 8th */
+
   --success-color: #6ef961;
   --failure-color: #f9616e;
-
-  --main-background-colour: linear-gradient(45deg , pink, white, lightblue );; 
-  /* Added by Eric; July 8th */
-
 }
 
 .App {
