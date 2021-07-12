@@ -14,6 +14,7 @@ const Create = () => {
     const [progress, setProgress] = useState(-1);
     const [progressBg, setProgressBg] = useState("var(--blue-gradient)");
     const [transactionHash, setTransactionHash] = useState("");
+    const [disableButton, setDisableButton] = useState(false);
   
     const handleImageChange = (e) => {
       e.preventDefault();
@@ -53,6 +54,7 @@ const Create = () => {
     };
 
     async function createNFT(){
+        setDisableButton(true);
         setProgress(0);
 
         let userData = JSON.parse(getCookie("uid"));
@@ -107,9 +109,11 @@ const Create = () => {
             setProgressBg("var(--success-color)")
             console.log(success);
             setTransactionHash(success);
+            setDisableButton(false);
           }).catch((err) => {
             setProgress(100)
             setProgressBg("var(--failure-color)");
+            setDisableButton(false);
           });
         }
 
@@ -217,7 +221,7 @@ const Create = () => {
         ? <p>Your transaction is: {transactionHash}</p>
         : <></>
       }
-      <button className="CreateButton" onClick={() => createNFT()}>
+      <button className="CreateButton" onClick={() => createNFT()} disabled={disableButton}>
         <Plus className="CreatePlus" />
         <p>Create Token</p>
       </button>
