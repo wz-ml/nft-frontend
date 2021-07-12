@@ -6,7 +6,7 @@
  * @since 2021.06.30
  */
 
-import React from 'react'
+import React, { Component } from 'react'
 import { useEffect, useState } from "react";
 import './Sell.css'
 
@@ -16,7 +16,7 @@ import detectEthereumProvider from '@metamask/detect-provider';
 
 
 
-function Sell(){
+function Sell() {
 
     const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
@@ -76,10 +76,14 @@ function Sell(){
     }
 
     const[data, setData] = useState(null)
-
+    const[method, setMethod] = useState('set')
     
     function changeData(val){
         setData(val.target.value);
+    }
+
+    function changeSellMethod(val){
+        setMethod(val);
     }
 
     async function makeSellOrder(){
@@ -112,36 +116,50 @@ function Sell(){
 
     function getSalePrice(){
         return Number(document.getElementById("salePrice").value);
-      }
+    }    
 
     return (
         <section className='sellPage'>
-                <div className="sellTokenInfo">
-                    <h1 className="sellTokenName">{tokenName}</h1>
-                    <p className="sellTokenCollection"><i>{tokenCollection}</i></p>
-                    <img src={imgUrl} alt={"Asset Image"} className="SellImage"/>
-                </div>        
+            <div className="sellTokenInfo">
+                <h1 className="sellTokenName">{tokenName}</h1>
+                <p className="sellTokenCollection"><i>{tokenCollection}</i></p>
+                <img src={imgUrl} alt={"Asset Image"} className="SellImage"/>
+            </div>        
             <div className='sellpage-main'>
                 <div className='sellpage-top-set-price'>
                     <h3 className='select-sell-methods'>Select your sell method</h3>
                     <br />
                     <div className='sell-methods'>
-                        <div className='sell-methods-items'>
+                        <button className='sell-methods-items' onClick={()=>changeSellMethod('set')}>
                             <h4>Set Price</h4>
                             <p>Sell at a fixed price</p>
-                        </div>
+                        </button>
+                        <button className='sell-methods-items' onClick={()=>changeSellMethod('bid')}>
+                            <h4>Highest Bid</h4>
+                            <p>Auction to the highest bidder</p>
+                        </button>
                     </div>
                     <hr />
-                    <div className='set-sell-price'>
-                        <div className='set-sell-price-left'>
-                            <h3 className='price'>Price</h3>
-                            <p className='price-description'>Will be on sale until you transfer this item or cancel it.</p>
-                        </div>
-                        <div className='set-sell-price-right'>
-                            <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
-                        </div>
+                    <div>
+                        {
+                            method==='set' && 
+                            <div className='set-sell-price'>
+                                <div className='set-sell-price-left'>
+                                    <h3 className='price'>Price</h3>
+                                    <p className='price-description'>Will be on sale until you transfer this item or cancel it.</p>
+                                </div>
+                                <div className='set-sell-price-right'>
+                                    <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
+                                </div>
+                            </div>
+                        }
+                        {
+                            method==='bid' && <div>I am bid price</div>
+                        }
                     </div>
                 </div>
+
+                {/* Summary part of the page */}
                 <div className='sellpage-top-summary'>
                     <h1 className='summary'>Summary</h1>
                     <hr />
@@ -156,6 +174,7 @@ function Sell(){
                         <p className="fees-description">Listing is free! No fees are going to be deducted.</p>
                     </div>
                 </div>
+
             </div>
         </section>
     )
