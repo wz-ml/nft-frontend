@@ -55,7 +55,7 @@ const Create = () => {
 
     async function createNFT(){
         setDisableButton(true);
-        setProgress(0);
+        setProgress(1);
 
         let userData = JSON.parse(getCookie("uid"));
         let walletAddress = userData.walletAddress;
