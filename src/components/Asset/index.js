@@ -34,6 +34,7 @@ const Asset = () => {
   const [schemaName, setSchemaName] = useState("");
   const [isOnSale, setSaleState] = useState(false);
   const [tokenPrice, setTokenPrice] = useState(-1);
+  const [saleType, setSaleType] = useState(0);
 
   const [transactionBusy, setTransactionBusy] = useState(false);
 
@@ -95,6 +96,7 @@ const Asset = () => {
     setSchemaName(tokenData.asset_contract.schema_name);
     setTokenOwnerId(tokenData.top_ownerships[0].owner.address);
     setSaleState(currentlyOnSale(tokenData));
+    setSaleType(tokenData.orders[0].payment_token_contract.id); // 2 is a regular listing, 1 is an auction
 
     if(tokenData.orders.length > 0){
       setTokenPrice(tokenData.orders[0].base_price * Math.pow(10, -18));
