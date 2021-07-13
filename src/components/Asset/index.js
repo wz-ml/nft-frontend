@@ -131,6 +131,16 @@ const Asset = () => {
     );
   }
 
+  function renderBidToggle(){
+    // ensure that the bid is greater than the current highest bid?
+    return(
+      <div>
+        <input type="number" id="bidPrice" />
+        <button className="button" id="bidButton" type="button" onClick={() => console.log("make bid")}>Place Bid</button>
+      </div>
+    )
+  }
+
   function renderSellToggle(){
     let urlParts = window.location.pathname.split('/');
     const [collectionAddr, tokenID] = urlParts.splice(-2);
