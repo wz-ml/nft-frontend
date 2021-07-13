@@ -178,13 +178,11 @@ function Sell() {
     function getSalePrice(){
         return Number(document.getElementById("salePrice").value);
     }
-    /*
-     * currently expiration date has no element, thus this should be commented out and modified when that section is implemented.  
+    
     function getExpirationTime() {
         return Number(Math.round(new Date(document.getElementById("expirationTime").value).getTime() / 1000));
     }
-    */
-
+    
     function getMinBid() {
         return Number(document.getElementById("min-bid").value);
     }
@@ -198,7 +196,7 @@ function Sell() {
         //Currently only returns weth's Address depending on whether the network is on mainnet or Rinkeby.  
         //Modify this to take in the input payment token address when the input criteria becomes available and default to weth if none is entered.  
         const wethAddress =
-            NETWORK === "mainnet" || NETWORK === "live"
+            Network === "mainnet" || Network === "live"
                 ? "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
                 : "0xc778417e063141139fce010982780140aa0cd5ab";
         return wethAddress;
