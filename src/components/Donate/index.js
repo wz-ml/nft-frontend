@@ -80,6 +80,7 @@ const Donate = () => {
 
   async function makeTransfer(){
 
+    setProgress(25);
     const seaport = await getOpenSeaPort();
 
     let userInfo = JSON.parse(getCookie("uid"));
@@ -90,16 +91,35 @@ const Donate = () => {
 
     let asset = {tokenId, tokenAddress};
     if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
+    setProgress(50)
 
-    const th = await seaport.transfer({
-        asset,
-        fromAddress, //your address (you must own the asset)
-        toAddress: charityAddrs[chosenCharity]
-    })
+    try{
+      const th = await seaport.transfer({
+          asset,
+          fromAddress, //your address (you must own the asset)
+          toAddress: charityAddrs[chosenCharity]
+      })
 
-    waitForTx(th); //wait until transaction is completed
-    document.getElementById("donateButton").innerHTML = "Donation Complete!";
+      setProgress(75);
 
+      let result = waitForTx(th); //wait until transaction is completed
+
+      setProgress(100);
+      setTransactionHash(th);
+      
+      if(result === null){
+        setProgressBg("var(--failure-color)");
+        return;
+      }
+
+      setProgressBg("var(--success-color)");
+      // document.getElementById("donateButton").innerHTML = "Donation Complete!";
+    }catch(err){
+      setProgress(100);
+      setProgressBg("var(--failure-color");
+      console.error(err);
+      return;
+    }
   }
 
   async function getOpenSeaPort(){
