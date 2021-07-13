@@ -293,31 +293,6 @@ const Asset = () => {
     }
   }
 
-/* MOVED TO DONATE PAGE 
-async function makeTransfer(){
-
-    const seaport = await getOpenSeaPort();
-
-    let userInfo = JSON.parse(getCookie("uid"));
-    const fromAddress = userInfo["walletAddress"];
-
-    let urlParts = window.location.pathname.split('/');
-    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
-
-    let asset = {tokenId, tokenAddress};
-    if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
-
-    const transactionHash = await seaport.transfer({
-      asset,
-      fromAddress, //your address (you must own the asset)
-      toAddress: charityAddrs[chosenCharity]
-    })
-
-    waitForTx(transactionHash); //wait until transaction is completed
-    document.getElementById("donateButton").innerHTML = "Donation Complete!";
-
-  } */
-
   async function getOpenSeaPort(){
     const provider = await detectEthereumProvider();
     return new OpenSeaPort(provider, {
