@@ -102,6 +102,47 @@ function Sell(){
     
     }
 
+    async function makeDescendingAuction() {
+        const seaport = await getOpenSeaPort()
+
+        let urlParts = window.location.pathname.split('/');
+        const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+        let userInfo = JSON.parse(getCookie("uid"));
+        const accountAddress = userInfo["walletAddress"];
+
+        let asset = { tokenId, tokenAddress };
+
+        const dutchAuctionSellOrder = await seaport.createSellOrder({
+            asset,
+            accountAddress,
+            startAmount: getSalePrice(),
+            endAmount: getEndPrice(),
+            expirationTime: getExpirationTime(),
+        });
+    }
+
+    async function makeAscendingAuction() {
+        const seaport = await getOpenSeaPort()
+
+        let urlParts = window.location.pathname.split('/');
+        const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
+
+        let userInfo = JSON.parse(getCookie("uid"));
+        const accountAddress = userInfo["walletAddress"];
+
+        let asset = { tokenId, tokenAddress };
+
+        const EnglishAuctionSellOrder = await seaport.createSellOrder({
+            asset,
+            accountAddress,
+            paymentTokenAddress: getPaymentToken(),
+            startAmount: getSalePrice(),
+            waitForHighestBid: true,
+            expirationTime: getExpirationTime(),
+        });
+    }
+
     async function getOpenSeaPort(){
         const provider = await detectEthereumProvider();
         return new OpenSeaPort(provider, {
@@ -110,8 +151,25 @@ function Sell(){
     }
     
     function getSalePrice(){
-        return Number(document.getElementById("salePrice").value);
-      }
+        //return Number(document.getElementById("salePrice").value);
+    }
+
+    function getExpirationTime() {
+        //return Number(Math.round(new Date(document.getElementById("expirationTime").value).getTime() / 1000));
+    }
+
+    function getEndPrice() {
+        //return Number(document.getElementById("endPrice").value);
+    }
+
+    function getPaymentToken() {
+        //Currently only returns weth's Address depending on whether the network is on mainnet or Rinkeby.  
+        const wethAddress =
+            NETWORK === "mainnet" || NETWORK === "live"
+                ? "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+                : "0xc778417e063141139fce010982780140aa0cd5ab";
+        return wethAddress;
+    }
 
     return (
         <section className='sellPage'>
