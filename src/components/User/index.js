@@ -104,10 +104,12 @@ const User = () => {
         </div>
         <div className="UserAssetContainer">
           <h2>Your Assets</h2>
-          <button className="CreateButton">
-            <Plus className="CreatePlus" />
-            <p>Mint a new Token </p>
-          </button>
+          <a href="/Create">
+            <button className="CreateButton">
+              <Plus className="CreatePlus" />
+              <p>Mint a new Token </p>
+            </button>
+          </a>
           <div className="UserAssets">
             {userAssets}
           </div>

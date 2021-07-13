@@ -13,6 +13,7 @@ import "./index.css"
 import detectEthereumProvider from '@metamask/detect-provider';
 import { OpenSeaPort, Network } from 'opensea-js';
 import { getCookie, smartContract } from '../../constants';
+import ProgressBar from "../Progress_bar";
 
 var charityAddrs = {
   "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
@@ -25,6 +26,7 @@ const Asset = () => {
   const API_URL = "https://rinkeby-api.opensea.io/api/v1";
 
   const [tokenName, setTokenName] = useState("");
+  const [tokenDescription, setTokenDescription] = useState("");
   const [tokenCollection, setTokenCollection] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [tokenOwnerId, setTokenOwnerId] = useState("");
@@ -34,6 +36,11 @@ const Asset = () => {
   const [tokenPrice, setTokenPrice] = useState(-1);
 
   const [transactionBusy, setTransactionBusy] = useState(false);
+
+  // progress bar info
+  const [progress, setProgress] = useState(0);
+  const [progressBg, setProgressBg] = useState("var(--blue-gradient)");
+  const [transactionHash, setTransactionHash] = useState("");
 
   function addSmartContractListener(){
     smartContract.events.Approval({}, (err, data) => {
@@ -82,6 +89,7 @@ const Asset = () => {
    */
   async function updateDetails(tokenData){
     setTokenName(tokenData.name)
+    setTokenDescription(tokenData.description);
     setTokenCollection(tokenData.collection.name);
     setImgUrl(tokenData.image_url);
     setSchemaName(tokenData.asset_contract.schema_name);
@@ -142,6 +150,19 @@ const Asset = () => {
   function renderCancelToggle(){
     return(
       <span>
+        <div className="TransactionDetails">
+        {
+          progress > 0
+          ? <ProgressBar completed={progress} bgcolor={progressBg} />
+          : <></>
+        }
+        {
+          transactionHash !== ""
+          ? <p>Your transaction is: {transactionHash}</p>
+          : <p></p>
+        }
+        </div>
+
         <button type="button" id="cancelSellButton" onClick={() => cancelOrder()} className="button"> Cancel Sell Listing</button>
       </span>
     );
@@ -173,34 +194,21 @@ const Asset = () => {
   }
 
   function renderDonateToggle(){
-    let charities = [];
-    let counter = 0;
-
-    for(let charity in charityAddrs){
-      charities.push(createCharityRadio(charity));
-    }
 
     let urlParts = window.location.pathname.split('/');
     const [collectionAddr, tokenID] = urlParts.splice(-2);
 
     return(
       <div className="donateContainer">
-      {/*MOVE THIS TO DONATE PAGE
-      <button className="button" id="donateButton" onClick={() => makeTransfer()}>Donate</button>
-      */}
         <a href={`/Donate/${collectionAddr}/${tokenID}`}>
           <button id="button" className="button">Donate</button>
         </a>
-        <form className="charitySelection">
-          {charities}
-        </form>
       </div>
     );
   }
 
-// onClick={() => makeTransfer()}
-
-  async function makeSellOrder(){
+/* MOVED TO SELL PAGE
+async function makeSellOrder(){
 
     const seaport = await getOpenSeaPort()
  
@@ -220,10 +228,11 @@ const Asset = () => {
 
     document.getElementById("sellButton").innerHTML = "NFT listed for sale";
 
-  }
+  } */
 
   async function makeBuyOrder(){
 
+    setProgress(25);
     const seaport = await getOpenSeaPort()
 
     let userInfo = JSON.parse(getCookie("uid"));
@@ -231,22 +240,43 @@ const Asset = () => {
 
     let urlParts = window.location.pathname.split('/');
     const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
-
-    const order = await seaport.api.getOrder({
-      side: OrderSide.Sell,
-      asset_contract_address,
-      token_id,
-        });
     
-    const transactionHash = await seaport.fulfillOrder({order, accountAddress});
+    setProgress(50)
 
-    waitForTx(transactionHash); //wait until transaction is completed
-    document.getElementById("buyButton").innerHTML = "NFT purchased!";
+    try{
+      const order = await seaport.api.getOrder({
+          side: OrderSide.Sell,
+          asset_contract_address,
+          token_id,
+        });
 
+      setProgress(75);
+
+      const th = await seaport.fulfillOrder({order, accountAddress});
+
+      let result = waitForTx(th); //wait until transaction is completed
+      document.getElementById("buyButton").innerHTML = "NFT purchased!";
+
+      setProgress(100);
+      setTransactionHash(transactionHash);
+
+      if(result === null){
+        setProgressBg("var(--failure-color)");
+        return;
+      }
+
+      setProgressBg("var(--success-color)");
+    }catch(err){
+      setProgress(100);
+      setProgressBg("var(--failure-color)");
+      console.error(err);
+      return;
+    }
   }
 
   async function cancelOrder(){
 
+    setProgress(25)
     const seaport = await getOpenSeaPort()
 
     let userInfo = JSON.parse(getCookie("uid"));
@@ -255,20 +285,39 @@ const Asset = () => {
     let urlParts = window.location.pathname.split('/');
     const [asset_contract_address, token_id] = urlParts.splice(-2); //fetch token address + token ID from URL
 
-    const order = await seaport.api.getOrder({
-      side: OrderSide.Sell,
-      asset_contract_address,
-      token_id,
-        });
+    try{
+      const order = await seaport.api.getOrder({
+        side: OrderSide.Sell,
+        asset_contract_address,
+        token_id,
+          });
 
-    const transactionHash = await seaport.cancelOrder({order, accountAddress});
+      setProgress(50);
+      const transactionHash = await seaport.cancelOrder({order, accountAddress});
 
-    waitForTx(transactionHash); //wait until transaction is completed
-    document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
+      setProgress(75);
+      let result = waitForTx(transactionHash); //wait until transaction is completed
+      document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
 
+      setProgress(100);
+      setTransactionHash(transactionHash);
+
+      if(result === null){
+        setProgressBg("var(--failure-color)");
+        return;
+      }
+
+      setProgressBg("var(--success-color)");
+    }catch(err){
+      setProgress(100);
+      setProgressBg("var(--failure-color)");
+      console.error(err);
+      return;
+    }
   }
 
-  async function makeTransfer(){
+/* MOVED TO DONATE PAGE 
+async function makeTransfer(){
 
     const seaport = await getOpenSeaPort();
 
@@ -290,7 +339,7 @@ const Asset = () => {
     waitForTx(transactionHash); //wait until transaction is completed
     document.getElementById("donateButton").innerHTML = "Donation Complete!";
 
-  }
+  } */
 
   async function getOpenSeaPort(){
     const provider = await detectEthereumProvider();
@@ -305,9 +354,21 @@ const Asset = () => {
     const web3 = new Web3(new Web3.providers.HttpProvider('https://eth-rinkeby.alchemyapi.io/v2/TDvA5STwGZ7Uv_loxm5msg-tuujVCk4_')); //read-only provider
 
     var result = null;
-    while (result === null){ //blocking function that resolves after transaction is completed
-      result = web3.eth.getTransactionReceipt(tx_hash); 
-    }
+    // while (result === null){ //blocking function that resolves after transaction is completed
+    result = web3.eth.getTransactionReceipt(tx_hash); 
+    // }
+
+    result
+      .then((response) => {
+        console.log(response);
+        return response;
+      })
+      .catch((err) => {
+        console.error(err);
+        return null;
+      });
+
+    //return result;
   }
 
   function renderToggles(){
@@ -338,7 +399,20 @@ const Asset = () => {
     }
 
     return (
-      <div className="AssetButtonContainer">
+      <div className="AssetButtonContainer"> 
+        <div className="TransactionDetails">
+        {
+          progress > 0
+          ? <ProgressBar completed={progress} bgcolor={progressBg} />
+          : <></>
+        }
+        {
+          transactionHash !== ""
+          ? <p>Your transaction is: {transactionHash}</p>
+          : <p></p>
+        }
+        </div>
+
         {renderBuyToggle()}
       </div>
     );
@@ -351,7 +425,10 @@ const Asset = () => {
           <h1 className="tokenName">{tokenName}</h1>
           <p className="tokenCollection"><i>{tokenCollection}</i></p>
           <p className="tokenOwner">Owned by: <a href="#">{tokenOwnerId}</a></p>
-          <img src={imgUrl} alt={"Asset Image"} onLoad={scalePhoto}/>
+          <div className="tokenDescription">
+            <p>{tokenDescription}</p>
+          </div>
+          <img className="AssetImage" src={imgUrl} alt={"Asset Image"} onLoad={scalePhoto}/>
           <div className="priceField">
             {tokenPrice === -1
               ? <p><i>This is not currently listed for sale</i></p>
