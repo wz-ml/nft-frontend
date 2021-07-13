@@ -247,7 +247,7 @@ const Asset = () => {
       document.getElementById("buyButton").innerHTML = "NFT purchased!";
 
       setProgress(100);
-      setTransactionHash(transactionHash);
+      setTransactionHash(th);
 
       if(result === null){
         setProgressBg("var(--failure-color)");
