@@ -7,6 +7,7 @@ import { OpenSeaPort, Network } from 'opensea-js';
 import { getCookie, smartContract } from '../../constants';
 import { func } from "prop-types";
 
+import ProgressBar from "../Progress_bar";
 
 let charityAddrs = {
     "Charity 1 (Tony Address)": "0x11f408335E4B70459dF69390ab8948fcD51004D0",
@@ -25,6 +26,11 @@ const Donate = () => {
   const [chosenCharity, setChosenCharity] = useState("");
   const [schemaName, setSchemaName] = useState("");
   const [tokenPrice, setTokenPrice] = useState(-1);
+
+  // progress bar info
+  const [progress, setProgress] = useState(0);
+  const [progressBg, setProgressBg] = useState("var(--blue-gradient)");
+  const [transactionHash, setTransactionHash] = useState("");
 
   function addSmartContractListener(){
     smartContract.events.Approval({}, (err, data) => {
@@ -189,6 +195,18 @@ const Donate = () => {
 </div>
 
 
+<div className="TransactionDetails">
+{
+  progress > 0
+  ? <ProgressBar completed={progress} bgcolor={progressBg} />
+  : <></>
+}
+{
+  transactionHash !== ""
+  ? <p>Your transaction is: {transactionHash}</p>
+  : <p></p>
+}
+</div>
 <div className="donateButtonDiv">
 <button className="donateButton" onClick={() => makeTransfer()}>
         DONATE 
