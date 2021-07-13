@@ -362,6 +362,16 @@ const Asset = () => {
        }
     }
 
+    console.log(saleType)
+
+    if(saleType === 1){
+      return(
+        <div className="AssetButtonContainer">
+          {renderBidToggle()}
+        </div>
+      );
+    }
+
     return (
       <div className="AssetButtonContainer"> 
         <div className="TransactionDetails">
