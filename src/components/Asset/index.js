@@ -282,14 +282,14 @@ const Asset = () => {
           });
 
       setProgress(50);
-      const transactionHash = await seaport.cancelOrder({order, accountAddress});
+      const th = await seaport.cancelOrder({order, accountAddress});
 
       setProgress(75);
-      let result = waitForTx(transactionHash); //wait until transaction is completed
+      let result = waitForTx(th); //wait until transaction is completed
       document.getElementById("cancelSellButton").innerHTML = "Sell Listing Cancelled";
 
       setProgress(100);
-      setTransactionHash(transactionHash);
+      setTransactionHash(th);
 
       if(result === null){
         setProgressBg("var(--failure-color)");
