@@ -68,7 +68,7 @@ const Donate = () => {
 
   function updateChosenCharity(evt){
     console.log(evt.target);
-    setChosenCharity(charityAddrs[evt.target.innerText]);
+    setChosenCharity(evt.target.innerText);
     // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
   }
 
