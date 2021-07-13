@@ -207,29 +207,6 @@ const Asset = () => {
     );
   }
 
-/* MOVED TO SELL PAGE
-async function makeSellOrder(){
-
-    const seaport = await getOpenSeaPort()
- 
-    let urlParts = window.location.pathname.split('/');
-    const [tokenAddress, tokenId] = urlParts.splice(-2); //fetch token address + token ID from URL
-
-    let userInfo = JSON.parse(getCookie("uid"));
-    const accountAddress = userInfo["walletAddress"];
-
-    let asset = {tokenId, tokenAddress};
-    if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
-
-    const listing = await seaport.createSellOrder({
-    asset,
-    accountAddress,
-    startAmount: getSalePrice()})
-
-    document.getElementById("sellButton").innerHTML = "NFT listed for sale";
-
-  } */
-
   async function makeBuyOrder(){
 
     setProgress(25);
