@@ -200,13 +200,13 @@ function Sell() {
                 ? "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
                 : "0xc778417e063141139fce010982780140aa0cd5ab";
         return wethAddress;
+    }
 
     function changeDateTime(ev) {
         if (!ev.target['validity'].valid) return;
         const dt= ev.target['value'] + ':00';
         setDatetime(dt);
     }
-}
 
     return (
         <section className='sellPage'>
@@ -272,7 +272,7 @@ function Sell() {
                                         <p className='expiration-date-desciption'>Your auction will automatically end at this time and the highest bidder will win. No need to cancel it!</p>
                                     </div>
                                     <div className='expiration-date-right'>
-                                    <input type="datetime-local" className="expiration-date-time"
+                                    <input type="datetime-local" id="expirationTime" className="expiration-date-time"
                                             value={(datetime || '').toString().substring(0, 16)}
                                             onChange={changeDateTime} />
                                     </div>
@@ -304,7 +304,7 @@ function Sell() {
                             <div>
                                 <p className='listing-description'>Your item will be auctioned.
                                 The highest bidder will win it on {datetime}, as long as their bid is at least {reserved}</p>
-                                <button className='post-button' /*onClick={() => makeSellOrder()}*/>Post your listing</button>
+                                <button className='post-button' onClick={() => makeAscendingAuction()}>Post your listing</button>
                             </div>
                         }
                     </div>
