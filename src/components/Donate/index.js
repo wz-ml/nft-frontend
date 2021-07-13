@@ -106,7 +106,7 @@ const Donate = () => {
 
       setProgress(100);
       setTransactionHash(th);
-      
+
       if(result === null){
         setProgressBg("var(--failure-color)");
         return;
