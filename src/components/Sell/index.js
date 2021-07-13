@@ -103,6 +103,7 @@ function Sell() {
 
     async function makeSellOrder(){
 
+        setProgress(25);
         const seaport = await getOpenSeaPort()
      
         let urlParts = window.location.pathname.split('/');
@@ -114,12 +115,23 @@ function Sell() {
         let asset = {tokenId, tokenAddress};
         // if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
     
-        const listing = await seaport.createSellOrder({
-        asset,
-        accountAddress,
-        startAmount: getSalePrice()})
+        setProgress(50);
 
-        document.getElementById("sellButton").innerHTML = "NFT listed for sale";
+        try{
+          const listing = await seaport.createSellOrder({
+          asset,
+          accountAddress,
+          startAmount: getSalePrice()})
+
+          setProgress(100);
+          console.log(listing);
+          document.getElementById("sellButton").innerHTML = "NFT listed for sale";
+          setProgressBg("var(--success-color)");
+        }catch(err){
+          setProgress(100);
+          setProgressBg("var(--failure-color)");
+          console.error(err);
+        }
     }
 
     async function getOpenSeaPort(){
