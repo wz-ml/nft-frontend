@@ -205,14 +205,14 @@ function Sell() {
                     <hr />
                     <div>
                         {
-                            method==='set' && 
+                            method==='set' &&   
                             <div className='set-sell-price'>
                                 <div className='set-sell-price-left'>
                                     <h3 className='price'>Price</h3>
                                     <p className='price-description'>Will be on sale until you transfer this item or cancel it.</p>
                                 </div>
                                 <div className='set-sell-price-right'>
-                                    <input type="number" placeholder="Amount" id="salePrice" onChange={changeData} />
+                                    <input type="number" placeholder="Amount" id="salePrice" onChange={changeData}/>
                                 </div>
                             </div>
                         }
@@ -266,18 +266,31 @@ function Sell() {
             
                         {
                             method==='set' &&
+
                             <div>
-                                {
-                                    ({data}===null) ?
+                                { 
+                                let sellDescription = ({data}===null) ?
+                                    "Invalid price." : 
+                                    "Your item will be listed for ${data}"
+                                    
+                                    /* ({data}===null) ?
                                         (<p className='error-msg'>Invalid price.</p>) : 
-                                        (<p className='listing-description'>Your item will be listed for {data}</p>)
+                                        (<p className='listing-description'>Your item will be listed for {data}</p)> */
                                 }
+
+                                <p className='listing-description'>{sellDescription}</p>
                                 <button className='post-button' onClick={() => makeSellOrder()}>Post your listing</button>
                             </div>
                         }
                         {
                             method==='bid' &&
                             <div>
+                                { 
+                                let bidDescription = ({bid}===null) ?
+                                    "Invalid price." : 
+                                    "Your item will be listed for ${bid}"
+                                }
+
                                 <p className='listing-description'>Your item will be auctioned.
                                 The highest bidder will win it on {expireDate}, as long as their bid is at least {reserved}</p>
                                 <button className='post-button' /*onClick={() => makeSellOrder()}*/>Post your listing</button>
