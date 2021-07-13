@@ -116,7 +116,7 @@ const Donate = () => {
       // document.getElementById("donateButton").innerHTML = "Donation Complete!";
     }catch(err){
       setProgress(100);
-      setProgressBg("var(--failure-color");
+      setProgressBg("var(--failure-color)");
       console.error(err);
       return;
     }
