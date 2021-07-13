@@ -190,7 +190,7 @@ const Donate = () => {
 
 
 <div className="donateButtonDiv">
-<button className="donateButton">
+<button className="donateButton" onClick={() => makeTransfer()}>
         DONATE 
     </button>
 </div>
