@@ -8,9 +8,6 @@
   --speed: 500ms;
 }
 
-
-
-
 ul {
   list-style: none;
   margin: 0;
@@ -20,7 +17,6 @@ ul {
 a {
   color: var (--text-color);
 }
-
 
 /*
 .header-top__logo img {
@@ -71,9 +67,10 @@ a {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;  border-radius: 0.5rem;
+  margin-left: 6.5vw;
+  height: 70px;
   background-color: transparent;
-  box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
-  height: 60px;
   /* margin-left: 150px; */
   border-radius: 0.5rem;
   flex-shrink: 1;
@@ -99,21 +96,17 @@ a {
 }
 
 .navbar-item.navbar-active{
-  justify-content: center;
-  align-items: center;
   margin-left: 15px;
   margin-right: 25px;
   color: white;
   font-style: none;
   font-size: 1.5em;
-  text-decoration: inherit;
   background: linear-gradient(70deg, var(--blue-gradient-start) 15%, var(--blue-gradient-end));
-  padding-top: 3px;
-  padding-bottom: 6pm;
-  padding-right: 30px;
-  padding-left: 30px;
-
-  transform: translateY(-15px);
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-right: 35px;
+  padding-left: 35px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;  transform: translateY(-12px);
   border-radius: 0.5rem;
   flex-shrink: 1;
 }
@@ -125,7 +118,7 @@ a {
 }
 
 .navbar_search {
-  box-shadow: 0rem 0rem 0.5rem 0.1rem #88888822;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
   border-radius: 0.5rem;
   flex-shrink: 1;
   margin-left: 30px;
@@ -152,15 +145,15 @@ a {
 }
 
 .login-item{
-  width: 30px;
+  width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .icon-button{
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   padding: 5px;
   margin: 2px;
@@ -171,8 +164,8 @@ a {
 
 .icon-button svg{
   fill: var(--text-color);
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
 }
 
 .icon-button:hover {
@@ -182,9 +175,9 @@ a {
 .dropdown {
   z-index: 2;
   position: absolute;
-  top: 70px;
+  top: 83px;
   width: 300px;
-  transform: translateX(-45%);
+  transform: translateX(-43%);
   background-color: white;
   border: var(--border);
   border-radius: var(--border-radius);
