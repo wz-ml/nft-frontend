@@ -67,7 +67,8 @@ const Donate = () => {
 
 
   function updateChosenCharity(evt){
-    setChosenCharity(evt.target.value);
+    console.log(evt.target);
+    setChosenCharity(charityAddrs[evt.target.innerText]);
     // now the address of the charity can be retrieved via charityAddrs[chosenCharity];
   }
 
@@ -153,14 +154,17 @@ this.parentNode.previousElementSibling.innerHTML = this.innerHTML;
     <p>(Please click the charity twice for confirmation purposes) </p>
 
 
+    {/* this still needs work... 
+        i'm adding things to it for now, but again, this need to be reworked
+      */}
 <div className="dropdown_eric">
   <button className="allCharitiesButton" onClick={showDropdownContent}>All Charities</button>
   <div className="dropdown-content_eric" id="myDropdown">
-    <a href="#">{((Object.keys(charityAddrs))[0])}</a>
+    <a href="#" onClick={updateChosenCharity} value={Object.values(charityAddrs)[0]}>{((Object.keys(charityAddrs))[0])}</a>
     {/* <a href="#">{((Object.keys(charityAddrs))[1])}</a> */}
     <a href="#">long charity name long charity name </a>
     
-    <a href="#">{((Object.keys(charityAddrs))[2])}</a>
+    <a href="#" onClick={updateChosenCharity} value={Object.values(charityAddrs)[2]} >{((Object.keys(charityAddrs))[2])}</a>
   </div>
 </div>
 
