@@ -6,9 +6,9 @@
  * @since 2021.06.30
  */
 
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { useEffect, useState } from "react";
-import './Sell.css'
+import './Sell.css';
 
 import { OpenSeaPort, Network } from 'opensea-js';
 import { getCookie, smartContract } from '../../constants';
@@ -79,7 +79,14 @@ function Sell() {
     const[method, setMethod] = useState('set')
     const[bid, setBid] = useState(null)
     const[reserved, setReserved] = useState(null)
+    const[selectedDate, setSelectedDate] = useState(null)
+    const[datetime, setDatetime] = useState('')
     
+    let today=new Date();
+    let month=today.getMonth+1;
+    let year=today.getFullYear();
+    let date=today.getDate();
+
     function changeData(val){
         setData(val.target.value);
     }
@@ -126,7 +133,13 @@ function Sell() {
 
     function getSalePrice(){
         return Number(document.getElementById("salePrice").value);
-    }    
+    }
+
+    function changeDateTime(ev) {
+        if (!ev.target['validity'].valid) return;
+        const dt= ev.target['value'] + ':00';
+        setDatetime(dt);
+    }
 
     return (
         <section className='sellPage'>
@@ -192,7 +205,9 @@ function Sell() {
                                         <p className='expiration-date-desciption'>Your auction will automatically end at this time and the highest bidder will win. No need to cancel it!</p>
                                     </div>
                                     <div className='expiration-date-right'>
-                                        
+                                    <input type="datetime-local" className="expiration-date-time"
+                                            value={(datetime || '').toString().substring(0, 16)}
+                                            onChange={changeDateTime} />
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +236,7 @@ function Sell() {
                             method==='bid' &&
                             <div>
                                 <p className='listing-description'>Your item will be auctioned.
-                                The highest bidder will win it on a date, as long as their bid is at least {reserved}</p>
+                                The highest bidder will win it on {datetime}, as long as their bid is at least {reserved}</p>
                                 <button className='post-button' /*onClick={() => makeSellOrder()}*/>Post your listing</button>
                             </div>
                         }
