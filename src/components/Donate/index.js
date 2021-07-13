@@ -91,13 +91,13 @@ const Donate = () => {
     let asset = {tokenId, tokenAddress};
     if (schemaName === "ERC1155") {asset["schemaName"] = "ERC1155"};
 
-    const transactionHash = await seaport.transfer({
+    const th = await seaport.transfer({
         asset,
         fromAddress, //your address (you must own the asset)
         toAddress: charityAddrs[chosenCharity]
     })
 
-    waitForTx(transactionHash); //wait until transaction is completed
+    waitForTx(th); //wait until transaction is completed
     document.getElementById("donateButton").innerHTML = "Donation Complete!";
 
   }
